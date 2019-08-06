@@ -13,6 +13,8 @@ import { FormAmenitiesComponent } from './add-vehicle/form-amenities/form-amenit
 import { FormDescriptionComponent } from './add-vehicle/form-description/form-description.component';
 import { FormRulesComponent } from './add-vehicle/form-rules/form-rules.component';
 import { FormPricingComponent } from './add-vehicle/form-pricing/form-pricing.component';
+import { MatSelectModule } from '@angular/material/select';
+import { MatRadioModule } from '@angular/material/radio';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,8 @@ import { FormPricingComponent } from './add-vehicle/form-pricing/form-pricing.co
     MatCheckboxModule,
     MatStepperModule,
     MatInputModule,
-    
+    MatSelectModule,
+    MatRadioModule
   ]
 })
 export class HostingModule { }

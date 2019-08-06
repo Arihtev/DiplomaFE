@@ -1,11 +1,59 @@
-<!-- <form [formGroup]="mainForm"> -->
-    <ul>
-        <li *ngFor="let car of cars | async">
-            {{ car.make_display }}
-        </li>
-    </ul>
+<div class="container text-center">
+    <form [formGroup]="mainForm">
+        <div class="row">
+            <div class="col-4">
+                <h4>Year:</h4>
+                <mat-form-field>
+                    <mat-label>Select year</mat-label>
+                    <mat-select formControlName="year">
+                        <mat-option *ngFor="let year of years | async" [value]="year">{{ year?.year }}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+        
+            <div class="col-4">
+                <h4>Make:</h4>
+                <mat-form-field>
+                    <mat-label>Select make</mat-label>
+                    <mat-select formControlName="make">
+                        <mat-option *ngFor="let make of makes" [value]="make">{{ make.make_display }}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            
+            <div class="col-4">
+                <h4>Model:</h4>
+                <mat-form-field>
+                    <mat-label>Select model</mat-label>
+                    <mat-select formControlName="model">
+                        <mat-option *ngFor="let model of models" [value]="model">{{ model.model_name }}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+        </div>
 
-    <button (click)="printCars()">INFO</button>
+        <div class="row mt-5">
+            <div class="col-6 text-center">
+                <h4>Select transmission type:</h4>
+                <mat-radio-group color="primary" formControlName="transmission">
+                    <mat-radio-button class="m-2" value="manual">Manual</mat-radio-button>
+                    <mat-radio-button class="m-2" value="automatic">Automatic</mat-radio-button>
+                </mat-radio-group>                          
+            </div>
+
+            <div class="col-6 text-center">
+                <h4>Select engine type:</h4>
+                <mat-form-field>
+                    <mat-label>Select engine type</mat-label>
+                    <mat-select formControlName="engine">
+                        <mat-option *ngFor="let engine of engines" [value]="engine">{{ engine.type }}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+        </div>
+            
+        <!-- <button (click)="printCars()">INFO</button> -->
+    </form>
     <button mat-button matStepperPrevious>Back</button>
     <button mat-button matStepperNext>Next</button>
-<!-- </form> -->
+</div>

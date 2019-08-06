@@ -1,7 +1,7 @@
 <mat-horizontal-stepper linear #stepper>
 
-    <mat-step>
-        <ng-template matStepLabel>Rooms</ng-template>
+    <mat-step [stepControl]="messageFromChild">
+        <ng-template matStepLabel>General info</ng-template>
         <app-form-main (childMessage)="showMessageFromChild($event)"></app-form-main>
         <button mat-button (click)="submit()">Submit</button>
     </mat-step>
