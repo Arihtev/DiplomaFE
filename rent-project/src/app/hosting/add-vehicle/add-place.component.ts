@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { FormMainComponent } from './form-main/form-main.component';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
@@ -10,7 +11,13 @@ export class AddPlaceComponent implements OnInit {
   firstFormGroup: FormGroup;
   form: FormGroup;
   isEditable = false;
-  messageFromChild: FormGroup;
+  // messageFromChild: FormGroup;
+
+  @ViewChild(FormMainComponent, {static: true}) formMainComponent: FormMainComponent;
+
+  get frmStepOne() {
+    return this.formMainComponent ? this.formMainComponent.mainForm : null;
+ }
   
   constructor(private formBuilder: FormBuilder) {}
 
@@ -23,12 +30,12 @@ export class AddPlaceComponent implements OnInit {
     // });
   }
 
-  showMessageFromChild(message: FormGroup) {
-    this.messageFromChild = message;
- }
+//   showMessageFromChild(message: FormGroup) {
+//     this.messageFromChild = message;
+//  }
 
   submit(){
-    console.log(this.firstFormGroup.value)
-    console.log(this.messageFromChild.value)
+    // console.log(this.firstFormGroup.value)
+    console.log(this.frmStepOne.value)
   }
 }

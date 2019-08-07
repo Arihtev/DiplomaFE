@@ -33,15 +33,15 @@
         </div>
 
         <div class="row mt-5">
-            <div class="col-6 text-center">
+            <div class="col-4 text-center">
                 <h4>Select transmission type:</h4>
                 <mat-radio-group color="primary" formControlName="transmission">
-                    <mat-radio-button class="m-2" value="manual">Manual</mat-radio-button>
+                    <mat-radio-button class="m-2" value="manual" checked>Manual</mat-radio-button>
                     <mat-radio-button class="m-2" value="automatic">Automatic</mat-radio-button>
                 </mat-radio-group>                          
             </div>
 
-            <div class="col-6 text-center">
+            <div class="col-4 text-center">
                 <h4>Select engine type:</h4>
                 <mat-form-field>
                     <mat-label>Select engine type</mat-label>
@@ -50,10 +50,22 @@
                     </mat-select>
                 </mat-form-field>
             </div>
+
+            <div class="col-4 text-center">
+                <h4>Select vehicle type:</h4>
+                <mat-form-field>
+                    <mat-label>Select engine type</mat-label>
+                    <mat-select formControlName="type">
+                        <mat-option value="car">Car</mat-option>
+                        <mat-option value="suv">SUV</mat-option>
+                        <mat-option value="minivan">Minivan</mat-option>
+                        <mat-option value="truck">Truck</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
         </div>
             
         <!-- <button (click)="printCars()">INFO</button> -->
     </form>
-    <button mat-button matStepperPrevious>Back</button>
     <button mat-button matStepperNext>Next</button>
 </div>

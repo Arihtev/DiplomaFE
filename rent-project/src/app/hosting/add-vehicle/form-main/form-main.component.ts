@@ -11,8 +11,6 @@ import { Observable, empty } from 'rxjs';
 })
 export class FormMainComponent implements OnInit {
 
-  @Output() childMessage = new EventEmitter<FormGroup>();
-
   mainForm: FormGroup;
 
   years: Observable<IYear[]>;
@@ -24,35 +22,21 @@ export class FormMainComponent implements OnInit {
   // makeSelect: boolean = true;
   // modelSelect: boolean = true;
 
-  constructor(private formBuilder: FormBuilder, private service: CarDatabaseService) { }
+  constructor(private formBuilder: FormBuilder, private service: CarDatabaseService) { 
+    this.mainForm = new FormGroup({
+      year: new FormControl('', Validators.required),
+      make: new FormControl({value:'', disabled: true}, Validators.required),
+      model: new FormControl({value:'', disabled: true}, Validators.required),
+      type: new FormControl('', Validators.required),
+      transmission: new FormControl('', Validators.required),
+      engine: new FormControl('', Validators.required)
+    })
+  }
 
   ngOnInit() {
 
     this.years = this.service.getYears()
 
-    // this.mainForm = this.formBuilder.group({
-    //   year: ['', Validators.required],
-    //   make: [{value:'', disabled: true}, Validators.required],
-    //   model: [{value:'', disabled: true}, Validators.required],
-    //   odometer: ['', Validators.required],
-    //   transmission: ['', Validators.required],
-    //   engine: ['', Validators.required]
-    // });
-
-    this.mainForm = new FormGroup({
-      year: new FormControl('', Validators.required),
-      make: new FormControl({value:'', disabled: true}, Validators.required),
-      model: new FormControl({value:'', disabled: true}, Validators.required),
-      odometer: new FormControl('', Validators.required),
-      transmission: new FormControl('', Validators.required),
-      engine: new FormControl('', Validators.required)
-    })
-
-    this.mainForm.valueChanges.subscribe(res => {
-      this.childMessage.emit(this.mainForm);
-    })
-
-    //On year change get makes
     this.mainForm.controls['year'].valueChanges.subscribe(res => {
       // console.log(res.year)
       this.models = []
@@ -83,5 +67,4 @@ export class FormMainComponent implements OnInit {
       // this.models = this.service.getModels(res.make_id, year)
     })
   }
-  disableSelect = new FormControl(false);
 }
