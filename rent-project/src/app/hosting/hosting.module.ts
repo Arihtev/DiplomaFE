@@ -15,6 +15,7 @@ import { FormRulesComponent } from './add-vehicle/form-rules/form-rules.componen
 import { FormPricingComponent } from './add-vehicle/form-pricing/form-pricing.component';
 import { MatSelectModule } from '@angular/material/select';
 import { MatRadioModule } from '@angular/material/radio';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { MatRadioModule } from '@angular/material/radio';
     MatStepperModule,
     MatInputModule,
     MatSelectModule,
-    MatRadioModule
+    MatRadioModule,
+    MatAutocompleteModule
   ]
 })
 export class HostingModule { }

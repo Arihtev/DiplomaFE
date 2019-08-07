@@ -2,9 +2,9 @@
     <form [formGroup]="mainForm">
         <div class="row">
             <div class="col-4">
-                <h4>Year:</h4>
+                <h4>Година:</h4>
                 <mat-form-field>
-                    <mat-label>Select year</mat-label>
+                    <mat-label>Изберете година:</mat-label>
                     <mat-select formControlName="year">
                         <mat-option *ngFor="let year of years | async" [value]="year">{{ year?.year }}</mat-option>
                     </mat-select>
@@ -12,9 +12,9 @@
             </div>
         
             <div class="col-4">
-                <h4>Make:</h4>
+                <h4>Марка:</h4>
                 <mat-form-field>
-                    <mat-label>Select make</mat-label>
+                    <mat-label>Изберете марка:</mat-label>
                     <mat-select formControlName="make">
                         <mat-option *ngFor="let make of makes" [value]="make">{{ make.make_display }}</mat-option>
                     </mat-select>
@@ -22,9 +22,9 @@
             </div>
             
             <div class="col-4">
-                <h4>Model:</h4>
+                <h4>Модел:</h4>
                 <mat-form-field>
-                    <mat-label>Select model</mat-label>
+                    <mat-label>Изберете модел:</mat-label>
                     <mat-select formControlName="model">
                         <mat-option *ngFor="let model of models" [value]="model">{{ model.model_name }}</mat-option>
                     </mat-select>
@@ -34,32 +34,35 @@
 
         <div class="row mt-5">
             <div class="col-4 text-center">
-                <h4>Select transmission type:</h4>
+                <h4>Скоростна кутия:</h4>
                 <mat-radio-group color="primary" formControlName="transmission">
-                    <mat-radio-button class="m-2" value="manual" checked>Manual</mat-radio-button>
-                    <mat-radio-button class="m-2" value="automatic">Automatic</mat-radio-button>
+                    <mat-radio-button class="m-2" value="manual" checked>Ръчна</mat-radio-button>
+                    <mat-radio-button class="m-2" value="automatic">Автоматична</mat-radio-button>
                 </mat-radio-group>                          
             </div>
 
             <div class="col-4 text-center">
-                <h4>Select engine type:</h4>
+                <h4>Тип двигател:</h4>
                 <mat-form-field>
-                    <mat-label>Select engine type</mat-label>
+                    <mat-label>Изберете тип двигател</mat-label>
                     <mat-select formControlName="engine">
-                        <mat-option *ngFor="let engine of engines" [value]="engine">{{ engine.type }}</mat-option>
+                        <mat-option value="petrol">Бензинов</mat-option>
+                        <mat-option value="diesel">Дизелов</mat-option>
+                        <mat-option value="electric">Електрически</mat-option>
+                        <mat-option value="hybrid">Хибриден</mat-option>
                     </mat-select>
                 </mat-form-field>
             </div>
 
             <div class="col-4 text-center">
-                <h4>Select vehicle type:</h4>
+                <h4>Категория:</h4>
                 <mat-form-field>
-                    <mat-label>Select engine type</mat-label>
+                    <mat-label>Изберете категория:</mat-label>
                     <mat-select formControlName="type">
-                        <mat-option value="car">Car</mat-option>
-                        <mat-option value="suv">SUV</mat-option>
-                        <mat-option value="minivan">Minivan</mat-option>
-                        <mat-option value="truck">Truck</mat-option>
+                        <mat-option value="car">Лек автомобил</mat-option>
+                        <mat-option value="suv">Джип</mat-option>
+                        <mat-option value="minivan">Миниван</mat-option>
+                        <mat-option value="truck">Пикап</mat-option>
                     </mat-select>
                 </mat-form-field>
             </div>
