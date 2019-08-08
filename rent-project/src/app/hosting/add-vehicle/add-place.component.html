@@ -1,24 +1,29 @@
 <mat-horizontal-stepper [linear]="false" #stepper>
 
-	<mat-step [stepControl]="frmStepOne">
-		<ng-template matStepLabel>General info</ng-template>
+	<!-- <mat-step [stepControl]="formStepOne">
+		<ng-template matStepLabel>Основна информация</ng-template>
 		<app-form-main></app-form-main>
 		<button mat-button (click)="submit()">Submit</button>
 	</mat-step>
 
-	<mat-step>
-		<ng-template matStepLabel>Location</ng-template>
+	<mat-step [stepControl]="formStepTwo">
+		<ng-template matStepLabel>Местоположение</ng-template>
 		<app-form-location></app-form-location>
 	</mat-step>
 
 	<mat-step>
-		<ng-template matStepLabel>Location</ng-template>
-		<app-form-location></app-form-location>
+		<ng-template matStepLabel>Допълнителна информация</ng-template>
+		<app-form-description></app-form-description>
+	</mat-step> -->
+
+	<mat-step>
+		<ng-template matStepLabel>Удобства</ng-template>
+		<app-form-amenities></app-form-amenities>
 	</mat-step>
 
 	<mat-step>
-		<ng-template matStepLabel>Location</ng-template>
-		<app-form-location></app-form-location>
+		<ng-template matStepLabel>Условия и цена</ng-template>
+		<app-form-rules></app-form-rules>
 	</mat-step>
 
 </mat-horizontal-stepper>

@@ -1,3 +1,4 @@
+import { FormLocationComponent } from './form-location/form-location.component';
 import { FormMainComponent } from './form-main/form-main.component';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
@@ -14,20 +15,19 @@ export class AddPlaceComponent implements OnInit {
   // messageFromChild: FormGroup;
 
   @ViewChild(FormMainComponent, {static: true}) formMainComponent: FormMainComponent;
+  @ViewChild(FormLocationComponent, {static: true}) formLocationComponent: FormLocationComponent;
 
-  get frmStepOne() {
+  get formStepOne() {
     return this.formMainComponent ? this.formMainComponent.mainForm : null;
- }
+  }
+
+  get formStepTwo() {
+    return this.formLocationComponent ? this.formLocationComponent.locationForm : null;
+  }
   
   constructor(private formBuilder: FormBuilder) {}
 
   ngOnInit() {
-    this.firstFormGroup = this.formBuilder.group({
-      firstCtrl: ['']
-    });
-    // this.secondFormGroup = this.formBuilder.group({
-    //   secondCtrl: ['', Validators.required]
-    // });
   }
 
 //   showMessageFromChild(message: FormGroup) {
@@ -36,6 +36,6 @@ export class AddPlaceComponent implements OnInit {
 
   submit(){
     // console.log(this.firstFormGroup.value)
-    console.log(this.frmStepOne.value)
+    console.log(this.formStepOne.value)
   }
 }

@@ -1,18 +1,49 @@
 <div class="container text-center">
     <form [formGroup]="locationForm">
-        <div class="row">
+        <div class="row mt-5">
             <div class="col-6">
+                <h4>Област:</h4>
                 <mat-form-field>
-                    <input type="text" placeholder="Pick one" aria-label="Number" matInput formControlName="region" [matAutocomplete]="auto">
-                    <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
-                        <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
-                        {{option}}
+                    <input type="text" placeholder="Изберете област" aria-label="Number" matInput formControlName="region" [matAutocomplete]="auto1">
+                    <mat-autocomplete autoActiveFirstOption #auto1="matAutocomplete" [displayWith]="displayFn">
+                        <mat-option *ngFor="let region of filteredRegions | async" [value]="region">
+                        {{ region.name }}
+                        </mat-option>
+                    </mat-autocomplete>
+                    <mat-error>Моля изберете област</mat-error>
+                </mat-form-field>
+            </div>
+
+            <div class="col-6">
+                <h4>Град:</h4>
+                <mat-form-field>
+                    <input type="text" placeholder="Изберете град" matInput formControlName="city" [matAutocomplete]="auto2">
+                    <mat-autocomplete autoActiveFirstOption #auto2="matAutocomplete" [displayWith]="displayFn">
+                        <mat-option *ngFor="let city of filteredCities | async" [value]="city">
+                        {{ city.name }}
                         </mat-option>
                     </mat-autocomplete>
                 </mat-form-field>
             </div>
         </div>
-    </form>
+
+        <div class="row mt-5">
+            <div class="col-6">
+                <h4>Адрес:</h4>
+                <mat-form-field class="col-12">
+                    <input matInput placeholder="Въведете адрес" formControlName="address" required>
+                    <mat-error>Моля въведете адрес</mat-error>
+                </mat-form-field>
+            </div>
+            <div class="col-6">
+                <h4>Пощенски код:</h4>
+                <mat-form-field>
+                    <input matInput placeholder="Въведете п.к." formControlName="zipCode" required>
+                    <mat-error>Моля въведете п.к.</mat-error>
+                </mat-form-field>
+            </div>
+        </div>
+    </form>    
 
     <button mat-button matStepperPrevious>Back</button>
     <button mat-button matStepperNext>Next</button>
