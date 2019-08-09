@@ -9,11 +9,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatStepperModule } from '@angular/material/stepper';
 import { HttpClientModule } from '@angular/common/http';
+import { NavbarComponent } from './shared/navbar/navbar.component';
+import { CollapseModule, BsDropdownModule } from 'ngx-bootstrap';
 
 
 @NgModule({
   declarations: [
     AppComponent,
+    NavbarComponent,
   ],
   imports: [
     BrowserModule,
@@ -25,6 +28,8 @@ import { HttpClientModule } from '@angular/common/http';
     MatCheckboxModule,
     MatStepperModule,
     HttpClientModule,
+    CollapseModule.forRoot(),
+    BsDropdownModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,5 +1,5 @@
 import { ReactiveFormsModule } from '@angular/forms';
-import { AddPlaceComponent } from './add-vehicle/add-place.component';
+import { AddVehicleComponent } from './add-vehicle/add-vehicle.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
@@ -19,7 +19,7 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
 @NgModule({
   declarations: [
-    AddPlaceComponent,
+    AddVehicleComponent,
     FormMainComponent,
     FormLocationComponent,
     FormAmenitiesComponent,

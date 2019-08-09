@@ -5,7 +5,10 @@ const routes: Routes = [
   {
     path: "",
     pathMatch: "full",
-    redirectTo:"host"
+    loadChildren: () =>
+      import("./home/home.module").then(
+        module => module.HomeModule
+      ),
   },
   {
     path: "host",
@@ -13,7 +16,7 @@ const routes: Routes = [
       import("./hosting/hosting.module").then(
         module => module.HostingModule
       ),
-  },
+  }
 ];
 
 @NgModule({

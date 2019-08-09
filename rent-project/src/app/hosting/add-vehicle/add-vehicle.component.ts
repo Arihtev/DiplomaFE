@@ -5,10 +5,10 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-add-place',
-  templateUrl: './add-place.component.html',
-  styleUrls: ['./add-place.component.scss']
+  templateUrl: './add-vehicle.component.html',
+  styleUrls: ['./add-vehicle.component.scss']
 })
-export class AddPlaceComponent implements OnInit {
+export class AddVehicleComponent implements OnInit {
   firstFormGroup: FormGroup;
   form: FormGroup;
   isEditable = false;
