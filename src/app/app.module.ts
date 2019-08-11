@@ -11,6 +11,8 @@ import { MatStepperModule } from '@angular/material/stepper';
 import { HttpClientModule } from '@angular/common/http';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 import { CollapseModule, BsDropdownModule } from 'ngx-bootstrap';
+import { NgxPageScrollCoreModule } from 'ngx-page-scroll-core';
+import { NgxPageScrollModule } from 'ngx-page-scroll';
 
 
 @NgModule({
@@ -29,7 +31,11 @@ import { CollapseModule, BsDropdownModule } from 'ngx-bootstrap';
     MatStepperModule,
     HttpClientModule,
     CollapseModule.forRoot(),
-    BsDropdownModule.forRoot()
+    BsDropdownModule.forRoot(),
+    NgxPageScrollCoreModule.forRoot(
+      {duration: 1100}
+    ),
+    NgxPageScrollModule
   ],
   providers: [],
   bootstrap: [AppComponent]
