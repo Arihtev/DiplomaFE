@@ -1,3 +1,4 @@
+import { DragDropDirective } from './add-vehicle/form-description/image-upload/drag-drop.directive';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AddVehicleComponent } from './add-vehicle/add-vehicle.component';
 import { NgModule } from '@angular/core';
@@ -16,6 +17,7 @@ import { FormPricingComponent } from './add-vehicle/form-pricing/form-pricing.co
 import { MatSelectModule } from '@angular/material/select';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { ImageUploadComponent } from './add-vehicle/form-description/image-upload/image-upload.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,9 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
     FormAmenitiesComponent,
     FormDescriptionComponent,
     FormRulesComponent,
-    FormPricingComponent
+    FormPricingComponent,
+    ImageUploadComponent,
+    DragDropDirective
   ],
   imports: [
     CommonModule,

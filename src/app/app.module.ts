@@ -13,6 +13,8 @@ import { NavbarComponent } from './shared/navbar/navbar.component';
 import { CollapseModule, BsDropdownModule } from 'ngx-bootstrap';
 import { NgxPageScrollCoreModule } from 'ngx-page-scroll-core';
 import { NgxPageScrollModule } from 'ngx-page-scroll';
+import { environment } from '../environments/environment'
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 
 
 @NgModule({
@@ -33,9 +35,11 @@ import { NgxPageScrollModule } from 'ngx-page-scroll';
     CollapseModule.forRoot(),
     BsDropdownModule.forRoot(),
     NgxPageScrollCoreModule.forRoot(
-      {duration: 1100}
+      {duration: 1100, easingLogic: environment.myEasing}
     ),
-    NgxPageScrollModule
+    NgxPageScrollModule,
+    BsDatepickerModule.forRoot()
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
