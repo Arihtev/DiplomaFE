@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'app-image-upload',
@@ -7,9 +8,43 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ImageUploadComponent implements OnInit {
 
+  todos = [
+    {
+      name: 'Angular',
+      category: 'Web Development'
+    },
+    {
+      name: 'Flexbox',
+      category: 'Web Development'
+    },
+    {
+      name: 'iOS',
+      category: 'App Development'
+    },
+    {
+      name: 'Java',
+      category: 'Software development'
+    }
+  ];
+
+  onDrop(event) {
+      moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+    }
+
+  
   files: any = [];
   urls: any = [];
+
+  printInfo(){
+    console.log(this.files)
+  }
   
+  drop(event) {
+    console.log(event)
+    moveItemInArray(this.files, event.previousIndex, event.currentIndex);
+    moveItemInArray(this.urls, event.previousIndex, event.currentIndex);
+  }
+
   uploadFile(event) {
     for (let index = 0; index < event.length; index++) {
       const element = event[index];

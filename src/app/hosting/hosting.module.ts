@@ -1,5 +1,5 @@
 import { DragDropDirective } from './add-vehicle/form-description/image-upload/drag-drop.directive';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { AddVehicleComponent } from './add-vehicle/add-vehicle.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -18,6 +18,9 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { ImageUploadComponent } from './add-vehicle/form-description/image-upload/image-upload.component';
+import { SortableModule } from 'ngx-bootstrap';
+import { DragDropModule } from '@angular/cdk/drag-drop';
+import { MatCardModule } from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -34,6 +37,7 @@ import { ImageUploadComponent } from './add-vehicle/form-description/image-uploa
   imports: [
     CommonModule,
     HostingRoutingModule,
+    FormsModule,
     ReactiveFormsModule,
     MatButtonModule,
     MatCheckboxModule,
@@ -41,7 +45,9 @@ import { ImageUploadComponent } from './add-vehicle/form-description/image-uploa
     MatInputModule,
     MatSelectModule,
     MatRadioModule,
-    MatAutocompleteModule
+    MatAutocompleteModule,
+    DragDropModule,
+    MatCardModule
   ]
 })
 export class HostingModule { }
