@@ -10,7 +10,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatStepperModule } from '@angular/material/stepper';
 import { HttpClientModule } from '@angular/common/http';
 import { NavbarComponent } from './shared/navbar/navbar.component';
-import { CollapseModule, BsDropdownModule } from 'ngx-bootstrap';
+import { CollapseModule, BsDropdownModule, PopoverModule } from 'ngx-bootstrap';
 import { NgxPageScrollCoreModule } from 'ngx-page-scroll-core';
 import { NgxPageScrollModule } from 'ngx-page-scroll';
 import { environment } from '../environments/environment'
@@ -38,8 +38,8 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
       {duration: 1100, easingLogic: environment.myEasing}
     ),
     NgxPageScrollModule,
-    BsDatepickerModule.forRoot()
-    
+    BsDatepickerModule.forRoot(),
+    PopoverModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

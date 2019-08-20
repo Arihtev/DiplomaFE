@@ -21,6 +21,9 @@ import { ImageUploadComponent } from './add-vehicle/form-description/image-uploa
 import { SortableModule } from 'ngx-bootstrap';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { MatCardModule } from '@angular/material';
+import { PopoverModule } from 'ngx-bootstrap/popover';
+import { MatListModule } from '@angular/material/list';
+
 
 @NgModule({
   declarations: [
@@ -47,7 +50,9 @@ import { MatCardModule } from '@angular/material';
     MatRadioModule,
     MatAutocompleteModule,
     DragDropModule,
-    MatCardModule
+    MatCardModule,
+    PopoverModule,
+    MatListModule
   ]
 })
 export class HostingModule { }

@@ -1,5 +1,7 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
+import { CarDatabaseService } from 'src/app/services/car-database/car-database.service';
 
 @Component({
   selector: 'app-image-upload',
@@ -7,36 +9,19 @@ import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
   styleUrls: ['./image-upload.component.scss']
 })
 export class ImageUploadComponent implements OnInit {
-
-  todos = [
-    {
-      name: 'Angular',
-      category: 'Web Development'
-    },
-    {
-      name: 'Flexbox',
-      category: 'Web Development'
-    },
-    {
-      name: 'iOS',
-      category: 'App Development'
-    },
-    {
-      name: 'Java',
-      category: 'Software development'
-    }
-  ];
-
-  onDrop(event) {
-      moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
-    }
-
   
   files: any = [];
   urls: any = [];
+  selectedFile: File = null;
+  fdd: FormData = new FormData
+  photoFile: any
 
   printInfo(){
-    console.log(this.files)
+    // console.log(this.files[0])
+    // let selectedFile = <File>this.files[0]
+    // const fd = new FormData();
+    // fd.append('image', selectedFile, selectedFile.name);
+    console.log(this.selectedFile)
   }
   
   drop(event) {
@@ -51,13 +36,16 @@ export class ImageUploadComponent implements OnInit {
       this.files.push(element)
     }  
     this.detectFiles();
+    // console.log(event[0])
+    this.selectedFile = <File>event[0]
   }
+
   deleteAttachment(index) {
     this.files.splice(index, 1);
     this.urls.splice(index, 1);
   }
 
-  constructor() { }
+  constructor(private service: HttpClient) { }
 
   detectFiles(){
     this.urls = [];
@@ -71,6 +59,39 @@ export class ImageUploadComponent implements OnInit {
         reader.readAsDataURL(file);
       }
     }
+  }
+
+  changes(){
+
+  }
+
+  upload(){
+    // console.log(typeof this.files[0])
+    // let selectedFile = <File>this.files[0]
+    var reader = new FileReader();
+    this.photoFile = reader.result
+    console.log(reader.result)
+    
+    const fd = new FormData();
+    fd.append('file', this.selectedFile, this.selectedFile.name);
+    // formData.append('file', file);
+    // var options = { content: FormData };
+    // console.log(fd)
+    // console.log(this.files)
+    // this.service.createCar("2004", "BMW", [], fd).subscribe(res => {
+    //   console.log(res)
+    // })
+    this.service.post('http://127.0.0.1:8000/cars/create/', {
+      year: 2004,
+      make: "BMW",
+      picture: fd
+    }).subscribe(res => {
+      console.log(res)
+    })
+  }
+
+  progress() {
+    // console.log(this.fd)
   }
 
   ngOnInit() {

@@ -1,44 +1,24 @@
 <div class="container text-center">
-    <div class="row">
-      <div class="col-4 text-left">
-          <h3>Безопасност</h3>
-          <mat-checkbox class="d-block mt-4 checkbox" color="primary">Антиблокираща система</mat-checkbox>
-          <mat-checkbox class="d-block mt-4 checkbox" color="primary">Автоматичен контрол на стабилността</mat-checkbox>
-          <mat-checkbox class="d-block mt-4 checkbox" color="primary">Въздушни възглавници</mat-checkbox>
-          <mat-checkbox class="d-block mt-4 checkbox" color="primary">Парктроник</mat-checkbox>
-          <mat-checkbox class="d-block mt-4 checkbox" color="primary">ISOFIX</mat-checkbox>
-          <mat-checkbox class="d-block mt-4 checkbox" color="primary">Система за подпомагане на спирането</mat-checkbox>
-          <mat-checkbox class="d-block mt-4 checkbox" color="primary">Система за защита от пробуксуване</mat-checkbox>
-      </div>
-
-      <div class="col-4 text-left">
-          <h3>Комфорт</h3>
-          <mat-checkbox class="d-block mt-4 checkbox" color="primary">Bluetooth / handsfree система</mat-checkbox>
-          <mat-checkbox class="d-block mt-4 checkbox" color="primary">Steptronic, Tiptronic</mat-checkbox>
-          <mat-checkbox class="d-block mt-4 checkbox" color="primary">USB, AUX изводи</mat-checkbox>
-          <mat-checkbox class="d-block mt-4 checkbox" color="primary">Бордкомпютър</mat-checkbox>
-          <mat-checkbox class="d-block mt-4 checkbox" color="primary">Навигация</mat-checkbox>
-          <mat-checkbox class="d-block mt-4 checkbox" color="primary">Климатик</mat-checkbox>
-          <mat-checkbox class="d-block mt-4 checkbox" color="primary">Подгряване на седалките</mat-checkbox>
-          <mat-checkbox class="d-block mt-4 checkbox" color="primary">Стерео уредба</mat-checkbox>
-          <mat-checkbox class="d-block mt-4 checkbox" color="primary">Автопилот</mat-checkbox>
-      </div>
-
-      <div class="col-4 text-left">
-          <h3>Други</h3>
-          <mat-checkbox class="d-block mt-4 checkbox" color="primary">4х4</mat-checkbox>
-          <mat-checkbox class="d-block mt-4 checkbox" color="primary">7 места</mat-checkbox>
-          <mat-checkbox class="d-block mt-4 checkbox" color="primary">Панорамен люк</mat-checkbox>
-          <mat-checkbox class="d-block mt-4 checkbox" color="primary">Рейлинг на покрива</mat-checkbox>
-          <mat-checkbox class="d-block mt-4 checkbox" color="primary">Халогенни фарове</mat-checkbox>
-          <mat-checkbox class="d-block mt-4 checkbox" color="primary">Аларма</mat-checkbox>
-          <mat-checkbox class="d-block mt-4 checkbox" color="primary">OFFROAD пакет</mat-checkbox>
-          <mat-checkbox class="d-block mt-4 checkbox" color="primary">Кожен салон</mat-checkbox>
-          <mat-checkbox class="d-block mt-4 checkbox" color="primary">Десен волан</mat-checkbox>
-      </div>
-    </div>
+    <form [formGroup]="amenitiesForm">
+        <div class="row">
+            <mat-selection-list class="col-4 text-left" formControlName="safetyExtras">
+                <h3 class="text-center">Безопасност</h3>
+                <mat-list-option class="mt-2" color="primary" *ngFor="let safetyExtra of safety" [value]="safetyExtra.id">{{ safetyExtra.name }}</mat-list-option>
+            </mat-selection-list>
+            
+            <mat-selection-list class="col-4 text-left" formControlName="comfortExtras">
+                <h3 class="text-center">Комфорт</h3>
+                <mat-list-option class="mt-2" color="primary" *ngFor="let comfortExtra of comfort" [value]="comfortExtra.id">{{ comfortExtra.name }}</mat-list-option>
+            </mat-selection-list>
+            
+            <mat-selection-list class="col-4 text-left" formControlName="otherExtras">
+                <h3 class="text-center">Други</h3>
+                <mat-list-option class="mt-2" color="primary" *ngFor="let otherExtra of others" [value]="otherExtra.id">{{ otherExtra.name }}</mat-list-option>
+            </mat-selection-list>
+        </div>
+    </form>
 
     <button mat-button matStepperPrevious>Back</button>
     <button mat-button matStepperNext>Next</button>
 </div>
-      
+<button mat-button (click)="submit()">Submit</button>

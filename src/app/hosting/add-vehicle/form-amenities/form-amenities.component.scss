@@ -1,8 +1,16 @@
-.checkbox{
+
+::ng-deep .mat-list-text{
     font-size: 1.1rem;
 }
 
-::ng-deep .mat-checkbox-inner-container {
+::ng-deep .mat-pseudo-checkbox{
     height: 20px!important;
     width: 20px!important;
-  }
+}
+
+::ng-deep .mat-pseudo-checkbox-checked::after{
+    top: 2px!important;
+    left: 1px!important;
+    width: 12px!important;
+    height: 5px!important;
+}

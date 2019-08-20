@@ -1,6 +1,6 @@
 <mat-horizontal-stepper [linear]="false" #stepper>
 
-	<!-- <mat-step [stepControl]="formStepOne">
+	<mat-step [stepControl]="formStepOne">
 		<ng-template matStepLabel>Основна информация</ng-template>
 		<app-form-main></app-form-main>
 		<button mat-button (click)="submit()">Submit</button>
@@ -9,7 +9,7 @@
 	<mat-step [stepControl]="formStepTwo">
 		<ng-template matStepLabel>Местоположение</ng-template>
 		<app-form-location></app-form-location>
-	</mat-step> -->
+	</mat-step>
 
 	<mat-step>
 		<ng-template matStepLabel>Допълнителна информация</ng-template>
@@ -19,6 +19,7 @@
 	<mat-step>
 		<ng-template matStepLabel>Удобства</ng-template>
 		<app-form-amenities></app-form-amenities>
+		<button mat-button (click)="submit()">Submit</button>
 	</mat-step>
 
 	<mat-step>

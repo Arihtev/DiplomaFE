@@ -2,7 +2,7 @@ import { IcarApiYearsResponse, IYear, IMake, IcarApiMakesResponse, IModel, IcarA
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
-import { Observable } from 'rxjs';
+import { Observable, zip } from 'rxjs';
 import { format } from 'util';
 
 @Injectable({
@@ -33,4 +33,26 @@ export class CarDatabaseService {
     )
   }
 
+  getAmenities() {
+    return this.service.get('http://127.0.0.1:8000/cars/extras/')
+  }
+  
+  // createCar(year, make, model, transmission, engine_type, category, region, city, address, zip_code, extras, pictures) {
+  createCar(year, make, extras, pictures) {
+    return this.service.post('http://127.0.0.1:8000/cars/create/', {
+      year: year,
+      make: make,
+      // model: model,
+      // transmission: transmission,
+      // engine_type: engine_type,
+      // category: category,
+      // region: region,
+      // city: city,
+      // address: address,
+      // zip_code: zip_code,
+      // pictures: {picture: pictures},
+      picture: pictures,
+      extras: extras
+    })
+  }
 }

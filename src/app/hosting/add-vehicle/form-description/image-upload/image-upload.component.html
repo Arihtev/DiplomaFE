@@ -1,40 +1,22 @@
 <div class="uploadfilecontainer" (click)="fileInput.click()" appDragDrop (onFileDropped)="uploadFile($event)">
     <input hidden type="file" multiple #fileInput (change)="uploadFile($event.target.files)">
 </div>
-<!-- <div class="files-list" *ngFor="let file of files;let i=index">
-    <p>{{ i }}{{ file }}</p>
-    <img [src]="urls[i]" class="rounded m-3" width="180">
-    
-    <button class="delete-file" (click)="deleteAttachment(i)">
-        <img src="../../assets/Recycle_Bin_Full.png">
-    </button>
-</div> -->
+
 <button (click)="printInfo()">PrintInfo</button>
 
-<div *ngIf="files.length > 0" cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
-        <div class="files-list" *ngFor="let file of files; let i=index" cdkDrag>
-            {{ i }}
-            <img [src]="urls[i]" class="rounded m-3" width="180">
-            <button class="delete-file" (click)="deleteAttachment(i)">
-                    <img src="../../assets/Recycle_Bin_Full.png">
-                </button>
-        </div>
-      </div>
-      <!-- <button (click)="printInfo()">PrintInfo</button>
+<div *ngIf="files.length > 0" class="row" cdkDropList (cdkDropListDropped)="drop($event)">
+    <div class="files-list col-10" *ngFor="let file of files; let i=index" cdkDrag
+    [popover]="popTemplate" triggers="mouseenter:mouseleave">
+        {{ i+1 }} {{ file.name }}
+        <button class="delete-file" (click)="deleteAttachment(i)">
+            <img src="../../assets/Recycle_Bin_Full.png">
+        </button>
+        <ng-template #popTemplate class="popover">
+            <img [src]="urls[i]" class="rounded m-3">
+        </ng-template>
+    </div>
+</div>
 
-      <div class="todo-container column-container">
-            <div class="list"
-                 cdkDropList
-                 [cdkDropListData]="files"
-                 (cdkDropListDropped)="onDrop($event)">
-              <h2>Tech to learn</h2>
-              <mat-card *ngFor="let file of files; let i=index" cdkDrag>
-                <mat-card-header>
-                  <mat-card-title>{{file.name}}</mat-card-title>
-                  <img [src]="urls[i]" class="rounded m-3" width="180">
-                  <!-- <mat-card-subtitle>{{todo.category}}</mat-card-subtitle> -->
-                <!-- </mat-card-header>
-              </mat-card>
-            </div>
-          </div> -->
-      
+<button (click)="upload()">Upload</button>
+
+<button mat-button (click)="progress()">PROGRESS</button>

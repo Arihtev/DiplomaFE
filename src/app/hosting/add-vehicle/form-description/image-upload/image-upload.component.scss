@@ -3,86 +3,51 @@
     background-repeat: no-repeat;
     background-size: 100px;
     background-position: center;
-    height: 200px;
+    height: 150px;
     width: 80%;
     margin: 20px auto;
     border: 2px dashed #1C8ADB;
     border-radius: 10px;
-  }
-  
-  .uploadfilecontainer:hover {
-    cursor: pointer;
+    transition: 0.4s;
+    &:hover{
+      cursor: pointer;
     background-color: #9ecbec !important;
     opacity: 0.8;
+    }
   }
   
   .files-list {
+    cursor: pointer;
     display: flex;
     justify-content: space-between;
-    width: 80%;
+    width: 100%;
     margin: 10px auto;
     background: #ffffff;
     border: 1px dashed;
     border-radius: 12px;
     padding: 5px;
     color: #1c8adb;
+    // transition: 0.4s;
+    &:hover{
+      background-color: #9ecbec;
+    }
   }
-  
+
   .files-list .delete-file {
     background: transparent;
     border: none;
     cursor: pointer;
-  }
-  .files-list .delete-file img{
-    width:30px;
+    img{
+      width: 30px;
+    }
   }
 
-
-  .example-list {
-    width: 500px;
+  ::ng-deep .popover{
     max-width: 100%;
-    border: solid 1px #ccc;
-    min-height: 60px;
-    display: block;
-    background: white;
-    border-radius: 4px;
-    overflow: hidden;
-  }
-  
-  .example-box {
-    padding: 20px 10px;
-    border-bottom: solid 1px #ccc;
-    color: rgba(0, 0, 0, 0.87);
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    box-sizing: border-box;
-    cursor: move;
-    background: white;
-    font-size: 14px;
-  }
-  
-  .cdk-drag-preview {
-    box-sizing: border-box;
-    border-radius: 4px;
-    box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
-                0 8px 10px 1px rgba(0, 0, 0, 0.14),
-                0 3px 14px 2px rgba(0, 0, 0, 0.12);
-  }
-  
-  .cdk-drag-placeholder {
-    opacity: 0;
-  }
-  
-  .cdk-drag-animating {
-    transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
-  }
-  
-  .example-box:last-child {
-    border: none;
-  }
-  
-  .example-list.cdk-drop-list-dragging .example-box:not(.cdk-drag-placeholder) {
-    transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+    padding: 0;
+    img{
+      padding: 0;
+      margin: 0;
+      width: 400px;
+    }
   }
