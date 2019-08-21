@@ -1,3 +1,4 @@
+import { FormGroup, FormControl } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FormDescriptionComponent implements OnInit {
 
+  descriptionForm: FormGroup;
+  image_files: any[]
+
   constructor() { }
 
   ngOnInit() {
+    this.descriptionForm = new FormGroup({
+      pictures: new FormControl([])
+    })
+  }
+
+  show(){
+    console.log(this.descriptionForm.value)
+  }
+
+  receiveImages($event) {
+    this.descriptionForm.controls['pictures'].setValue($event)
   }
 
 }
