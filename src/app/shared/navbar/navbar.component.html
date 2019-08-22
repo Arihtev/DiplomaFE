@@ -23,6 +23,12 @@
                 <li class="nav-item">
                     <a class="nav-link" [routerLink]="['host']">Търси</a>
                 </li>
+                <li class="nav-item" *ngIf="!loggedIn()">
+                    <a class="nav-link" [routerLink]="['login']">Логин</a>
+                </li>
+                <li class="nav-item" *ngIf="loggedIn()">
+                    <a class="nav-link" [routerLink]="['login']" (click)="_authService.logoutUser()">Logout</a>
+                </li>
             </ul>
         </div>
     </div>

@@ -1,3 +1,4 @@
+import { AuthService } from './../../services/authentication/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { EasingLogic } from 'ngx-page-scroll-core';
 
@@ -8,8 +9,13 @@ import { EasingLogic } from 'ngx-page-scroll-core';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor() { }
+  constructor(private _authService: AuthService) { }
 
   ngOnInit() {
   }
+
+  loggedIn() {
+    return !!localStorage.getItem('token')
+  }
+
 }
