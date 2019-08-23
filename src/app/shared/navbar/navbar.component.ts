@@ -1,6 +1,8 @@
 import { AuthService } from './../../services/authentication/auth.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, NgZone } from '@angular/core';
 import { EasingLogic } from 'ngx-page-scroll-core';
+import { Router } from '@angular/router';
+import decode from 'jwt-decode';
 
 @Component({
   selector: 'app-navbar',
@@ -9,13 +11,26 @@ import { EasingLogic } from 'ngx-page-scroll-core';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor(private _authService: AuthService) { }
+  user = ''
+  displayName: string;
+
+  constructor(private authService: AuthService, private router: Router, private zone: NgZone) { 
+    this.zone.run(() => {
+      this.displayName = this.authService.getUserName();
+    });
+
+  }
 
   ngOnInit() {
+    this.displayName = this.authService.getUserName()
   }
 
   loggedIn() {
     return !!localStorage.getItem('token')
+  }
+
+  print() {
+    console.log(this.user)
   }
 
 }

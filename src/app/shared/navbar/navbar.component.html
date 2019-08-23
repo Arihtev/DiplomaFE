@@ -27,7 +27,10 @@
                     <a class="nav-link" [routerLink]="['login']">Логин</a>
                 </li>
                 <li class="nav-item" *ngIf="loggedIn()">
-                    <a class="nav-link" [routerLink]="['login']" (click)="_authService.logoutUser()">Logout</a>
+                    <a class="nav-link" [routerLink]="['login']" (click)="authService.logoutUser()">Logout</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" *ngIf="loggedIn()">{{ displayName }}</a>
                 </li>
             </ul>
         </div>

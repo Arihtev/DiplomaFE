@@ -1,3 +1,4 @@
+import { JwtModule } from '@auth0/angular-jwt';
 import { AuthGuard } from './shared/auth.guard';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatButtonModule } from '@angular/material/button';
@@ -34,6 +35,7 @@ import { TokenInterceptorService } from './services/authentication/token-interce
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
+    JwtModule,
     MatButtonModule,
     MatCheckboxModule,
     MatStepperModule,
@@ -45,7 +47,7 @@ import { TokenInterceptorService } from './services/authentication/token-interce
     ),
     NgxPageScrollModule,
     BsDatepickerModule.forRoot(),
-    PopoverModule.forRoot()
+    PopoverModule.forRoot(),
   ],
   providers: [AuthGuard, 
     {
