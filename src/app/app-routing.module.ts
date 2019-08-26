@@ -12,7 +12,6 @@ const routes: Routes = [
       import("./home/home.module").then(
         module => module.HomeModule
       ),
-    canActivate: [AuthGuard]
   },
   {
     path: "host",

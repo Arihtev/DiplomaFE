@@ -20,12 +20,10 @@ export class LoginComponent implements OnInit {
   }
 
   loginUser(){
-    // console.log(this.registeredUserData)
     this.authService.loginUser(this.registeredUserData).subscribe((res: {token: string})=> {
       localStorage.setItem('token', res.token)
       this.router.navigate([''])
       this.authService.saveUser()
-      // this.service.loggedIn()
     },
     err => console.log(err))
   }

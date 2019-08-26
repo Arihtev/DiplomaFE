@@ -4,17 +4,23 @@ import { Router } from '@angular/router';
 import { JwtHelperService } from "@auth0/angular-jwt";
 import decode from 'jwt-decode';
 import { IUser } from 'src/app/models/authentication/user';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
+  private currentUserSubject: BehaviorSubject<IUser>;
+  public currentUser: Observable<IUser>;
 
-  constructor(private service: HttpClient, private router: Router) { }
+  constructor(private service: HttpClient, private router: Router) { 
+    this.currentUserSubject = new BehaviorSubject<IUser>(JSON.parse(localStorage.getItem('currentUser')));
+    this.currentUser = this.currentUserSubject.asObservable();
+  }
 
   jwtHelper = new JwtHelperService();
 
-  currentUser = null
+  // currentUser = null
 
   loginUser(user) {
     return this.service.post('http://127.0.0.1:8000/users/api/token/', ({
@@ -24,15 +30,12 @@ export class AuthService {
   }
 
   saveUser() {
-    let token = localStorage.getItem('token');
-    let tokenPayload = decode(token);
+    let tokenPayload = decode(localStorage.getItem('token'));
     let userId = tokenPayload.user_id
 
     this.service.get('http://127.0.0.1:8000/users/user/' + userId).subscribe((res: IUser) => {
-      this.currentUser = res
-      localStorage.setItem('username', res.username)
-      localStorage.setItem('photo', res.photo)
-      localStorage.setItem('role', res.user_type)
+      localStorage.setItem('currentUser', JSON.stringify(res));
+      this.currentUserSubject.next(res);
     })
   }
 
@@ -48,30 +51,24 @@ export class AuthService {
     let token = localStorage.getItem('token');
     // Check whether the token is expired and return
     // true or false
-    return !this.jwtHelper.isTokenExpired(token);
+    // return !this.jwtHelper.isTokenExpired(token);
+    if (this.jwtHelper.isTokenExpired(token)){
+      console.log("expired")
+      this.service.post('http://127.0.0.1:8000/users/api/token/refresh/', {token: token}).subscribe((res: {token: string}) => {
+        localStorage.setItem('token', res.token)
+        return true
+      }, error => {
+        return false
+      })
+    }
+    else
+      return true
   }
 
   logoutUser() {
     localStorage.removeItem('token');
-    localStorage.removeItem('username');
-    localStorage.removeItem('photo');
-    localStorage.removeItem('role')
-
+    localStorage.removeItem('currentUser')
     this.router.navigate(['login'])
-  }
-
-  getUserPhoto() {
-    return localStorage.getItem("photo");
-  }
-
-  getUserName() {
-    if (localStorage.getItem("username"))
-      return localStorage.getItem("username");
-  }
-
-  getUserRole() {
-    if (localStorage.getItem("user"))
-      return localStorage.getItem("user");
   }
 
 }

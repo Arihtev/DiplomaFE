@@ -3,6 +3,8 @@ import { Component, OnInit, NgZone } from '@angular/core';
 import { EasingLogic } from 'ngx-page-scroll-core';
 import { Router } from '@angular/router';
 import decode from 'jwt-decode';
+import { Observable, Subscription } from 'rxjs';
+import { IUser } from 'src/app/models/authentication/user';
 
 @Component({
   selector: 'app-navbar',
@@ -12,17 +14,15 @@ import decode from 'jwt-decode';
 export class NavbarComponent implements OnInit {
 
   user = ''
-  displayName: string;
+  // currentUserSubscription: Subscription;
+  currentUser: IUser;
 
-  constructor(private authService: AuthService, private router: Router, private zone: NgZone) { 
-    this.zone.run(() => {
-      this.displayName = this.authService.getUserName();
-    });
-
-  }
+  constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit() {
-    this.displayName = this.authService.getUserName()
+    this.authService.currentUser.subscribe(user => {
+      this.currentUser = user;
+    });
   }
 
   loggedIn() {
