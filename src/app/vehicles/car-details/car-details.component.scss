@@ -1,0 +1,84 @@
+::ng-deep .ngx-gallery-thumbnail{
+    filter: brightness(40%)
+}
+
+::ng-deep .ngx-gallery-active{
+    filter: brightness(110%);
+}
+
+.primary-info{
+    .car-make{
+        font-size: 2.2rem;
+        font-weight: bold;
+    }
+    .car-year{
+        color: rgb(119, 119, 119);
+        font-size: 1.8rem;
+        line-height: normal;
+        font-weight: bold;
+    }
+    .car-rating{
+        float: right;
+        padding: 10px;
+        font-size: 1.3rem;
+    }
+    .small-caption{
+        font-size: 1rem;
+    }
+}
+
+.reservation{
+    border: 2px solid;
+}
+
+// ::ng-deep .star{
+//     font-size: 2rem !important;
+// }
+.secondary-info{
+    position: relative;
+    z-index: 10;
+    height: 120px;
+    background-color: white;
+    padding: 5px 20px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    top: 0;
+    transition: all 0.5s ease;
+    .car-year{
+        color: rgb(90, 90, 90);
+        font-size: 1rem;
+    }
+    .car-second-info{
+        color: rgb(37, 37, 37);
+        font-size: 1.3rem;
+        font-weight: normal;
+    }
+    .car-icon{
+        height: 20px;
+        width: 20px;
+    }
+    .car-city{
+        font-weight: normal;
+    }
+}
+
+.owner{
+    font-size: 1.5rem;
+    img{
+        height: 70px;
+        width: 70px;
+        object-fit: contain;
+        border-radius: 50%;
+        border: 1px solid
+    }
+}
+
+.extras{
+    .label{
+        font-size: 1.4rem;
+    }
+    .icon{
+        height: 40px;
+        width: 40px;
+    }
+}

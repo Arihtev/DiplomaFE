@@ -51,12 +51,15 @@ export class AddVehicleComponent implements OnInit {
   }
 
   submit(){
-    let year = this.formStepOne.value.year.year
+    let year = this.formStepOne.value.year
     let make = this.formStepOne.value.make.make_display
     let model = this.formStepOne.value.model.model_name
     let engine = this.formStepOne.value.engine
     let transmission = this.formStepOne.value.transmission
     let type = this.formStepOne.value.type
+    let horsepower = this.formStepOne.value.horsepower
+    let consumption = this.formStepOne.value.consumption
+    let seats = this.formStepOne.value.seats
 
     let city = this.formStepTwo.value.city.name
     let region = this.formStepTwo.value.region.name
@@ -71,7 +74,8 @@ export class AddVehicleComponent implements OnInit {
     
     let pictures = this.formStepThree.value.pictures
 
-    this.service.createCar(year, make, model, transmission, engine, type, region, city, address, zipCode, extras, pictures).subscribe(res => {
+    // console.log(year, make, model, transmission, engine, type, region, city, address, zipCode, extras, pictures)
+    this.service.createCar(year, make, model, transmission, engine, horsepower, consumption, seats, type, region, city, address, zipCode, extras, pictures).subscribe(res => {
       console.log(res)
     })
   }

@@ -1,3 +1,4 @@
+import { ManageCarsComponent } from './manage-cars/manage-cars.component';
 import { FormAmenitiesComponent } from './add-vehicle/form-amenities/form-amenities.component';
 import { AddVehicleComponent } from './add-vehicle/add-vehicle.component';
 import { NgModule } from '@angular/core';
@@ -5,12 +6,12 @@ import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [
   {
-    path:"",
+    path:"add-new",
     component: AddVehicleComponent
   },
   {
-    path:"test",
-    component: FormAmenitiesComponent
+    path:"manage-cars",
+    component: ManageCarsComponent
   }
 ];
 

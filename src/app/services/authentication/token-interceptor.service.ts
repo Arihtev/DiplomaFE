@@ -12,6 +12,10 @@ export class TokenInterceptorService implements HttpInterceptor {
 
   intercept(req, next) {
     let authService = this.injector.get(AuthService)
+    if (!localStorage.getItem("token")){
+      return next.handle(req)
+      // console.log("No user")
+    }
     let tokenizedReq = req.clone({
       setHeaders: {
         Authorization: `JWT ${authService.getToken()}`

@@ -20,7 +20,7 @@ export class RegistrationComponent implements OnInit {
   }
 
   printInfo(){
-    console.log(this.auth.loggedIn())
+    // console.log(this.auth.isAuthenticated())
   }
 
   registerUser(){

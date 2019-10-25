@@ -22,6 +22,13 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
   {
+    path: "cars",
+    loadChildren: () =>
+      import("./vehicles/vehicles.module").then(
+        module => module.VehiclesModule
+      ),
+  },
+  {
     path: "register",
     component: RegistrationComponent,
   },

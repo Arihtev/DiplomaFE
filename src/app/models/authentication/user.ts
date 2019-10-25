@@ -8,4 +8,5 @@ export interface IUser{
     photo: string,
     user_type: string,
     gender: string,
+    cars_owned: number[]
 }

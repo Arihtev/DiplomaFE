@@ -6,7 +6,7 @@
                 <mat-form-field>
                     <mat-label>Изберете година:</mat-label>
                     <mat-select formControlName="year">
-                        <mat-option *ngFor="let year of years | async" [value]="year">{{ year?.year }}</mat-option>
+                        <mat-option *ngFor="let year of years" [value]="year">{{ year }}</mat-option>
                     </mat-select>
                 </mat-form-field>
             </div>
@@ -67,8 +67,31 @@
                 </mat-form-field>
             </div>
         </div>
+
+        <div class="row mt-5">
+            <div class="col-4 text-center">
+                <h4>Мощност:</h4>
+                <mat-form-field class="example-full-width">
+                    <input matInput formControlName="horsepower" placeholder="Въведете мощност">
+                </mat-form-field>                          
+            </div>
+
+            <div class="col-4 text-center">
+                <h4>Разход:</h4>
+                <mat-form-field class="example-full-width">
+                    <input matInput formControlName="consumption" placeholder="Въведете разход">
+                </mat-form-field>
+            </div>
+
+            <div class="col-4 text-center">
+                <h4>Брой места:</h4>
+                <mat-form-field class="example-full-width">
+                    <input matInput formControlName="seats" placeholder="Въведете брой">
+                </mat-form-field>
+            </div>
+        </div>
             
-        <!-- <button (click)="printCars()">INFO</button> -->
+        <button (click)="printCars()">INFO</button>
     </form>
     <button mat-button matStepperNext>Next</button>
 </div>

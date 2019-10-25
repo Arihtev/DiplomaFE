@@ -1,0 +1,84 @@
+.car-card{
+    height: 420px;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 0 14px;
+    &:hover {
+        cursor: pointer;
+    }
+    &:hover img {
+        // height: 300px;
+        transform: scale(1.02);
+        transform-origin: 50% 50%;
+        transition: all 0.5s ease;
+    }
+    &:hover .car-info {
+        // height: 100px;
+        top: -70px;
+    }
+    img{
+        width: 100%;
+        height: 350px;
+        object-fit: cover;
+        transition: all 0.5s ease;
+    }
+    .car-info{
+        position: relative;
+        z-index: 10;
+        height: 120px;
+        background-color: white;
+        padding: 5px 20px;
+        font-size: 1.2rem;
+        font-weight: bold;
+        top: 0;
+        transition: all 0.5s ease;
+        .car-year{
+            color: rgb(90, 90, 90);
+            font-size: 1rem;
+        }
+        .car-second-info{
+            color: rgb(37, 37, 37);
+            font-size: 1rem;
+            font-weight: normal;
+        }
+        .car-icon{
+            height: 18px;
+            width: 18px;
+        }
+        .car-city{
+            font-weight: normal;
+        }
+    }
+}
+
+.car-card{
+    &:hover .car-fav{
+        top: 0;
+        opacity: 100;
+        // transition: all 0.5 ease;
+    }
+    .car-fav{
+        color: white;
+        position: absolute;
+        right: 10px;
+        z-index: 20;
+        font-size: 1.6rem;
+        top: -35px;
+        opacity: 0;
+        transition: all ease 0.5s;
+    }
+    .car-price{
+        background-color: white;
+        color: black;
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        z-index: 20;
+        font-size: 1rem;
+        border-radius: 5px;
+        padding: 5px 10px;
+        font-weight: initial;
+    }
+}

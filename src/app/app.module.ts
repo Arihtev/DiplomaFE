@@ -20,6 +20,9 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker'
 import { RegistrationComponent } from './authentication/registration/registration.component';
 import { LoginComponent } from './authentication/login/login.component';
 import { TokenInterceptorService } from './services/authentication/token-interceptor.service';
+import { MDBBootstrapModule } from 'angular-bootstrap-md';
+import { NavbarDirective } from './directives/navbar.directive';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
@@ -27,7 +30,8 @@ import { TokenInterceptorService } from './services/authentication/token-interce
     AppComponent,
     NavbarComponent,
     RegistrationComponent,
-    LoginComponent
+    LoginComponent,
+    NavbarDirective,
   ],
   imports: [
     BrowserModule,
@@ -48,6 +52,8 @@ import { TokenInterceptorService } from './services/authentication/token-interce
     NgxPageScrollModule,
     BsDatepickerModule.forRoot(),
     PopoverModule.forRoot(),
+    MDBBootstrapModule.forRoot(),
+    NgbModule
   ],
   providers: [AuthGuard, 
     {

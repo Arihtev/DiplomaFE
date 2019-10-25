@@ -23,6 +23,7 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
 import { MatCardModule } from '@angular/material';
 import { PopoverModule } from 'ngx-bootstrap/popover';
 import { MatListModule } from '@angular/material/list';
+import { ManageCarsComponent } from './manage-cars/manage-cars.component';
 
 
 @NgModule({
@@ -35,7 +36,8 @@ import { MatListModule } from '@angular/material/list';
     FormRulesComponent,
     FormPricingComponent,
     ImageUploadComponent,
-    DragDropDirective
+    DragDropDirective,
+    ManageCarsComponent
   ],
   imports: [
     CommonModule,
@@ -52,7 +54,7 @@ import { MatListModule } from '@angular/material/list';
     DragDropModule,
     MatCardModule,
     PopoverModule,
-    MatListModule
+    MatListModule,
   ]
 })
 export class HostingModule { }
