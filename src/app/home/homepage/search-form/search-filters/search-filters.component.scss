@@ -1,0 +1,20 @@
+.cal-input{
+    position: relative;
+    width: 100%;
+        .fa-calendar {
+            font-size: 1.2rem;
+            margin-right: 10px;
+        }
+    .cal-start{
+        color: green;
+    }
+    .cal-end{
+        color: red;
+    }
+}
+
+.car-location{
+    .fa-location-arrow, .fa-globe {
+        margin-right: 10px;
+    }
+}

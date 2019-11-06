@@ -20,7 +20,7 @@ export interface ICar{
 }
 
 export interface IPicture{
-    picture: String
+    picture: string
 }
 
 export interface IExtra{
@@ -37,4 +37,11 @@ export interface IOwner{
     email: String,
     gender: String,
     photo: String
+}
+
+export interface IFilters{
+    region: {name: String},
+    city: {name: String},
+    start: Date,
+    end: Date
 }

@@ -1,3 +1,5 @@
+import { VehiclesModule } from './../vehicles/vehicles.module';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { DragDropDirective } from './add-vehicle/form-description/image-upload/drag-drop.directive';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { AddVehicleComponent } from './add-vehicle/add-vehicle.component';
@@ -24,6 +26,15 @@ import { MatCardModule } from '@angular/material';
 import { PopoverModule } from 'ngx-bootstrap/popover';
 import { MatListModule } from '@angular/material/list';
 import { ManageCarsComponent } from './manage-cars/manage-cars.component';
+import { EditCarComponent } from './manage-cars/edit-car/edit-car.component';
+import { ManageReservationsComponent } from './manage-reservations/manage-reservations.component';
+import { CarReservationsComponent } from './manage-reservations/car-reservations/car-reservations.component';
+import { MatTabsModule } from '@angular/material/tabs';
+import { EditMainComponent } from './manage-cars/edit-car/edit-main/edit-main.component';
+import { EditSecondaryComponent } from './manage-cars/edit-car/edit-secondary/edit-secondary.component';
+import { EditExtrasComponent } from './manage-cars/edit-car/edit-extras/edit-extras.component';
+import { EditImagesComponent } from './manage-cars/edit-car/edit-secondary/edit-images/edit-images.component';
+
 
 
 @NgModule({
@@ -37,7 +48,14 @@ import { ManageCarsComponent } from './manage-cars/manage-cars.component';
     FormPricingComponent,
     ImageUploadComponent,
     DragDropDirective,
-    ManageCarsComponent
+    ManageCarsComponent,
+    EditCarComponent,
+    ManageReservationsComponent,
+    CarReservationsComponent,
+    EditMainComponent,
+    EditSecondaryComponent,
+    EditExtrasComponent,
+    EditImagesComponent,
   ],
   imports: [
     CommonModule,
@@ -55,6 +73,9 @@ import { ManageCarsComponent } from './manage-cars/manage-cars.component';
     MatCardModule,
     PopoverModule,
     MatListModule,
-  ]
+    NgbModule,
+    VehiclesModule,
+    MatTabsModule
+  ],
 })
 export class HostingModule { }

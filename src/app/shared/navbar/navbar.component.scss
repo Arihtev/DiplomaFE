@@ -31,3 +31,7 @@
         background-color: #4285F4;
     }
 }
+
+::ng-deep .dropdown-item:hover{
+    background-color: rgba(211, 211, 211, 0.746);
+}

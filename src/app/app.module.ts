@@ -1,3 +1,6 @@
+import { HomeModule } from './home/home.module';
+import { VehiclesModule } from './vehicles/vehicles.module';
+import { HostingModule } from './hosting/hosting.module';
 import { JwtModule } from '@auth0/angular-jwt';
 import { AuthGuard } from './shared/auth.guard';
 import { MatCheckboxModule } from '@angular/material/checkbox';
@@ -53,7 +56,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     BsDatepickerModule.forRoot(),
     PopoverModule.forRoot(),
     MDBBootstrapModule.forRoot(),
-    NgbModule
+    NgbModule,
+    VehiclesModule,
+    HomeModule
   ],
   providers: [AuthGuard, 
     {

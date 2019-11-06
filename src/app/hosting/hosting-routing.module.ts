@@ -1,3 +1,6 @@
+import { CarReservationsComponent } from './manage-reservations/car-reservations/car-reservations.component';
+import { ManageReservationsComponent } from './manage-reservations/manage-reservations.component';
+import { EditCarComponent } from './manage-cars/edit-car/edit-car.component';
 import { ManageCarsComponent } from './manage-cars/manage-cars.component';
 import { FormAmenitiesComponent } from './add-vehicle/form-amenities/form-amenities.component';
 import { AddVehicleComponent } from './add-vehicle/add-vehicle.component';
@@ -12,6 +15,18 @@ const routes: Routes = [
   {
     path:"manage-cars",
     component: ManageCarsComponent
+  },
+  {
+    path:"manage-cars/:id",
+    component: EditCarComponent
+  },
+  {
+    path:"manage-reservations",
+    component: ManageReservationsComponent
+  },
+  {
+    path:"manage-reservations/:id",
+    component: CarReservationsComponent
   }
 ];
 

@@ -2,12 +2,12 @@
     <input hidden type="file" multiple #fileInput (change)="uploadFile($event.target.files)">
 </div>
 
-<button (click)="printInfo()">PrintInfo</button>
+<!-- <button (click)="printInfo()">PrintInfo</button> -->
 
 <div *ngIf="files.length > 0" class="row" cdkDropList (cdkDropListDropped)="drop($event)">
     <div class="files-list col-10" *ngFor="let file of files; let i=index" cdkDrag
-    [popover]="popTemplate" triggers="mouseenter:mouseleave">
-        {{ i+1 }} {{ file.name }}
+    [popover]="popTemplate" placement="left" triggers="mouseenter:mouseleave">
+        <span class="h5 m-0 p-1">{{ i+1 }}</span> {{ file.name }}
         <button class="delete-file" (click)="deleteAttachment(i)">
             <img src="../../assets/Recycle_Bin_Full.png">
         </button>
@@ -17,6 +17,6 @@
     </div>
 </div>
 
-<button (click)="upload()">Upload</button>
+<!-- <button (click)="upload()">Upload</button> -->
 
 <button mat-button (click)="progress()">PROGRESS</button>

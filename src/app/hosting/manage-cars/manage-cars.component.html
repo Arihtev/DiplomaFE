@@ -1,1 +1,34 @@
-MANAGE PAGE
+<div class="container">
+    <div class="row">
+        <div *ngFor="let car of cars" class="col-6 text-center mt-4">
+            <div class="choose">
+                <div class="p-0 car-view" [routerLink]="'/cars/'+car.id">
+                    <div class="view-wrapper">
+                        <div class="title">
+                            <i class="far fa-eye"></i>
+                            Преглед
+                        </div>
+                    </div>
+                </div>
+                <div class="p-0 car-reservations" [routerLink]="'/host/manage-reservations/'+car.id">
+                    <div class="reservations-wrapper">
+                        <div class="title">
+                            <i class="fas fa-book"></i>
+                            Резервации
+                        </div>
+                    </div>
+                </div>
+                <div class="p-0 car-edit" [routerLink]="[car.id]">
+                    <div class="edit-wrapper">
+                        <div class="title">
+                            <i class="far fa-edit"></i>
+                            Редактирай
+                        </div>
+                    </div>
+                </div>
+                
+                <app-cars-list-item [car]="car"></app-cars-list-item>
+            </div>
+        </div>
+    </div>
+</div>

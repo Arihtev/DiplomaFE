@@ -48,6 +48,7 @@
             width: 18px;
         }
         .car-city{
+            font-size: 1rem;
             font-weight: normal;
         }
     }
@@ -76,9 +77,13 @@
         top: 10px;
         left: 10px;
         z-index: 20;
-        font-size: 1rem;
+        font-size: 0.9rem;
         border-radius: 5px;
         padding: 5px 10px;
         font-weight: initial;
+        i{
+            font-size: 0.8rem;
+            opacity: 0.75;
+        }
     }
 }

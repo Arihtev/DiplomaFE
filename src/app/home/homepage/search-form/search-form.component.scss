@@ -1,0 +1,34 @@
+.linebreak{
+    height: 30px;
+}
+
+.cal-input{
+    position: relative;
+    width: 100%;
+        .fa-calendar {
+            font-size: 1.2rem;
+            margin-right: 10px;
+        }
+    .cal-start{
+        color: green;
+    }
+    .cal-end{
+        color: red;
+    }
+}
+
+.car-location{
+    .fa-location-arrow, .fa-globe {
+        margin-right: 10px;
+    }
+}
+
+.search-btn{
+    margin: 5px !important;
+    margin-bottom: 15px !important;
+    font-size: 1.2rem !important;
+    width: 30%;
+    height: 60px;
+    margin-top: 20px;
+}
+

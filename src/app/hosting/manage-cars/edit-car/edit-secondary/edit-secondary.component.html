@@ -1,0 +1,18 @@
+<div class="container text-center">
+    <div class="row">
+        <div class="col-6">
+            <h4>Добавете описание:</h4>
+            <mat-form-field class="example-full-width col-12" appearance="fill">
+                <textarea matInput matTextareaAutosize="true" matAutosizeMinRows=25
+                    placeholder="Leave a comment"></textarea>
+            </mat-form-field>
+        </div>
+
+        <div class="col-6">
+            <h4>Добавете снимки:</h4>
+            <app-edit-images (messageEvent)="receiveImages($event)" [car]="car"></app-edit-images>
+        </div>
+    </div>
+</div>
+
+<button (click)="printInfo()">PrintInfo Parent</button>

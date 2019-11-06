@@ -1,10 +1,8 @@
 <div class="container" *ngIf="(car | async) as car">
   <div class="row">
     <app-car-carousel class="col-xl-8 col-lg-12" [pictures]="car.pictures"></app-car-carousel>
-    <div class="col-xl-4 reservation">
-      <div class="h1">
-        Резервация
-      </div>
+    <div class="col-xl-4 reservation text-center">
+      <app-car-reservation-tab [car]="car"></app-car-reservation-tab>
     </div>
   </div>
   <div class="row">
@@ -57,18 +55,7 @@
     </div>
   </div>
 
-  <div class="row extras">
-    <div class="col-4">
-      <img src="assets/images/safety.svg" class="icon" alt=""><span class="label"> Безопасност</span>
-    </div>
-    <div class="col-8">
-      <span *ngFor="let extra of car.extras">
-        <span *ngIf="extra.category_id == 1">
-          &bull; {{ extra.name }}
-        </span>
-      </span>
-    </div>
-  </div>
+  <hr>
 
   <div class="row extras">
     <div class="col-4">
@@ -76,24 +63,47 @@
     </div>
     <div class="col-8">
       <span *ngFor="let extra of car.extras">
-        <span *ngIf="extra.category_id == 1">
-          &bull; {{ extra.name }}
+        <span *ngIf="extra.category_id == 1" class="extra-label">
+          &bull;{{ extra.name }}
         </span>
       </span>
     </div>
   </div>
 
+  <hr>
+
   <div class="row extras">
     <div class="col-4">
-      <img src="assets/images/safety.svg" class="icon" alt=""><span class="label"> Безопасност</span>
+      <img src="assets/images/comfort.png" class="icon" alt=""><span class="label"> Комфорт</span>
     </div>
     <div class="col-8">
       <span *ngFor="let extra of car.extras">
-        <span *ngIf="extra.category_id == 1">
-          &bull; {{ extra.name }}
+        <span *ngIf="extra.category_id == 2" class="extra-label">
+          &bull;{{ extra.name }}
         </span>
       </span>
     </div>
+  </div>
+
+  <hr>
+
+  <div class="row extras">
+    <div class="col-4">
+      <img src="assets/images/others.png" class="icon" alt=""><span class="label"> Други</span>
+    </div>
+    <div class="col-8">
+      <span *ngFor="let extra of car.extras">
+        <span *ngIf="extra.category_id == 3" class="extra-label">
+          &bull;{{ extra.name }}
+        </span>
+      </span>
+    </div>
+  </div>
+
+  <hr>
+
+  <div class="reservation">
+    comment section
   </div>
 
 </div>

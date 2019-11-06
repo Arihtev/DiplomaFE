@@ -1,0 +1,58 @@
+<div class="h1">
+    Резервация
+</div>
+
+<img class="w-100 opacity-30" src="assets/images/linebreak.png" alt="">
+
+<div class="h4">
+    Дата и час на наемане:
+</div>
+<div class="form-group cal-input">
+    <div class="input-group">
+        <div class="input-group-prepend">
+            <div class="input-group-text bg-white">
+                <i class="fa fa-calendar"></i>
+            </div>
+        </div>
+        <input class="form-control" (ngModelChange)="calculateReservedDays($event)" [owlDateTimeTrigger]="dt12" [owlDateTime]="dt12" [(ngModel)]="selectedMoments" [owlDateTimeFilter]="myFilter"
+            [selectMode]="'rangeFrom'" [min]="min">
+        <owl-date-time #dt12 [firstDayOfWeek]=1 [stepMinute]=60></owl-date-time>
+    </div>
+</div>
+
+<div class="h4">
+    Дата и час на връщане:
+</div>
+<div class="form-group cal-input">
+    <div class="input-group">
+        <div class="input-group-prepend">
+            <div class="input-group-text bg-white">
+                <i class="fa fa-calendar"></i>
+            </div>
+        </div>
+        <input class="form-control" (ngModelChange)="calculateReservedDays($event)" [owlDateTimeTrigger]="dt13" [owlDateTime]="dt13" [(ngModel)]="selectedMoments" [selectMode]="'rangeTo'">
+        <owl-date-time #dt13 [firstDayOfWeek]=1 [stepMinute]=60></owl-date-time>
+    </div>
+</div>
+
+
+<div class="container pricing">
+
+    <div class="h4">
+        Ценоразпис:
+    </div>
+
+    <hr>
+
+    <span class="price-left">{{ car.price }}лв х {{ daysReserved }} дни</span> <span class="price-right">{{ car.price*daysReserved }}лв</span>
+
+    <hr class="custom-hr">
+    
+    <span class="price-left">Такса</span> <span class="price-right">7лв</span>
+
+    <hr class="custom-hr">
+
+    <span class="price-left font-weight-bold">Общо</span> <span class="price-right font-weight-bold">{{ car.price*daysReserved + 7 }}лв</span>
+</div>
+
+<button type="button" class="btn btn-success reserve-btn" (click)="printInfo()">Резервирай</button>

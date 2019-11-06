@@ -28,16 +28,14 @@
 }
 
 .reservation{
-    border: 2px solid;
+    // border: 1px solid lightgray;
+    padding: 10px;
 }
 
-// ::ng-deep .star{
-//     font-size: 2rem !important;
-// }
 .secondary-info{
     position: relative;
     z-index: 10;
-    height: 120px;
+    // height: 100px;
     background-color: white;
     padding: 5px 20px;
     font-size: 1.2rem;
@@ -77,8 +75,15 @@
     .label{
         font-size: 1.4rem;
     }
+    .extra-label{
+        font-size: 1.2rem;
+    }
     .icon{
         height: 40px;
         width: 40px;
     }
+}
+
+span.nobr { 
+    white-space: nowrap; 
 }

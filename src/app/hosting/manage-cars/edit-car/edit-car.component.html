@@ -1,0 +1,13 @@
+<div *ngIf="car">
+    <mat-tab-group>
+        <mat-tab label="Основна информация">
+            <app-edit-main [car]="car"></app-edit-main>
+        </mat-tab>
+        <mat-tab label="Снимки и описание"> 
+            <app-edit-secondary [car]="car"></app-edit-secondary> 
+        </mat-tab>
+        <mat-tab label="Удобства"> 
+            <app-edit-extras [car]="car"></app-edit-extras>
+        </mat-tab>
+    </mat-tab-group>
+</div>

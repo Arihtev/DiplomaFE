@@ -14,7 +14,6 @@ export class ImageUploadComponent implements OnInit {
   
   files: any = [];
   urls: any = [];
-  photoFile: any
 
   filesBase64: any[] = []
 
@@ -26,6 +25,8 @@ export class ImageUploadComponent implements OnInit {
     // console.log(event)
     moveItemInArray(this.files, event.previousIndex, event.currentIndex);
     moveItemInArray(this.urls, event.previousIndex, event.currentIndex);
+    // console.log(this.files)
+    this.detectFiles()
   }
 
   uploadFile(event) {
@@ -50,21 +51,22 @@ export class ImageUploadComponent implements OnInit {
     this.urls = [];
     this.filesBase64 = []
     if (this.files){
-    for (let file of this.files) {
-      // let element = this.files[index]
-      let reader = new FileReader();
-        reader.onload = (e: any) => {
-          this.urls.push(e.target.result);
-        }
-        reader.readAsDataURL(file);
+      for (let file of this.files) {
+        // let element = this.files[index]
+        let reader = new FileReader();
+          reader.onload = (e: any) => {
+            this.urls.push(e.target.result);
+          }
+          reader.readAsDataURL(file);
 
-      this.changeSelected(file);
+        this.changeSelected(file);
+        }
       }
-    }
     this.sendImages()
   }
 
   changeSelected(img) {
+    // console.log(img)
     var reader = new FileReader();
     reader.readAsDataURL(img); 
     reader.onloadend = (e) => {
@@ -76,24 +78,19 @@ export class ImageUploadComponent implements OnInit {
   }
 
   upload(){
-    this.service.post('http://127.0.0.1:8000/cars/create/', {
-      year: 2004,
-      make: "BMW",
-      pictures: this.filesBase64
-    }).subscribe(res => {
-      console.log(res)
-    })
+    this.detectFiles()
   }
 
   progress() {
-    // console.log(this.fd)
+    console.log(this.files)
+    console.log(this.urls)
   }
 
   ngOnInit() {
   }
 
   sendImages() {
-    console.log("emitting")
+    // console.log("emitting")
     this.messageEvent.emit(this.filesBase64)
   }
 

@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { SearchFiltersComponent } from './search-filters/search-filters.component';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-search-form',
@@ -7,9 +9,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SearchFormComponent implements OnInit {
 
-  constructor() { }
+  @ViewChild(SearchFiltersComponent, {static: true}) searchFiltersComponent: SearchFiltersComponent;
 
-  ngOnInit() {
+  get filters() {
+    return this.searchFiltersComponent ? this.searchFiltersComponent.getForm() : null;
   }
 
+  constructor(private router: Router) {
+  }
+
+  ngOnInit() {}
+
+  search(){
+    // console.log(this.filters)
+    this.router.navigate(['/cars'], { 
+      state: { example: this.filters } 
+    })
+  }
 }
