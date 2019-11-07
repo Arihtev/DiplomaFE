@@ -26,6 +26,7 @@ import { TokenInterceptorService } from './services/authentication/token-interce
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { NavbarDirective } from './directives/navbar.directive';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { MatInputModule } from '@angular/material/input';
 
 
 @NgModule({
@@ -58,7 +59,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     MDBBootstrapModule.forRoot(),
     NgbModule,
     VehiclesModule,
-    HomeModule
+    HomeModule,
+    MatInputModule
   ],
   providers: [AuthGuard, 
     {

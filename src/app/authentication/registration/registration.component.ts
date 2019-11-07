@@ -1,6 +1,25 @@
 import { AuthService } from './../../services/authentication/auth.service';
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, Validators, FormBuilder } from '@angular/forms';
+
+export function MustMatch(controlName: string, matchingControlName: string) {
+  return (formGroup: FormGroup) => {
+    const control = formGroup.controls[controlName];
+    const matchingControl = formGroup.controls[matchingControlName];
+
+    if (matchingControl.errors && !matchingControl.errors.mustMatch) {
+      // return if another validator has already found an error on the matchingControl
+      return;
+    }
+
+    // set error on matchingControl if validation fails
+    if (control.value !== matchingControl.value) {
+      matchingControl.setErrors({ mustMatch: true });
+    } else {
+      matchingControl.setErrors(null);
+    }
+  }
+}
 
 @Component({
   selector: 'app-registration',
@@ -9,30 +28,29 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RegistrationComponent implements OnInit {
 
-  registeredUserData = {
-    username: '',
-    password: ''
-  }
+  registerForm: FormGroup
 
-  constructor(private service: HttpClient, private auth: AuthService) { }
+  constructor(private formBuilder: FormBuilder, private auth: AuthService) {
+    this.registerForm = this.formBuilder.group({
+      username: [''],
+      email: [''],
+      firstName: [''],
+      lastName: [''],
+      password: ['', [Validators.required, Validators.minLength(6)]],
+      confirmPassword: [''],
+    }, {
+      validator: MustMatch('password', 'confirmPassword')
+    });
+  }
 
   ngOnInit() {
   }
 
-  printInfo(){
-    // console.log(this.auth.isAuthenticated())
+  printInfo() {
+    console.log(this.registerForm.controls.verifyPassword.errors)
   }
 
-  registerUser(){
-    console.log(this.registeredUserData)
-    this.service.post('http://127.0.0.1:8000/users/test/', {
-      username: this.registeredUserData.username,
-      password: this.registeredUserData.password
-    }).subscribe((res: {token: string})=> {
-      localStorage.setItem('token', res.token)
-      console.log(res)
-    },
-    err => console.log(err))
+  registerUser() {
   }
 
 }
