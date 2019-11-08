@@ -1,25 +1,11 @@
 import { AuthService } from './../../services/authentication/auth.service';
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, Validators, FormBuilder } from '@angular/forms';
+import { FormGroup, Validators, FormBuilder, AbstractControl, ValidationErrors } from '@angular/forms';
+import { HttpErrorResponse } from '@angular/common/http';
+import { Router } from '@angular/router';
+import { MustMatch, ValidateUsername, ValidateEmail } from './registration.validators';
+import { BsModalRef } from 'ngx-bootstrap/modal';
 
-export function MustMatch(controlName: string, matchingControlName: string) {
-  return (formGroup: FormGroup) => {
-    const control = formGroup.controls[controlName];
-    const matchingControl = formGroup.controls[matchingControlName];
-
-    if (matchingControl.errors && !matchingControl.errors.mustMatch) {
-      // return if another validator has already found an error on the matchingControl
-      return;
-    }
-
-    // set error on matchingControl if validation fails
-    if (control.value !== matchingControl.value) {
-      matchingControl.setErrors({ mustMatch: true });
-    } else {
-      matchingControl.setErrors(null);
-    }
-  }
-}
 
 @Component({
   selector: 'app-registration',
@@ -29,17 +15,19 @@ export function MustMatch(controlName: string, matchingControlName: string) {
 export class RegistrationComponent implements OnInit {
 
   registerForm: FormGroup
+  
+  closeBtnName: string;
 
-  constructor(private formBuilder: FormBuilder, private auth: AuthService) {
+  constructor(private formBuilder: FormBuilder, private auth: AuthService, public bsModalRef: BsModalRef) {
     this.registerForm = this.formBuilder.group({
-      username: [''],
-      email: [''],
-      firstName: [''],
-      lastName: [''],
-      password: ['', [Validators.required, Validators.minLength(6)]],
-      confirmPassword: [''],
+      username: ['user2'],
+      email: ['user2@mail.com', [Validators.email]],
+      firstName: ['user2'],
+      lastName: ['user2'],
+      password: ['Georgi123@', [Validators.required, Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}'), Validators.minLength(8)]],
+      confirmPassword: ['Georgi123@'],
     }, {
-      validator: MustMatch('password', 'confirmPassword')
+      validators: [MustMatch('password', 'confirmPassword'), ValidateUsername('username', auth), ValidateEmail('email', auth)],
     });
   }
 
@@ -47,10 +35,30 @@ export class RegistrationComponent implements OnInit {
   }
 
   printInfo() {
-    console.log(this.registerForm.controls.verifyPassword.errors)
+    this.validateUsername(this.registerForm.controls.username.value)
+  }
+
+  private validateUsername(userName) {
+    this.auth.validateUsername(userName).subscribe(res => {
+      console.log(res)
+    })
   }
 
   registerUser() {
+    let controls = this.registerForm.controls
+    let user = {
+      username: controls.username.value,
+      email: controls.email.value,
+      password: controls.password.value,
+      firstName: controls.firstName.value,
+      lastName: controls.lastName.value,
+    }
+    this.auth.registerUser(user).subscribe(res => {
+      console.log(res)
+    },
+    err => {
+      console.log(err)
+    })
   }
 
 }

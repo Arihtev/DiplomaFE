@@ -35,3 +35,8 @@
 ::ng-deep .dropdown-item:hover{
     background-color: rgba(211, 211, 211, 0.746);
 }
+
+.modal-open{
+    padding:0 !important;
+    // overflow-y: auto;
+   }

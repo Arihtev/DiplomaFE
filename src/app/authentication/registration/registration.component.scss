@@ -1,12 +1,16 @@
 .register-form{
   // border: solid 2px red;
+  background-color: rgb(240, 251, 255);
   border-radius: 6px;
-  box-shadow: 0 0 20px 0 rgb(90, 90, 90);
+  // box-shadow: 0 0 20px 0 rgb(90, 90, 90);
   position: absolute;
-  max-width: 600px;
+  width: 600px;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  h5{
+    color: rgb(80, 80, 80);
+  }
 }
 
 .form-fields{

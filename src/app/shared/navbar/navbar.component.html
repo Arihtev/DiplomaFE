@@ -1,29 +1,29 @@
 <mdb-navbar [SideClass]="sideclass" [containerInside]="true" appNavbar>
-    <mdb-navbar-brand>
-      <a class="logo navbar-brand" pageScroll [routerLink]="['']" href="#myBody">
-        <strong>Navbar</strong>
-      </a>
-    </mdb-navbar-brand>
-    <links>
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item waves-light" mdbWavesEffect>
-          <a class="nav-link" pageScroll [routerLink]="['']" routerLinkActive="active" href="#first">Търсене
-          </a>
-        </li>
-        <li class="nav-item waves-light" mdbWavesEffect>
-          <a class="nav-link" pageScroll [routerLink]="['']" routerLinkActive="active" href="#awesomePart">За нас
-          </a>
-        </li>
-        <li class="nav-item waves-light" mdbWavesEffect>
-          <a class="nav-link" [routerLink]="['cars']" routerLinkActive="active">Всички коли
-          </a>
-        </li>
-        <!-- <li class="nav-item waves-light" mdbWavesEffect>
+  <mdb-navbar-brand>
+    <a class="logo navbar-brand" pageScroll [routerLink]="['']" href="#myBody">
+      <strong>Navbar</strong>
+    </a>
+  </mdb-navbar-brand>
+  <links>
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item waves-light" mdbWavesEffect>
+        <a class="nav-link" pageScroll [routerLink]="['']" routerLinkActive="active" href="#first">Търсене
+        </a>
+      </li>
+      <li class="nav-item waves-light" mdbWavesEffect>
+        <a class="nav-link" pageScroll [routerLink]="['']" routerLinkActive="active" href="#awesomePart">За нас
+        </a>
+      </li>
+      <li class="nav-item waves-light" mdbWavesEffect>
+        <a class="nav-link" [routerLink]="['cars']" routerLinkActive="active">Всички коли
+        </a>
+      </li>
+      <!-- <li class="nav-item waves-light" mdbWavesEffect>
           <a class="nav-link" (click)="printInfo()">Test</a>
         </li> -->
-      </ul>
-      
-      <!-- <ul class="navbar-nav ml-auto" *ngIf="currentUser && loggedIn()">
+    </ul>
+
+    <!-- <ul class="navbar-nav ml-auto" *ngIf="currentUser && loggedIn()">
         <li class="nav-item waves-light" mdbWavesEffect *ngIf="currentUser.cars_owned.length>0">
           <a class="nav-link" [routerLink]="['host/add-new']">Добави кола</a>
         </li>
@@ -31,40 +31,54 @@
           <a class="nav-link" [routerLink]="['host/manage-cars']">Моите коли</a>
         </li>
       </ul> -->
-      <ul class="navbar-nav ml-auto" *ngIf="currentUser && loggedIn()">  
-          <div class="btn-group nav-item" dropdown>
-            <a id="button-basic" dropdownToggle aria-controls="dropdown-basic" type="button" class="nav-link dropdown-toggle waves-light" mdbWavesEffect>
-              Хостинг
-            </a>
-            <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu" role="menu" aria-labelledby="button-basic">
-                <li role="menuitem"><a class="dropdown-item" [routerLink]="['host/add-new']"><i class="fas fa-plus"></i> Добави кола</a></li>
-                <li role="menuitem"><a class="dropdown-item" [routerLink]="['host/manage-cars']"><mdb-icon fas icon="cog"></mdb-icon> Моите коли</a></li>
-                <!-- <li role="menuitem"><a class="dropdown-item" [routerLink]="['login']" (click)="authService.logoutUser()"><i class="fas fa-sign-out-alt"></i><span class="text-right"> Log Out</span></a></li> -->
-            </ul>
-          </div>  
+    <ul class="navbar-nav ml-auto" *ngIf="currentUser && loggedIn()">
+      <div class="btn-group nav-item" dropdown>
+        <a id="button-basic" dropdownToggle aria-controls="dropdown-basic" type="button"
+          class="nav-link dropdown-toggle waves-light" mdbWavesEffect>
+          Хостинг
+        </a>
+        <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu" role="menu" aria-labelledby="button-basic">
+          <li role="menuitem"><a class="dropdown-item" [routerLink]="['host/add-new']"><i class="fas fa-plus"></i>
+              Добави кола</a></li>
+          <li role="menuitem"><a class="dropdown-item" [routerLink]="['host/manage-cars']">
+              <mdb-icon fas icon="cog"></mdb-icon> Моите коли
+            </a></li>
+          <!-- <li role="menuitem"><a class="dropdown-item" [routerLink]="['login']" (click)="authService.logoutUser()"><i class="fas fa-sign-out-alt"></i><span class="text-right"> Log Out</span></a></li> -->
         </ul>
+      </div>
+    </ul>
 
-      <ul class="navbar-nav ml-auto" *ngIf="!loggedIn()">
-        <li class="nav-item waves-light" mdbWavesEffect>
-          <a class="nav-link" [routerLink]="['login']">Логин</a>
+    <ul class="navbar-nav ml-auto" *ngIf="!loggedIn()">
+      <li class="nav-item waves-light" mdbWavesEffect>
+        <a class="nav-link" (click)="openModalWithComponent(login)">Логин</a>
       </li>
-      </ul>
-      
-      <ul class="navbar-nav ml-auto" *ngIf="currentUser && loggedIn()">  
-        <div class="btn-group nav-item" dropdown>
-          <a id="button-basic" dropdownToggle aria-controls="dropdown-basic" type="button" class="nav-link dropdown-toggle waves-light" mdbWavesEffect>
-            <img class="profile-pic" [src]="currentUser.photo" alt="">
-            {{ currentUser.username }}
-            <span class="caret"></span>
-          </a>
-          <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu" role="menu" aria-labelledby="button-basic">
-              <li role="menuitem"><a class="dropdown-item"><i class="fas fa-list-ul"></i> Saved</a></li>
-              <li role="menuitem"><a class="dropdown-item"><mdb-icon fas icon="cog"></mdb-icon> Settings</a></li>
-              <li role="menuitem"><a class="dropdown-item"><mdb-icon fas icon="envelope"></mdb-icon> Messages</a></li>
-              <li class="divider dropdown-divider"></li>
-              <li role="menuitem"><a class="dropdown-item" [routerLink]="['login']" (click)="authService.logoutUser()"><i class="fas fa-sign-out-alt"></i><span class="text-right"> Log Out</span></a></li>
-          </ul>
-        </div>  
-      </ul>
-    </links>
-  </mdb-navbar>
+      <li class="nav-item waves-light" mdbWavesEffect>
+        <a class="nav-link" (click)="openModalWithComponent(register)">Регистрация</a>
+      </li>
+    </ul>
+    <!-- <button type="button" class="btn btn-primary" (click)="openModalWithComponent()">Create modal with component</button> -->
+
+    <ul class="navbar-nav ml-auto" *ngIf="currentUser && loggedIn()">
+      <div class="btn-group nav-item" dropdown>
+        <a id="button-basic" dropdownToggle aria-controls="dropdown-basic" type="button"
+          class="nav-link dropdown-toggle waves-light" mdbWavesEffect>
+          <img *ngIf="currentUser.photo" class="profile-pic" [src]="currentUser.photo" alt="">
+          {{ currentUser.username }}
+          <span class="caret"></span>
+        </a>
+        <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu" role="menu" aria-labelledby="button-basic">
+          <li role="menuitem"><a class="dropdown-item"><i class="fas fa-list-ul"></i> Saved</a></li>
+          <li role="menuitem"><a class="dropdown-item">
+              <mdb-icon fas icon="cog"></mdb-icon> Settings
+            </a></li>
+          <li role="menuitem"><a class="dropdown-item">
+              <mdb-icon fas icon="envelope"></mdb-icon> Messages
+            </a></li>
+          <li class="divider dropdown-divider"></li>
+          <li role="menuitem"><a class="dropdown-item" [routerLink]="['login']" (click)="authService.logoutUser()"><i
+                class="fas fa-sign-out-alt"></i><span class="text-right"> Log Out</span></a></li>
+        </ul>
+      </div>
+    </ul>
+  </links>
+</mdb-navbar>

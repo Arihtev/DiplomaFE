@@ -27,6 +27,7 @@ import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { NavbarDirective } from './directives/navbar.directive';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { MatInputModule } from '@angular/material/input';
+import { ModalModule } from 'ngx-bootstrap/modal';
 
 
 @NgModule({
@@ -60,7 +61,8 @@ import { MatInputModule } from '@angular/material/input';
     NgbModule,
     VehiclesModule,
     HomeModule,
-    MatInputModule
+    MatInputModule,
+    ModalModule.forRoot()
   ],
   providers: [AuthGuard, 
     {

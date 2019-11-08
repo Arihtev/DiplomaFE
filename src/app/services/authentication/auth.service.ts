@@ -27,6 +27,28 @@ export class AuthService {
 
   jwtHelper = new JwtHelperService();
 
+  registerUser(user){
+    return this.service.post('http://127.0.0.1:8000/users/register/', ({
+      username: user.username,
+      email: user.email,
+      password: user.password,
+      first_name: user.firstName,
+      last_name: user.lastName,
+    }))
+  }
+
+  validateUsername(username){
+    return this.service.post('http://127.0.0.1:8000/users/check-username/', ({
+      username: username
+    }))
+  }
+
+  validateEmail(email){
+    return this.service.post('http://127.0.0.1:8000/users/check-email/', ({
+      email: email
+    }))
+  }
+
   loginUser(user) {
     return this.service.post('http://127.0.0.1:8000/users/api/token/', ({
       username: user.username,
