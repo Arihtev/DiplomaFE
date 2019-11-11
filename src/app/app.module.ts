@@ -28,6 +28,8 @@ import { NavbarDirective } from './directives/navbar.directive';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { MatInputModule } from '@angular/material/input';
 import { ModalModule } from 'ngx-bootstrap/modal';
+import { TabsModule } from 'ngx-bootstrap/tabs';
+import { AuthenticationComponent } from './authentication/authentication.component';
 
 
 @NgModule({
@@ -37,6 +39,7 @@ import { ModalModule } from 'ngx-bootstrap/modal';
     RegistrationComponent,
     LoginComponent,
     NavbarDirective,
+    AuthenticationComponent,
   ],
   imports: [
     BrowserModule,
@@ -62,7 +65,11 @@ import { ModalModule } from 'ngx-bootstrap/modal';
     VehiclesModule,
     HomeModule,
     MatInputModule,
-    ModalModule.forRoot()
+    ModalModule.forRoot(),
+    TabsModule.forRoot(),
+  ],
+  entryComponents: [
+    AuthenticationComponent
   ],
   providers: [AuthGuard, 
     {

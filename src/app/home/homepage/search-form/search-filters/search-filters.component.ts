@@ -71,7 +71,7 @@ export class SearchFiltersComponent implements OnInit {
         this.loadedCities = CITIES
       }
       if (typeof res === 'string') {
-        console.log(res)
+        // console.log(res)
         this.regions.forEach(region => {
           if (region.name.toLowerCase() === res) {
             this.loadCities(res)

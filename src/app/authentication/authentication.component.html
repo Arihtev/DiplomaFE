@@ -1,0 +1,14 @@
+<div [@bgImgTrigger]="component">
+    <div class="modal-header">
+        <h4 class="modal-title pull-left">{{title}}</h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="bsModalRef.hide()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">    
+        <app-login *ngIf="component == 'login'" (close)="closeModal($event)"></app-login>
+        <p *ngIf="component == 'login'" class="message text-center">Нямате профил? <a (click)="switchComponent()">Регистрирайте се тук</a></p>
+        <app-registration *ngIf="component == 'registration'"></app-registration>
+        <p *ngIf="component == 'registration'" class="message text-center">Имате профил? <a (click)="switchComponent()">Логнете се тук</a></p>
+    </div>
+</div>

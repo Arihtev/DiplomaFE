@@ -4,7 +4,8 @@ import { FormGroup, Validators, FormBuilder, AbstractControl, ValidationErrors }
 import { HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { MustMatch, ValidateUsername, ValidateEmail } from './registration.validators';
-import { BsModalRef } from 'ngx-bootstrap/modal';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
+import { LoginComponent } from 'src/app/authentication/login/login.component';
 
 
 @Component({
@@ -18,7 +19,7 @@ export class RegistrationComponent implements OnInit {
   
   closeBtnName: string;
 
-  constructor(private formBuilder: FormBuilder, private auth: AuthService, public bsModalRef: BsModalRef) {
+  constructor(private formBuilder: FormBuilder, private auth: AuthService, public bsModalRef: BsModalRef, private modalService: BsModalService) {
     this.registerForm = this.formBuilder.group({
       username: ['user2'],
       email: ['user2@mail.com', [Validators.email]],
@@ -59,6 +60,11 @@ export class RegistrationComponent implements OnInit {
     err => {
       console.log(err)
     })
+  }
+
+  goToLogin(){
+    // this.bsModalRef.hide()
+    // this.bsModalRef = this.modalService.show(LoginComponent, {class: 'modal-dialog-centered'})
   }
 
 }

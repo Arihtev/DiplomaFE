@@ -1,6 +1,9 @@
 import { AuthService } from './../../services/authentication/auth.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
+import { RegistrationComponent } from 'src/app/authentication/registration/registration.component';
+import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -9,23 +12,35 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-  registeredUserData = {
-    username: '',
-    password: ''
-  }
+  @Output() close: EventEmitter<any> = new EventEmitter();
+  
+  loginForm: FormGroup
+  errors: Error;
+  
+  closeBtnName: string;
 
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(private authService: AuthService, private router: Router, private formBuilder: FormBuilder, private modalService: BsModalService) { 
+    this.loginForm = this.formBuilder.group({
+      username: ['user2'],
+      password: ['Georgi123@', [Validators.required]],
+    });
+  }
 
   ngOnInit() {
   }
 
   loginUser(){
-    this.authService.loginUser(this.registeredUserData).subscribe((res: {token: string})=> {
+    let registeredUserData = {username: this.loginForm.controls.username.value, password: this.loginForm.controls.password.value}
+    this.authService.loginUser(registeredUserData).subscribe((res: {token: string})=> {
       localStorage.setItem('token', res.token)
+      this.close.emit()
       this.router.navigate([''])
       this.authService.saveUser()
     },
-    err => console.log(err))
+    err => {
+      this.errors = err.error
+      this.loginForm.setErrors({'incorrect': true})
+    })
   }
 
 }

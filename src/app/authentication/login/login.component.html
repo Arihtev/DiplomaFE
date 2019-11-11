@@ -1,10 +1,28 @@
-<div class="login-page">
-    <div class="form">
-      <form class="login-form">
-        <input [(ngModel)]="registeredUserData.username" name="username" type="text" placeholder="name"/>
-        <input [(ngModel)]="registeredUserData.password" name="password" type="password" placeholder="password"/>
-        <button (click)="loginUser()">login</button>
-        <p class="message">Not registered? <a [routerLink]="'/register/'">Create an account</a></p>
-      </form>
+<div class="container">
+  <div class="login-form">
+    <form class="form-fields row" [formGroup]="loginForm" (keyup.enter)="loginUser()">
+      <!-- <div class="text-center col-12 mt-2">
+        <h1>Влезе във вашият профил</h1>
+        <hr>
+      </div> -->
+
+
+      <mat-form-field class="col-6">
+        <input type="text" placeholder="Потребителско име" matInput formControlName="username" required>
+        <mat-error *ngIf="loginForm.hasError('required', 'username')">Въведете потребителско име
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="col-6">
+        <input type="password" placeholder="Парола" matInput formControlName="password" required>
+        <mat-error *ngIf="loginForm.hasError('required', 'password')">Въведете парола</mat-error>
+      </mat-form-field>
+    </form>
+    <div class="text-center">
+      <mat-error *ngIf="errors">Грешно потребителско име или парола!</mat-error>
+      <button class="search-btn" type="button" mdbBtn gradient="blue" size="lg" mdbWavesEffect (click)="loginUser()"
+        [disabled]="loginForm.invalid">Логин</button>
+      <!-- <p class="message">Нямате профил? <a (click)="goToRegister()">Регистрирайте се тук</a></p> -->
     </div>
+    <!-- <button (click)="printInfo()">Print</button> -->
   </div>
+</div>

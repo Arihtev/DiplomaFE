@@ -14,6 +14,7 @@ import { of } from 'rxjs';
 export class CarsListComponent implements OnInit {
 
   filters: any = {region: "", city: "", start: undefined, end: undefined}
+  noCars: boolean = false
 
   cars: ICar[] = []
 
@@ -54,11 +55,17 @@ export class CarsListComponent implements OnInit {
       // console.log("Filter by city")
       filtered = filtered.filter(car => car.city == this.filters.city.name)
     }
+    if (filtered.length == 0){
+      this.noCars = true
+    }
+    else{
+      this.noCars = false
+    }
     return filtered
   }
 
   searchCars(){
-    console.log(this.getFilters())
+    // console.log(this.getFilters())
     this.filters = this.getFilters()
     this.updateCars()
   }
