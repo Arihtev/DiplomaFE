@@ -9,6 +9,9 @@ import { format } from 'util';
   providedIn: 'root'
 })
 export class CarDatabaseService {
+  
+  CAR_DB_URL: string = 'http://127.0.0.1:8000'
+  // 'http://10.10.63.248'
 
   CAR_API_URL: string = 'https://www.carqueryapi.com/api/0.3/?callback=?&cmd='
   API_KEY: string = '&api_key=Your_Database_Api_Key'
@@ -25,21 +28,14 @@ export class CarDatabaseService {
     return this.service.get(`${this.CAR_API_URL}getModels&make=${make_id}&year=${year}`, {responseType: 'text', }, )
   }
 
-  // getYears(): Observable<IYear[]>{
-  //   return this.service.get<IcarApiYearsResponse>(`https://databases.one/api/?format=json&select=year${this.API_KEY}`).pipe(
-  //     map((response: {result: IYear[] }) => {
-  //       return response.result.reverse();
-  //     })
-  //   )
-  // }
-
   getAmenities() {
-    return this.service.get('http://127.0.0.1:8000/cars/extras/')
+    return this.service.get(`${this.CAR_DB_URL}/cars/extras/`)
   }
   
   // createCar(year, make, extras, pictures) {
-  createCar(year, make, model, transmission, engine_type, horsepower, consumption, seats, category, region, city, address, zip_code, extras, pictures) {
-    return this.service.post('http://127.0.0.1:8000/cars/create/', {
+  createCar(year, make, model, transmission, engine_type, horsepower, consumption, seats, category, region, city, address, zip_code, extras, pictures,
+            pets, smoking, includedKm, pricePerExtraKm, minRent, maxRent, price, weeklyDiscount, monthlyDiscount) {
+    return this.service.post(`${this.CAR_DB_URL}/cars/create/`, {
       year: year,
       make: make,
       model: model,
@@ -54,7 +50,16 @@ export class CarDatabaseService {
       address: address,
       zip_code: zip_code,
       pictures: pictures,
-      extras: extras
+      extras: extras,
+      pets: pets, 
+      smoking: smoking, 
+      included_km: includedKm, 
+      price_per_extra_km: pricePerExtraKm, 
+      min_rent: minRent, 
+      max_rent: maxRent, 
+      price: price, 
+      weekly_discount: weeklyDiscount, 
+      monthly_discount: monthlyDiscount
     })
   }
 }

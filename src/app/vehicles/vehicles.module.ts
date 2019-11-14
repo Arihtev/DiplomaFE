@@ -22,6 +22,8 @@ import { DefaultIntl, MY_MOMENT_FORMATS,  } from '../pipes/custom-date-time-adap
 import { OWL_DATE_TIME_LOCALE } from 'ng-pick-datetime';
 import { MatInputModule } from '@angular/material/input';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 
 @NgModule({
@@ -51,7 +53,9 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
     MatInputModule,
     MatAutocompleteModule,
     HomeModule,
-    ButtonsModule
+    ButtonsModule,
+    MatSnackBarModule,
+    MatProgressSpinnerModule
   ],
   exports: [
     CarsListComponent, 

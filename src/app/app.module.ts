@@ -30,6 +30,7 @@ import { MatInputModule } from '@angular/material/input';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { AuthenticationComponent } from './authentication/authentication.component';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 
 @NgModule({
@@ -67,6 +68,7 @@ import { AuthenticationComponent } from './authentication/authentication.compone
     MatInputModule,
     ModalModule.forRoot(),
     TabsModule.forRoot(),
+    MatProgressSpinnerModule
   ],
   entryComponents: [
     AuthenticationComponent

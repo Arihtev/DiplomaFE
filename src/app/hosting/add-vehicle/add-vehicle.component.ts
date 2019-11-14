@@ -6,6 +6,7 @@ import { FormMainComponent } from './form-main/form-main.component';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ImageUploadComponent } from './form-description/image-upload/image-upload.component';
+import { FormRulesComponent } from './form-rules/form-rules.component';
 
 @Component({
   selector: 'app-add-place',
@@ -23,6 +24,7 @@ export class AddVehicleComponent implements OnInit {
   @ViewChild(FormLocationComponent, {static: true}) formLocationComponent: FormLocationComponent;
   @ViewChild(FormAmenitiesComponent, {static: true}) formAmenitiesComponent: FormAmenitiesComponent;
   @ViewChild(FormDescriptionComponent, {static: true}) formDescriptionComponent: FormDescriptionComponent;
+  @ViewChild(FormRulesComponent, {static: true}) formRulesComponent: FormRulesComponent;
 
   get formStepOne() {
     return this.formMainComponent ? this.formMainComponent.mainForm : null;
@@ -38,6 +40,10 @@ export class AddVehicleComponent implements OnInit {
 
   get formStepFour() {
     return this.formAmenitiesComponent ? this.formAmenitiesComponent.amenitiesForm : null;
+  }
+
+  get formStepFive() {
+    return this.formRulesComponent ? this.formRulesComponent.rulesForm : null;
   }
 
   
@@ -71,11 +77,22 @@ export class AddVehicleComponent implements OnInit {
     let comfort = this.formStepFour.value.comfortExtras
     let others = this.formStepFour.value.otherExtras
     let extras = safety.concat(comfort, others)
+
+    let pets = this.formStepFive.value.pets
+    let smoking = this.formStepFive.value.smoking
+    let includedKm = this.formStepFive.value.includedKm
+    let pricePerExtraKm = this.formStepFive.value.pricePerExtraKm
+    let minRent = this.formStepFive.value.minRent
+    let maxRent = this.formStepFive.value.maxRent
+    let price = this.formStepFive.value.price
+    let weeklyDiscount = this.formStepFive.value.weeklyDiscount
+    let monthlyDiscount = this.formStepFive.value.monthlyDiscount
     
     let pictures = this.formStepThree.value.pictures
 
     // console.log(year, make, model, transmission, engine, type, region, city, address, zipCode, extras, pictures)
-    this.service.createCar(year, make, model, transmission, engine, horsepower, consumption, seats, type, region, city, address, zipCode, extras, pictures).subscribe(res => {
+    this.service.createCar(year, make, model, transmission, engine, horsepower, consumption, seats, type, region, city, address, zipCode, extras, pictures,
+                           pets, smoking, includedKm, pricePerExtraKm, minRent, maxRent, price, weeklyDiscount, monthlyDiscount).subscribe(res => {
       console.log(res)
     })
   }

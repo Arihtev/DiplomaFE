@@ -34,7 +34,8 @@ import { EditMainComponent } from './manage-cars/edit-car/edit-main/edit-main.co
 import { EditSecondaryComponent } from './manage-cars/edit-car/edit-secondary/edit-secondary.component';
 import { EditExtrasComponent } from './manage-cars/edit-car/edit-extras/edit-extras.component';
 import { EditImagesComponent } from './manage-cars/edit-car/edit-secondary/edit-images/edit-images.component';
-
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatIconModule } from '@angular/material/icon';
 
 
 @NgModule({
@@ -75,7 +76,9 @@ import { EditImagesComponent } from './manage-cars/edit-car/edit-secondary/edit-
     MatListModule,
     NgbModule,
     VehiclesModule,
-    MatTabsModule
+    MatTabsModule,
+    MatTooltipModule,
+    MatIconModule
   ],
 })
 export class HostingModule { }

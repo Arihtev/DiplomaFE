@@ -1,9 +1,9 @@
-<mat-horizontal-stepper [linear]="false" #stepper>
+<mat-horizontal-stepper [linear]="true" #stepper>
 
 	<mat-step [stepControl]="formStepOne">
 		<ng-template matStepLabel>Основна информация</ng-template>
 		<app-form-main></app-form-main>
-		<button mat-button (click)="submit()">Submit</button>
+		<!-- <button mat-button (click)="submit()">Submit</button> -->
 	</mat-step>
 
 	<mat-step [stepControl]="formStepTwo">
@@ -20,12 +20,12 @@
 	<mat-step>
 		<ng-template matStepLabel>Удобства</ng-template>
 		<app-form-amenities></app-form-amenities>
-		<button mat-button (click)="submit()">Submit</button>
 	</mat-step>
 
 	<mat-step>
 		<ng-template matStepLabel>Условия и цена</ng-template>
 		<app-form-rules></app-form-rules>
+		<button mat-button (click)="submit()">Submit</button>
 	</mat-step>
 
 </mat-horizontal-stepper>

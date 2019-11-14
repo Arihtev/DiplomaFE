@@ -1,0 +1,11 @@
+<div class="wrapper"></div>
+    <div class="container">
+        <h1 class="mt-2">
+            Любими
+        </h1>
+        <div class="row mb-3">
+            <div *ngFor="let car of cars" class="col-6 text-center mt-4">
+                <app-cars-list-item [car]="car" (update)="refreshCars()"></app-cars-list-item>
+            </div>
+        </div>
+    </div>

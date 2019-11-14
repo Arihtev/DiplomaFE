@@ -21,12 +21,12 @@ export class RegistrationComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder, private auth: AuthService, public bsModalRef: BsModalRef, private modalService: BsModalService) {
     this.registerForm = this.formBuilder.group({
-      username: ['user2'],
-      email: ['user2@mail.com', [Validators.email]],
-      firstName: ['user2'],
-      lastName: ['user2'],
-      password: ['Georgi123@', [Validators.required, Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}'), Validators.minLength(8)]],
-      confirmPassword: ['Georgi123@'],
+      username: [''],
+      email: ['', [Validators.email]],
+      firstName: [''],
+      lastName: [''],
+      password: ['', [Validators.required, Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}'), Validators.minLength(8)]],
+      confirmPassword: [''],
     }, {
       validators: [MustMatch('password', 'confirmPassword'), ValidateUsername('username', auth), ValidateEmail('email', auth)],
     });

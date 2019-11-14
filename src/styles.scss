@@ -10,3 +10,32 @@ body {
   padding-right: 0 !important;
   font-family: 'PT Sans', sans-serif;
 }
+
+.mat-tooltip {
+  font-size: 14px;
+  color: white;
+}
+
+.custom-snackbar{
+  font-weight: bold;
+  button{
+    color: rgb(209, 209, 209);
+  }
+}
+
+input[type="button"]{
+  outline:none;
+}
+
+input[type="button"]::-moz-focus-inner {
+  border: 0;
+}
+
+div, app-show-rating{
+  outline: none;
+}
+
+mat-spinner{
+  // display: none;
+  position: fixed; overflow: visible; margin: auto; top: 0; left: 0; bottom: 0; right: 0; z-index: 999;
+}

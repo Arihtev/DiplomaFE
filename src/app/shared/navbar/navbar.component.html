@@ -1,7 +1,7 @@
 <mdb-navbar [SideClass]="sideclass" [containerInside]="true" appNavbar>
   <mdb-navbar-brand>
     <a class="logo navbar-brand" pageScroll [routerLink]="['']" href="#myBody">
-      <strong>Navbar</strong>
+      <strong>LOGO</strong>
     </a>
   </mdb-navbar-brand>
   <links>
@@ -67,16 +67,18 @@
           <span class="caret"></span>
         </a>
         <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu" role="menu" aria-labelledby="button-basic">
-          <li role="menuitem"><a class="dropdown-item"><i class="fas fa-list-ul"></i> Saved</a></li>
+          <li role="menuitem" [routerLink]="['user/favourites']"><a class="dropdown-item">
+            <i class="fas fa-list-ul"></i> Любими</a>
+          </li>
           <li role="menuitem"><a class="dropdown-item">
-              <mdb-icon fas icon="cog"></mdb-icon> Settings
+              <mdb-icon fas icon="cog"></mdb-icon> Настройки
             </a></li>
-          <li role="menuitem"><a class="dropdown-item">
-              <mdb-icon fas icon="envelope"></mdb-icon> Messages
+          <li role="menuitem" (click)="printInfo()"><a class="dropdown-item">
+              <mdb-icon fas icon="envelope"></mdb-icon> Съобщения
             </a></li>
           <li class="divider dropdown-divider"></li>
-          <li role="menuitem"><a class="dropdown-item" [routerLink]="['login']" (click)="authService.logoutUser()"><i
-                class="fas fa-sign-out-alt"></i><span class="text-right"> Log Out</span></a></li>
+          <li role="menuitem"><a class="dropdown-item" (click)="authService.logoutUser()"><i
+                class="fas fa-sign-out-alt"></i><span class="text-right"> Изход</span></a></li>
         </ul>
       </div>
     </ul>

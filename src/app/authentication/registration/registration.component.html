@@ -16,14 +16,14 @@
 
 
 			<mat-form-field class="col-6">
-				<input type="text" placeholder="Потребителско име" matInput formControlName="username" required>
+				<input type="text" placeholder="Потребителско име" matInput formControlName="username" autocomplete="off" required>
 				<mat-error *ngIf="registerForm.hasError('required', 'username')">Въведете потребителско име
 				</mat-error>
 				<mat-error *ngIf="registerForm.hasError('usernameTaken', 'username')">Потребителското име е заето
 				</mat-error>
 			</mat-form-field>
 			<mat-form-field class="col-6">
-				<input type="email" placeholder="E-mail" matInput formControlName="email" required />
+				<input type="email" placeholder="E-mail" matInput formControlName="email" autocomplete="off" required />
 				<!-- <mat-error *ngIf="registerForm.controls.email.errors">
 					<span *ngIf="registerForm.controls.email.errors.required">Моля въведете вашият e-mail</span>
 					<span *ngIf="registerForm.controls.email.errors.email">Посоченият e-mail е невалиден</span>
@@ -33,13 +33,13 @@
 				<mat-error *ngIf="registerForm.hasError('email', 'email')">Посоченият e-mail е невалиден</mat-error>
 			</mat-form-field>
 			<mat-form-field class="col-6">
-				<input type="text" placeholder="Име" matInput formControlName="firstName" required />
+				<input type="text" placeholder="Име" matInput formControlName="firstName" autocomplete="off" required />
 				<mat-error>Моля въведете вашето име</mat-error>
 				<!-- <mat-error *ngIf="registerForm.hasError('required', 'firstName')">Посоченият e-mail е невалиден</mat-error>				 -->
 				<!-- <mat-error *ngIf="registerForm.hasError('name', 'firstName')">Посоченият e-mail е невалиден</mat-error> -->
 			</mat-form-field>
 			<mat-form-field class="col-6">
-				<input type="text" placeholder="Фамилия" matInput formControlName="lastName" required />
+				<input type="text" placeholder="Фамилия" matInput formControlName="lastName" autocomplete="off" required />
 				<mat-error>Моля въведете вашата фамилия</mat-error>
 			</mat-form-field>
 			<mat-form-field class="col-6">

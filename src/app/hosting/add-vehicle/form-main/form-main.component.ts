@@ -40,7 +40,6 @@ export class FormMainComponent implements OnInit {
   }
 
   ngOnInit() {
-
     this.mainForm.controls['year'].valueChanges.subscribe(res => {
       // console.log(res)
       this.models = []

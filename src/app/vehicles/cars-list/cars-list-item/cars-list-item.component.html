@@ -1,9 +1,16 @@
-<div class="car-card" [routerLink]="[car.id]">
+<!-- <button (click)="refreshUser()">refresh</button>
+<button (click)="saveUser()">save</button> -->
+<div class="car-card" [routerLink]="'/cars/'+car.id">
     <div class="car-price">
-        <i class="fas fa-tag"></i><span class="h5">{{ car.price }}лв</span>/ден
+        <i class="fas fa-tag custom-green"></i><span class="h5">{{ car.price }}лв</span>/ден
     </div>
-    <div class="car-fav">
-        <i class="far fa-heart"></i>
+    <!-- <div class="car-fav" (click)="addToFavourites(car.id)" *ngIf="currentUser"> -->
+        <div class="car-fav" (click)="addToFavourites(car.id);$event.stopPropagation()" *ngIf="currentUser">
+            <!-- (click)="onChildClickFunction();$event.stopPropagation()" -->
+        <i *ngIf="currentUser.favourite_cars.indexOf(car.id)==-1; else isFav" class="far fa-heart"></i>
+        <ng-template #isFav>
+            <i class="fas fa-heart"></i>
+        </ng-template>
     </div>
     <img class="car-img" [src]="car.pictures[0].picture" alt="">
     <div class="car-info">
@@ -12,7 +19,7 @@
                 {{ car.make }} {{ car.model }} <span class="car-year">{{ car.year }}</span>
             </div>
             <div class="col-5 text-right car-city">
-                <i class="fas fa-map-marker-alt" style="font-size: 1rem"></i> {{ car.city }}
+                <i class="fas fa-map-marker-alt text-primary" style="font-size: 1rem"></i> {{ car.city }}
             </div>
         </div>
         <div class="row">
@@ -28,7 +35,7 @@
                 <i class="fas fa-burn"> </i> <span class="car-second-info"> {{ car.consumption }}л/100км</span>
             </div>
             <div class="col-4"> 
-                <i class="fas fa-gas-pump"></i> <span class="car-second-info"> {{ car.engine_type }}</span>
+                <i class="fas fa-gas-pump custom-green"></i> <span class="car-second-info"> {{ car.engine_type }}</span>
             </div>
             <div class="col-4">
                 <img src="assets/images/gearbox.svg" class="car-icon" alt=""> <span class="car-second-info"> {{ car.transmission }}</span>

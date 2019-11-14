@@ -1,3 +1,7 @@
+.custom-green{
+    color: rgb(0, 104, 0);
+}
+
 .car-card{
     height: 420px;
     width: 100%;
@@ -64,7 +68,7 @@
         color: white;
         position: absolute;
         right: 10px;
-        z-index: 20;
+        z-index: 100;
         font-size: 1.6rem;
         top: -35px;
         opacity: 0;

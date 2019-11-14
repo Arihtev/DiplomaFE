@@ -10,9 +10,11 @@ import { BehaviorSubject, Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class AuthService {
+  CAR_DB_URL: string = 'http://127.0.0.1:8000'
+  // 'http://10.10.63.248'
+
   private currentUserSubject: BehaviorSubject<IUser>;
   public currentUser: Observable<IUser>;
-  private var
 
   constructor(private service: HttpClient, private router: Router) { 
     this.currentUserSubject = new BehaviorSubject<IUser>(JSON.parse(localStorage.getItem('currentUser')));
@@ -28,7 +30,7 @@ export class AuthService {
   jwtHelper = new JwtHelperService();
 
   registerUser(user){
-    return this.service.post('http://127.0.0.1:8000/users/register/', ({
+    return this.service.post(`${this.CAR_DB_URL}/users/register/`, ({
       username: user.username,
       email: user.email,
       password: user.password,
@@ -38,19 +40,19 @@ export class AuthService {
   }
 
   validateUsername(username){
-    return this.service.post('http://127.0.0.1:8000/users/check-username/', ({
+    return this.service.post(`${this.CAR_DB_URL}/users/check-username/`, ({
       username: username
     }))
   }
 
   validateEmail(email){
-    return this.service.post('http://127.0.0.1:8000/users/check-email/', ({
+    return this.service.post(`${this.CAR_DB_URL}/users/check-email/`, ({
       email: email
     }))
   }
 
   loginUser(user) {
-    return this.service.post('http://127.0.0.1:8000/users/api/token/', ({
+    return this.service.post(`${this.CAR_DB_URL}/users/api/token/`, ({
       username: user.username,
       password: user.password,
     }))
@@ -60,7 +62,7 @@ export class AuthService {
     let tokenPayload = decode(localStorage.getItem('token'));
     let userId = tokenPayload.user_id
 
-    this.service.get('http://127.0.0.1:8000/users/user/' + userId).subscribe((res: IUser) => {
+    this.service.get(`${this.CAR_DB_URL}/users/user/` + userId).subscribe((res: IUser) => {
       localStorage.setItem('currentUser', JSON.stringify(res));
       // this.var = res
       this.currentUserSubject.next(res);
