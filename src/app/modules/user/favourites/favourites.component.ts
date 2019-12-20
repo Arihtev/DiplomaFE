@@ -1,0 +1,29 @@
+import { Component, OnInit } from '@angular/core';
+import { ICar } from 'src/app/shared/models/site-db/cars';
+import { SiteCardbService } from 'src/app/core/services/site-cardb/site-cardb.service';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
+import { CustomHttpService } from 'src/app/core/services/custom-http/custom-http.service';
+
+@Component({
+  selector: 'app-favourites',
+  templateUrl: './favourites.component.html',
+  styleUrls: ['./favourites.component.scss']
+})
+export class FavouritesComponent implements OnInit {
+
+  cars: ICar[] = []
+
+  constructor(private dbService: SiteCardbService, private customHttp: CustomHttpService) { }
+
+  ngOnInit() {
+    this.refreshCars()
+  }
+
+  refreshCars(){
+    this.dbService.getFavourites().subscribe((res: ICar[]) => {
+      // console.log(res)
+      this.cars = res
+    })
+  }
+
+}

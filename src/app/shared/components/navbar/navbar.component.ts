@@ -1,11 +1,12 @@
+import { AuthService } from '../../../core/services/authentication/auth.service';
 import { Component, OnInit, NgZone, TemplateRef } from '@angular/core';
 import { Router, Event, NavigationEnd } from '@angular/router';
+import decode from 'jwt-decode';
 import { Observable, Subscription } from 'rxjs';
-import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
-import { IUser } from '../models/authentication/user';
+import { IUser } from 'src/app/shared/models/authentication/user';
 import { NavbarService } from 'src/app/core/services/navbar/navbar.service';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { AuthenticationComponent } from 'src/app/core/authentication/authentication.component';
-import { AuthService } from 'src/app/core/services/authentication/auth.service';
 
 @Component({
   selector: 'app-navbar',

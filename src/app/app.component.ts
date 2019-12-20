@@ -1,6 +1,7 @@
 import { Component, HostListener } from '@angular/core';
 import { EasingLogic } from 'ngx-page-scroll-core';
 import { Router, NavigationStart, NavigationEnd, RouterEvent, NavigationCancel, NavigationError } from '@angular/router';
+import { CustomHttpService } from './core/services/custom-http/custom-http.service';
 
 @Component({
   selector: 'app-root',
@@ -10,33 +11,14 @@ import { Router, NavigationStart, NavigationEnd, RouterEvent, NavigationCancel, 
 export class AppComponent {
   title = 'rent-project';
 
-  loading = true
-
-  constructor(private router : Router){
+  constructor(private router : Router, customHttp: CustomHttpService){
     this.router.events.subscribe(event => {
       if (event instanceof NavigationStart){
-        console.log("start")
-        this.loading = true
+        // this.routeLoading = true
       }
       if (event instanceof NavigationEnd) {
-        console.log("end")
-        this.loading = false
+        // this.routeLoading = false
       }
     })
   };
-
-  public myEasing: EasingLogic = (t: number, b: number, c: number, d: number): number => {
-    // easeInOutExpo easing
-    if (t === 0) {
-      return b;
-    }
-    if (t === d) {
-      return b + c;
-    }
-    if ((t /= d / 2) < 1) {
-      return c / 2 * Math.pow(2, 10 * (t - 1)) + b;
-    }
-
-    return c / 2 * (-Math.pow(2, -10 * --t) + 2) + b;
-  }
 }

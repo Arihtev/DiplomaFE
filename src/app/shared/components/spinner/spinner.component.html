@@ -1,0 +1,9 @@
+<!-- <div class="spinner-wrapper">
+    <mat-spinner></mat-spinner>
+</div> -->
+
+<div [class.loader-hidden]="!show">
+    <div class="spinner-wrapper">
+        <mat-spinner *ngIf="show"></mat-spinner>
+    </div>
+</div>

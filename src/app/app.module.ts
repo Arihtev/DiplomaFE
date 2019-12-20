@@ -1,8 +1,7 @@
-import { HomeModule } from './home/home.module';
-import { VehiclesModule } from './vehicles/vehicles.module';
-import { HostingModule } from './hosting/hosting.module';
+import { HomeModule } from './modules/home/home.module';
+import { VehiclesModule } from './modules/vehicles/vehicles.module';
+import { HostingModule } from './modules/hosting/hosting.module';
 import { JwtModule } from '@auth0/angular-jwt';
-import { AuthGuard } from './shared/auth.guard';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatButtonModule } from '@angular/material/button';
 import { BrowserModule } from '@angular/platform-browser';
@@ -14,23 +13,25 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatStepperModule } from '@angular/material/stepper';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { NavbarComponent } from './shared/navbar/navbar.component';
+import { NavbarComponent } from './shared/components/navbar/navbar.component';
 import { CollapseModule, BsDropdownModule, PopoverModule } from 'ngx-bootstrap';
 import { NgxPageScrollCoreModule } from 'ngx-page-scroll-core';
 import { NgxPageScrollModule } from 'ngx-page-scroll';
 import { environment } from '../environments/environment'
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker'
-import { RegistrationComponent } from './authentication/registration/registration.component';
-import { LoginComponent } from './authentication/login/login.component';
-import { TokenInterceptorService } from './services/authentication/token-interceptor.service';
+import { RegistrationComponent } from './core/authentication/registration/registration.component';
+import { LoginComponent } from './core/authentication/login/login.component';
+import { TokenInterceptorService } from './core/interceptors/token-interceptor/token-interceptor.service';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
-import { NavbarDirective } from './directives/navbar.directive';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { MatInputModule } from '@angular/material/input';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { TabsModule } from 'ngx-bootstrap/tabs';
-import { AuthenticationComponent } from './authentication/authentication.component';
+import { AuthenticationComponent } from './core/authentication/authentication.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { AuthGuard } from './core/guards/auth-guard/auth.guard';
+import { SpinnerComponent } from './shared/components/spinner/spinner.component';
+import { SharedModule } from './shared/shared.module';
 
 
 @NgModule({
@@ -39,7 +40,6 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     NavbarComponent,
     RegistrationComponent,
     LoginComponent,
-    NavbarDirective,
     AuthenticationComponent,
   ],
   imports: [
@@ -68,7 +68,8 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     MatInputModule,
     ModalModule.forRoot(),
     TabsModule.forRoot(),
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    SharedModule
   ],
   entryComponents: [
     AuthenticationComponent

@@ -1,22 +1,22 @@
-import { AuthGuard } from './shared/auth.guard';
-import { LoginComponent } from './authentication/login/login.component';
+import { LoginComponent } from './core/authentication/login/login.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { RegistrationComponent } from './authentication/registration/registration.component';
+import { RegistrationComponent } from './core/authentication/registration/registration.component';
+import { AuthGuard } from './core/guards/auth-guard/auth.guard';
 
 const routes: Routes = [
   {
     path: "",
     pathMatch: "full",
     loadChildren: () =>
-      import("./home/home.module").then(
+      import("./modules/home/home.module").then(
         module => module.HomeModule
       ),
   },
   {
     path: "host",
     loadChildren: () =>
-      import("./hosting/hosting.module").then(
+      import("./modules/hosting/hosting.module").then(
         module => module.HostingModule
       ),
     canActivate: [AuthGuard]
@@ -24,14 +24,14 @@ const routes: Routes = [
   {
     path: "user",
     loadChildren: () =>
-      import("./user/user.module").then(
+      import("./modules/user/user.module").then(
         module => module.UserModule
       ),
   },
   {
     path: "cars",
     loadChildren: () =>
-      import("./vehicles/vehicles.module").then(
+      import("./modules/vehicles/vehicles.module").then(
         module => module.VehiclesModule
       ),
   },
