@@ -4,10 +4,23 @@
 }
 
 .reserve-btn{
-    font-size: 1.4rem;
+    font-size: 1.2rem !important;
     width: 100%;
-    height: 60px;
+    color: white;
+    background-color: rgb(0, 146, 12) !important;
+    // height: 60px;
     margin-top: 20px;
+}
+
+.login-btn{
+    font-size: 1.1rem !important;
+    // width: 100%;
+    // height: 80px;
+    margin-top: 20px;
+}
+
+.cal-start{
+    color: green;
 }
 
 .pricing{

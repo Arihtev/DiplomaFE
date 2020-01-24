@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpXhrBackend, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpXhrBackend, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { tap, filter } from 'rxjs/operators';
 import { LoaderService } from '../loader/loader.service';
@@ -15,7 +15,7 @@ export class CustomHttpService extends HttpClient{
     super(backend);
   }
 
-  public get(url: string): Observable<any> {
+  public get(url: string, params?): Observable<any> {
 
     this.showLoader();
 
@@ -25,7 +25,7 @@ export class CustomHttpService extends HttpClient{
     }
     // console.log("Loading...")
 
-    return super.get(url, {'headers': headers}).pipe(
+    return super.get(url, {'headers': headers, params: params ? params : null}).pipe(
       tap((res: Response) => {
         // console.log("Loaded!")
         this.hideLoader()

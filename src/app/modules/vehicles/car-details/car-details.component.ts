@@ -1,6 +1,6 @@
 import { Observable } from 'rxjs';
 import { SiteCardbService } from '../../../core/services/site-cardb/site-cardb.service';
-import { ICar } from '../../../shared/models/site-db/cars';
+import { ICar, IFilters } from '../../../shared/models/site-db/cars';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
@@ -13,6 +13,8 @@ export class CarDetailsComponent implements OnInit {
 
   currentRate = 3.14;
 
+  filters: IFilters
+
   car: Observable<any>  
 
   constructor(private activatedRoute: ActivatedRoute, private carDbService: SiteCardbService) { }
@@ -21,6 +23,9 @@ export class CarDetailsComponent implements OnInit {
     this.activatedRoute.params.subscribe(params => {
       this.car = this.carDbService.car_details(params.id)
     })
+    if (window.history.state.filters){
+      this.filters = window.history.state.filters;
+    }
   }
 
   print(){

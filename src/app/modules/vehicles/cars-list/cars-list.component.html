@@ -12,7 +12,7 @@
         </div>
 
         <div *ngFor="let car of cars" class="col-6 text-center mt-4">
-            <app-cars-list-item [car]="car"></app-cars-list-item>
+            <app-cars-list-item [car]="car" [filters]="filters"></app-cars-list-item>
         </div>
 
         <div *ngIf="noCars">

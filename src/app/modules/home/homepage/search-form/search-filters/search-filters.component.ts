@@ -23,13 +23,12 @@ export class SearchFiltersComponent implements OnInit {
   cities: City[] = CITIES
   loadedCities: City[] = [];
   filteredCities: Observable<City[]>;
-
-  min = new Date()
-
+  
   today = new Date();
-  startAt = new Date(this.today.getFullYear(), this.today.getMonth(), this.today.getDate(), this.today.getHours() + 1);
-  start = new Date(this.today.getFullYear(), this.today.getMonth(), this.today.getDate(), this.today.getHours() + 1)
-  end = new Date(this.today.getFullYear(), this.today.getMonth(), this.today.getDate() + 1, this.today.getHours() + 1)
+  min = new Date(this.today.getFullYear(), this.today.getMonth(), this.today.getDate())
+  startAt = new Date(this.today.getFullYear(), this.today.getMonth(), this.today.getDate());
+  start = new Date(this.today.getFullYear(), this.today.getMonth(), this.today.getDate())
+  end = new Date(this.today.getFullYear(), this.today.getMonth(), this.today.getDate())
 
   public selectedMoments = [
     // this.start,
@@ -153,6 +152,10 @@ export class SearchFiltersComponent implements OnInit {
     this.locationForm.controls['city'].setValue(this.filters.city)
     this.selectedMoments[0] = this.filters.start
     this.selectedMoments[1] = this.filters.end
+  }
+
+  printInfo(){
+    console.log("Working")
   }
 
   showFilters(){

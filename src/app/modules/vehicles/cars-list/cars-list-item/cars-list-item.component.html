@@ -1,6 +1,7 @@
 <!-- <button (click)="refreshUser()">refresh</button>
 <button (click)="saveUser()">save</button> -->
-<div class="car-card" [routerLink]="'/cars/'+car.id">
+<div class="car-card" (click)="openCarDetails()">
+    <!-- [routerLink]="'/cars/'+car.id" -->
     <div class="car-price">
         <i class="fas fa-tag custom-green"></i><span class="h5">{{ car.price }}лв</span>/ден
     </div>

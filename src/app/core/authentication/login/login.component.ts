@@ -34,7 +34,7 @@ export class LoginComponent implements OnInit {
     this.authService.loginUser(registeredUserData).subscribe((res: {token: string})=> {
       localStorage.setItem('token', res.token)
       this.close.emit()
-      this.router.navigate([''])
+      // this.router.navigate([''])
       this.authService.saveUser()
     },
     err => {

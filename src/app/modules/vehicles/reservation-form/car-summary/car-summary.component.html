@@ -1,0 +1,82 @@
+<div class="car-fixed">
+    <div class="car-card mt-4">
+        <!-- [routerLink]="'/cars/'+car.id" -->
+        <div class="car-price">
+            <i class="fas fa-tag custom-green"></i><span class="h5">{{ car.price }}лв</span>/ден
+        </div>
+        <img class="car-img" [src]="car.pictures[0].picture" alt="">
+        <div class="car-info">
+            <div class="row">
+                <div class="col-7 text-left">
+                    {{ car.make }} {{ car.model }} <span class="car-year">{{ car.year }}</span>
+                </div>
+                <div class="col-5 text-right car-city">
+                    <i class="fas fa-map-marker-alt text-primary" style="font-size: 1rem"></i> {{ car.city }}
+                </div>
+        </div>
+        <div class="row">
+            <div class="col-6 text-left">
+                <app-show-rating [rate]="car.id"></app-show-rating>
+            </div>
+            <div class="col-6 text-right car-city">
+                <i class="fas fa-user-check" style="font-size: 1rem"></i> {{ car.owner.username }}
+            </div>
+        </div>
+        <div class="row mt-2 text-left">
+            <div class="col-4">
+                <i class="fas fa-burn"> </i> <span class="car-second-info"> {{ car.consumption }}л/100км</span>
+            </div>
+            <div class="col-4"> 
+                <i class="fas fa-gas-pump custom-green"></i> <span class="car-second-info"> {{ car.engine_type }}</span>
+            </div>
+            <div class="col-4">
+                <img src="assets/images/gearbox.svg" class="car-icon" alt=""> <span class="car-second-info"> {{ car.transmission }}</span>
+            </div>
+        </div>
+        <div class="row mt-1 text-left">
+            <div class="col-4">
+                <img src="assets/images/horsepower.png" class="car-icon" alt=""> <span class="car-second-info"> {{ car.horsepower }} к.с.</span>
+            </div>
+            <div class="col-4"> 
+                <i class="fas fa-car"></i> <span class="car-second-info"> {{ car.category | convertCategory }}</span>
+            </div>
+            <div class="col-4">
+                <img src="assets/images/seat.png" class="car-icon" alt=""> <span class="car-second-info"> {{ car.seats }} места</span>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="car-summary text-center">
+    <i class="far fa-calendar-check text-primary mr-1"></i>
+    <span class="font-weight-bold">{{ selectedMoments[0]| amLocale:'bg' | amDateFormat: 'D MMM, YYYY' }} &#8594;
+    {{ selectedMoments[1]| amLocale:'bg' | amDateFormat: 'D MMM, YYYY' }}</span>
+    <hr>
+    <div class="row">
+        <div class="col-6 text-left">
+            <span>{{ car.price }}лв х {{ 2 }} дни</span> 
+        </div>
+        <div class="col-6 text-right">
+            <span>{{ car.price*2 }}лв</span>
+        </div>
+    </div>
+    <div class="row mt-1">
+        <div class="col-6 text-left">
+            <span>Такса <mat-icon class="far fa-question-circle h6" matTooltip="My tooltip" matTooltipPosition="above"></mat-icon></span>
+        </div>
+        <div class="col-6 text-right">
+            <span>7лв</span>
+        </div>
+    </div>
+    <!-- <br>
+        <span class="price-left">Такса</span> <span class="price-right">7лв</span> -->
+        <hr>
+        <div class="row mt-1">
+            <div class="col-6 text-left">
+                <span class="font-weight-bold">Общо</span>
+            </div>
+            <div class="col-6 text-right">
+                <span class="font-weight-bold">{{ car.price*2 + 7 }}лв</span>
+            </div>
+        </div>
+    </div>
+</div>

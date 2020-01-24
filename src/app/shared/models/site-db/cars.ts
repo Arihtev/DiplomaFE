@@ -17,6 +17,7 @@ export interface ICar{
     extras: IExtra[],
     description: String,
     owner: IOwner,
+    reservations: IReservation[]
 }
 
 export interface IPicture{
@@ -44,4 +45,11 @@ export interface IFilters{
     city: {name: String},
     start: Date,
     end: Date
+}
+
+export interface IReservation{
+    car_id: number,
+    renter_id: number,
+    start_date: string | Date,
+    end_date: string | Date
 }

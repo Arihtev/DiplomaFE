@@ -1,6 +1,6 @@
 import { ICar } from '../../../shared/models/site-db/cars';
 import { Observable } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { CustomHttpService } from '../custom-http/custom-http.service';
 
@@ -14,8 +14,9 @@ export class SiteCardbService {
 
   constructor(private service: HttpClient, private customService: CustomHttpService) { }
 
-  get_all_cars(){
-    return this.customService.get(`${this.CAR_DB_URL}/cars/all/`)
+  get_all_cars(start?, end?){
+    let params = start && end ? new HttpParams().set("start_date",start).set("end_date", end) : null;
+    return this.customService.get(`${this.CAR_DB_URL}/cars/all/`, params ? params : null)
   }
 
   car_details(id){
@@ -28,5 +29,14 @@ export class SiteCardbService {
 
   getFavourites(){
     return this.customService.get(`${this.CAR_DB_URL}/users/favourites/`)
+  }
+
+  sendReservation(reservationData){
+    return this.customService.post(`${this.CAR_DB_URL}/reservations/all/`, {
+      car_id: reservationData.carId,
+      renter_id: reservationData.renterId,
+      start_date: reservationData.startDate,
+      end_date: reservationData.endDate
+    })
   }
 }

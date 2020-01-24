@@ -32,6 +32,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { AuthGuard } from './core/guards/auth-guard/auth.guard';
 import { SpinnerComponent } from './shared/components/spinner/spinner.component';
 import { SharedModule } from './shared/shared.module';
+import { MomentModule } from 'ngx-moment';
 
 
 @NgModule({
@@ -40,7 +41,7 @@ import { SharedModule } from './shared/shared.module';
     NavbarComponent,
     RegistrationComponent,
     LoginComponent,
-    AuthenticationComponent,
+    AuthenticationComponent
   ],
   imports: [
     BrowserModule,
@@ -69,7 +70,8 @@ import { SharedModule } from './shared/shared.module';
     ModalModule.forRoot(),
     TabsModule.forRoot(),
     MatProgressSpinnerModule,
-    SharedModule
+    SharedModule,
+    MomentModule
   ],
   entryComponents: [
     AuthenticationComponent

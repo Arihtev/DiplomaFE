@@ -35,10 +35,21 @@
     </form>
 
     <div class="ml-3 col-6 row pr-0">
+        <div class="col-12">
+            <div class="cal-input m-0">
+                <i class="fa fa-calendar cal-start"></i>
+                <mat-form-field class="example-full-width col-10">
+                    <input readonly matInput class="text-center" autocomplete="off" placeholder="Дати на наемане"
+                        [(ngModel)]="selectedMoments" [selectMode]="'range'" [min]="min"
+                        [owlDateTimeTrigger]="dtPicker1" [owlDateTime]="dtPicker1">
+                </mat-form-field>
+                <owl-date-time #dtPicker1 [pickerType]="'calendar'" [startAt]="startAt" [firstDayOfWeek]=1></owl-date-time>
+            </div>
+        </div>
+    </div>
+
+    <!-- <div class="ml-3 col-6 row pr-0">
         <div class="col-6">
-            <!-- <div class="h4">
-                От:
-            </div> -->
             <div class="cal-input m-0">
                 <i class="fa fa-calendar cal-start"></i>
 
@@ -46,17 +57,14 @@
 
                     <input matInput class="text-center" autocomplete="off" placeholder="Дата на наемане"
                         [owlDateTimeTrigger]="dt12" [owlDateTime]="dt12" [(ngModel)]="selectedMoments"
-                        [owlDateTimeFilter]="" [selectMode]="'rangeFrom'" [min]="min">
+                        [owlDateTimeFilter]="" [selectMode]="'rangeFrom'" [min]="min"  (dateTimeChange)="printInfo()">
                 </mat-form-field>
-                <owl-date-time #dt12 [startAt]="startAt" [firstDayOfWeek]=1 [stepMinute]=60></owl-date-time>
+                <owl-date-time #dt12 [startAt]="startAt" [firstDayOfWeek]=1 [stepMinute]=60 (afterPickerClosed)="printInfo()"></owl-date-time>
             </div>
         </div>
 
 
         <div class="col-6">
-            <!-- <div class="h4">
-                До:
-            </div> -->
             <div class="cal-input m-0">
                 <i class="fa fa-calendar cal-end"></i>
 
@@ -69,7 +77,7 @@
                 <owl-date-time #dt13 [startAt]="startAt" [firstDayOfWeek]=1 [stepMinute]=60></owl-date-time>
             </div>
         </div>
-    </div>
+    </div> -->
 </div>
 
 

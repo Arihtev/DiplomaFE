@@ -6,10 +6,12 @@ import { FavouritesComponent } from './favourites/favourites.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { VehiclesModule } from '../vehicles/vehicles.module';
+import { ReservationsComponent } from './reservations/reservations.component';
 
 @NgModule({
   declarations: [
-    FavouritesComponent
+    FavouritesComponent,
+    ReservationsComponent
   ],
   imports: [
     CommonModule,

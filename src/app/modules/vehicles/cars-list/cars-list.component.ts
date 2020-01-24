@@ -1,78 +1,90 @@
-import { map } from 'rxjs/operators';
-import { Router, ActivatedRoute, NavigationExtras, NavigationStart, NavigationEnd } from '@angular/router';
-import { ICar, IFilters } from '../../../shared/models/site-db/cars';
-import { SiteCardbService } from '../../../core/services/site-cardb/site-cardb.service';
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { SearchFiltersComponent } from 'src/app/modules/home/homepage/search-form/search-filters/search-filters.component';
-import { of } from 'rxjs';
+import { map } from "rxjs/operators";
+import {
+  Router,
+  ActivatedRoute,
+  NavigationExtras,
+  NavigationStart,
+  NavigationEnd
+} from "@angular/router";
+import { ICar, IFilters } from "../../../shared/models/site-db/cars";
+import { SiteCardbService } from "../../../core/services/site-cardb/site-cardb.service";
+import { Component, OnInit, ViewChild } from "@angular/core";
+import { SearchFiltersComponent } from "src/app/modules/home/homepage/search-form/search-filters/search-filters.component";
+import { of } from "rxjs";
+import * as moment from "moment";
 
 @Component({
-  selector: 'app-cars-list',
-  templateUrl: './cars-list.component.html',
-  styleUrls: ['./cars-list.component.scss']
+  selector: "app-cars-list",
+  templateUrl: "./cars-list.component.html",
+  styleUrls: ["./cars-list.component.scss"]
 })
 export class CarsListComponent implements OnInit {
+  filters: any = { region: "", city: "", start: undefined, end: undefined };
+  noCars: boolean = false;
 
-  filters: any = {region: "", city: "", start: undefined, end: undefined}
-  noCars: boolean = false
+  loading = false;
 
-  loading = false
+  cars: ICar[] = [];
 
-  cars: ICar[] = []
-
-  @ViewChild(SearchFiltersComponent, {static: true}) searchFiltersComponent: SearchFiltersComponent;
+  @ViewChild(SearchFiltersComponent, { static: true })
+  searchFiltersComponent: SearchFiltersComponent;
 
   getFilters() {
-    return this.searchFiltersComponent ? this.searchFiltersComponent.getForm() : null;
+    return this.searchFiltersComponent
+      ? this.searchFiltersComponent.getForm()
+      : null;
   }
 
-  constructor(private service: SiteCardbService) { }
+  constructor(private service: SiteCardbService) {}
 
   ngOnInit() {
-    if (window.history.state.example){
+    if (window.history.state.example) {
       this.filters = window.history.state.example;
     }
-    this.updateCars()
+    this.updateCars();
   }
 
-  updateCars(){
-    this.loading = true
-    this.service.get_all_cars().subscribe((res: ICar[]) => {
-      // console.log(res)
-      this.cars = this.filterCarsList(res)
-      this.loading = false
-    },
-    err => {
-    })
+  updateCars() {
+    this.loading = true;
+    this.service.get_all_cars(
+      this.filters.start ? moment(this.filters.start).format("YYYY-MM-D"): undefined, 
+      this.filters.end ? moment(this.filters.end).format("YYYY-MM-D"): undefined)
+      .subscribe(
+      (res: ICar[]) => {
+        // console.log(res)
+        this.cars = this.filterCarsList(res);
+        this.loading = false;
+      },
+      err => {}
+    );
   }
 
-  filterCarsList(cars){
-    let filtered = cars
-    if (this.filters.region){
+  filterCarsList(cars) {
+    let filtered = cars;
+    if (this.filters.region) {
       // console.log(this.filters.region.name)
       // console.log("Filter by region")
-      filtered = filtered.filter(car => car.region == this.filters.region.name)
+      filtered = filtered.filter(car => car.region == this.filters.region.name);
     }
-    if (this.filters.city){
+    if (this.filters.city) {
       // console.log("Filter by city")
-      filtered = filtered.filter(car => car.city == this.filters.city.name)
+      filtered = filtered.filter(car => car.city == this.filters.city.name);
     }
-    if (filtered.length == 0){
-      this.noCars = true
+    if (filtered.length == 0) {
+      this.noCars = true;
+    } else {
+      this.noCars = false;
     }
-    else{
-      this.noCars = false
-    }
-    return filtered
+    return filtered;
   }
 
-  searchCars(){
+  searchCars() {
     // console.log(this.getFilters())
-    this.filters = this.getFilters()
-    this.updateCars()
+    this.filters = this.getFilters();
+    this.updateCars();
   }
 
-  print(){
-    console.log(this.filters)
+  print() {
+    console.log(this.filters);
   }
 }

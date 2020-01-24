@@ -1,0 +1,249 @@
+<div class="gradient"></div>
+<div class="container" *ngIf="car">
+  <div class="row">
+    <div class="col-7">
+      <h1 class="mt-2">
+        Резервация
+      </h1>
+      <h3 class="mt-5">
+        Важни дати
+      </h3>
+      <div class="row">
+        <div class="col-6">
+          <div class="date-box text-center p-1">
+            <span class="font-weight-bold h4">{{
+              selectedMoments[0] | amLocale: "bg" | amDateFormat: "D"
+            }}</span>
+            <br class="p-0 m-0" />
+            {{ selectedMoments[0] | amLocale: "bg" | amDateFormat: "MMM" }}
+          </div>
+          <div class="date-info">
+            {{
+              selectedMoments[0]
+                | amLocale: "bg"
+                | amDateFormat: "dddd"
+                | titlecase
+            }}
+            - получаване
+            <br class="p-0 m-0" />
+            след 06:00 часа
+          </div>
+        </div>
+        <div class="col-6 dates">
+          <div class="date-box text-center p-1">
+            <span class="font-weight-bold h4">{{
+              selectedMoments[1] | amLocale: "bg" | amDateFormat: "D"
+            }}</span>
+            <br class="p-0 m-0" />
+            {{ selectedMoments[1] | amLocale: "bg" | amDateFormat: "MMM" }}
+          </div>
+          <div class="date-info">
+            {{
+              selectedMoments[1]
+                | amLocale: "bg"
+                | amDateFormat: "dddd"
+                | titlecase
+            }}
+            - връщане
+            <br class="p-0 m-0" />
+            до 22:00 часа
+          </div>
+        </div>
+      </div>
+
+      <h3 class="mt-5 mb-3">
+        Имайте предвид
+      </h3>
+      <div class="icon-item" *ngIf="!car.pets">
+        <img src="assets/images/no-pets.png" class="custom-icons" alt="" />
+        Не се допускат домашни любимци
+      </div>
+
+      <div class="icon-item" *ngIf="!car.smoking">
+        <img src="assets/images/no-smoking.svg" class="custom-icons" alt="" />
+        Пушенето е забранено
+      </div>
+      <div class="icon-item">
+        <img src="assets/images/km-included.png" class="custom-icons" alt="" />
+        Разполагате с {{ car.included_km }}км на ден ({{
+          car.included_km * 2
+        }}км общо)
+      </div>
+      <div class="icon-item">
+        <img
+          src="assets/images/extra-km-price.png"
+          class="custom-icons"
+          alt=""
+        />
+        Всеки километър надвишаващ лимита се заплаща на цена
+        {{ car.price_per_extra_km }}лв
+      </div>
+
+      <h3 class="mt-5 mb-3">
+        Потвърждение и плащане
+      </h3>
+
+      <div class="icon-item">
+        Начин на плащане
+        <img
+          src="assets/images/visa-mastercard-icon.png"
+          class="visa-mc-icon"
+          alt=""
+        />
+      </div>
+
+      <form #form="ngForm" autocomplete="off">
+        <input type="hidden" name="id" [value]="formData.id" />
+        <div class="form-group">
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <div class="input-group-text bg-white">
+                <i
+                  class="fa fa-user-circle width18"
+                  [class.green-icon]="card_owner_name.valid"
+                  [class.red-icon]="
+                    card_owner_name.invalid && card_owner_name.touched
+                  "
+                ></i>
+              </div>
+            </div>
+            <input
+              name="card_owner_name"
+              #card_owner_name="ngModel"
+              [(ngModel)]="formData.card_owner_name"
+              oninput="this.value = this.value.toUpperCase()"
+              class="form-control"
+              pattern="^[A-Z][A-Z\s]*$"
+              placeholder="Име на притежателя"
+              required
+            />
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <div class="input-group-text bg-white">
+                <i
+                  class="fa fa-credit-card"
+                  [class.green-icon]="card_number.valid"
+                  [class.red-icon]="card_number.invalid && card_number.touched"
+                ></i>
+              </div>
+            </div>
+            <input
+              name="card_number"
+              #card_number="ngModel"
+              [(ngModel)]="formData.card_number"
+              class="form-control"
+              placeholder="Номер на карта"
+              pattern="^\d{16}"
+              digitOnly
+              required
+              maxlength="16"
+              minlength="16"
+            />
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-7">
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <div class="input-group-text bg-white">
+                  <i
+                    class="fa fa-calendar width18"
+                    [class.green-icon]="expiration_date.valid"
+                    [class.red-icon]="
+                      expiration_date.invalid && expiration_date.touched
+                    "
+                  ></i>
+                </div>
+              </div>
+              <input
+                name="expiration_date"
+                #expiration_date="ngModel"
+                [(ngModel)]="formData.expiration_date"
+                pattern="^\d{2}\/\d{2}$"
+                class="form-control"
+                placeholder="Валидност MM/YY"
+                required
+                maxlength="5"
+                minlength="5"
+              />
+            </div>
+          </div>
+          <div class="form-group col-md-5">
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <div class="input-group-text bg-white">
+                  <i
+                    class="fa fa-key"
+                    [class.green-icon]="cvv.valid"
+                    [class.red-icon]="cvv.invalid && cvv.touched"
+                  ></i>
+                </div>
+              </div>
+              <input
+                type="password"
+                name="cvv"
+                #cvv="ngModel"
+                [(ngModel)]="formData.cvv"
+                class="form-control"
+                placeholder="CVV код за сигурност"
+                pattern="^\d{3}"
+                required
+                maxlength="3"
+                minlength="3"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div class="icon-item row">
+          <div class="col-8">
+            <span class="centered-text h5">
+              Съгласен съм с условията за ползване
+            </span>
+            <div class="can-toggle demo-rebrand-2">
+              <input
+                id="e"
+                type="checkbox"
+                name="confirmation"
+                #confirmation="ngModel"
+                [(ngModel)]="formData.confirmation"
+                required
+              />
+              <label for="e">
+                <div
+                  class="can-toggle__switch"
+                  data-checked="&#10004;"
+                  data-unchecked="&#10006;"
+                ></div>
+              </label>
+            </div>
+          </div>
+          <div class="col-4 text-center">
+            <button
+              type="submit"
+              class="mt-0"
+              mdbBtn
+              gradient="blue"
+              mdbWavesEffect
+              size="lg"
+              [disabled]="form.invalid"
+              (click)="sendReservation()"
+            >
+              Резервирай
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="col-5">
+      <app-car-summary
+        class="car-fixed"
+        [car]="car"
+        [selectedMoments]="selectedMoments"
+      ></app-car-summary>
+    </div>
+  </div>
+</div>

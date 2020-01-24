@@ -1,0 +1,90 @@
+.car-card{
+    height: 330px;
+    width: 420px;
+    position: relative;
+    overflow: hidden;
+    // border: 1px solid grey;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    box-shadow: 0 0 14px lightgrey;
+    img{
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        transition: all 0.5s ease;
+    }
+    .car-info{
+        position: relative;
+        // z-index: 10;
+        height: 140px;
+        background-color: white;
+        padding: 5px 20px;
+        font-size: 1rem;
+        font-weight: bold;
+        top: 0;
+        transition: all 0.5s ease;
+        .car-year{
+            color: rgb(90, 90, 90);
+            font-size: 1rem;
+        }
+        .car-second-info{
+            color: rgb(37, 37, 37);
+            font-size: 0.9rem;
+            font-weight: normal;
+        }
+        .car-icon{
+            height: 18px;
+            width: 18px;
+        }
+        .car-city{
+            font-size: 1rem;
+            font-weight: normal;
+        }
+        .row{
+            .col-4{
+                padding-right: 0px !important;
+            }
+        }
+    }
+    .car-price{
+        background-color: white;
+        color: black;
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        z-index: 20;
+        font-size: 0.9rem;
+        border-radius: 5px;
+        padding: 5px 10px;
+        font-weight: initial;
+        i{
+            font-size: 0.8rem;
+            opacity: 0.75;
+        }
+    }
+}
+
+.car-summary{
+    background-color: white;
+    width: 420px;
+    position: relative;
+    overflow: hidden;
+    // border: 1px solid grey;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    box-shadow: 0 0 14px lightgrey;
+    padding: 20px 20px;
+    font-size: 1.1rem;
+    .price-left{
+        text-align: left;
+        // font-size: 1rem;
+    }
+    .price-right{
+        text-align: right;
+        // font-size: 1rem;
+    }
+    .custom-hr{
+        margin-top: 2px !important;
+        margin-bottom: 2px !important;
+    }
+}

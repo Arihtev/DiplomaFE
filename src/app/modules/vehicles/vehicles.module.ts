@@ -25,6 +25,12 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { ReservationFormComponent } from './reservation-form/reservation-form.component';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatIconModule } from '@angular/material/icon';
+import { CarSummaryComponent } from './reservation-form/car-summary/car-summary.component';
+import { MomentModule } from 'ngx-moment';
+import { DigitOnlyDirective } from 'src/app/shared/directives/numbersOnly';
 
 
 @NgModule({
@@ -35,7 +41,10 @@ import { SharedModule } from 'src/app/shared/shared.module';
     CarDetailsComponent, 
     CarCarouselComponent, 
     ShowRatingComponent, 
-    CarReservationTabComponent,
+    CarReservationTabComponent, 
+    ReservationFormComponent, 
+    CarSummaryComponent,
+    DigitOnlyDirective
     // SearchFiltersComponent,
   ],
   imports: [
@@ -57,7 +66,10 @@ import { SharedModule } from 'src/app/shared/shared.module';
     ButtonsModule,
     MatSnackBarModule,
     MatProgressSpinnerModule,
-    SharedModule
+    SharedModule,
+    MatTooltipModule,
+    MatIconModule,
+    MomentModule,
   ],
   exports: [
     CarsListComponent, 

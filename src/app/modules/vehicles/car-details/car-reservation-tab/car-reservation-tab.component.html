@@ -4,7 +4,7 @@
 
 <img class="w-100 opacity-30" src="assets/images/linebreak.png" alt="">
 
-<div class="h4">
+<!-- <div class="h4">
     Дата и час на наемане:
 </div>
 <div class="form-group cal-input">
@@ -33,7 +33,18 @@
         <input class="form-control" (ngModelChange)="calculateReservedDays($event)" [owlDateTimeTrigger]="dt13" [owlDateTime]="dt13" [(ngModel)]="selectedMoments" [selectMode]="'rangeTo'">
         <owl-date-time #dt13 [firstDayOfWeek]=1 [stepMinute]=60></owl-date-time>
     </div>
+</div> -->
+<div class="col-12">
+    <i class="fa fa-calendar cal-start"></i>
+    <mat-form-field class="example-full-width col-10">
+        <input readonly matInput id="date-input" class="text-center" autocomplete="off" placeholder="Дати на наемане"
+            [(ngModel)]="selectedMoments" [selectMode]="'range'" [min]="min" [owlDateTimeFilter]="datesFilter"
+            [owlDateTimeTrigger]="dtPicker1" [owlDateTime]="dtPicker1" (ngModelChange)="calculateReservedDays($event)">
+    </mat-form-field>
+    <owl-date-time #dtPicker1 [pickerType]="'calendar'" [startAt]="startAt" [firstDayOfWeek]=1 (yearSelected)="chosenYearHandler($event)"></owl-date-time>
 </div>
+
+<button (click)=print()>wtf</button>
 
 
 <div class="container pricing">
@@ -55,4 +66,7 @@
     <span class="price-left font-weight-bold">Общо</span> <span class="price-right font-weight-bold">{{ car.price*daysReserved + 7 }}лв</span>
 </div>
 
-<button type="button" class="btn btn-success reserve-btn" (click)="printInfo()">Резервирай</button>
+<button *ngIf="loggedIn(); else elseBlock" [disabled]="selectedMoments.length == 0" type="button" class="reserve-btn" mdbBtn size="lg" mdbWavesEffect (click)="openReservationForm()">Резервирай</button>
+<ng-template #elseBlock>
+    <button type="button" class="login-btn" mdbBtn gradient="blue" size="lg" mdbWavesEffect (click)="openModalWithComponent(loginComponent)">Влезте в акаунта си, за да довършите резервацията</button>
+</ng-template>
