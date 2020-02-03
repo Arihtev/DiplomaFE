@@ -15,7 +15,6 @@ import { FormLocationComponent } from './add-vehicle/form-location/form-location
 import { FormAmenitiesComponent } from './add-vehicle/form-amenities/form-amenities.component';
 import { FormDescriptionComponent } from './add-vehicle/form-description/form-description.component';
 import { FormRulesComponent } from './add-vehicle/form-rules/form-rules.component';
-import { FormPricingComponent } from './add-vehicle/form-pricing/form-pricing.component';
 import { MatSelectModule } from '@angular/material/select';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
@@ -28,7 +27,6 @@ import { MatListModule } from '@angular/material/list';
 import { ManageCarsComponent } from './manage-cars/manage-cars.component';
 import { EditCarComponent } from './manage-cars/edit-car/edit-car.component';
 import { ManageReservationsComponent } from './manage-reservations/manage-reservations.component';
-import { CarReservationsComponent } from './manage-reservations/car-reservations/car-reservations.component';
 import { MatTabsModule } from '@angular/material/tabs';
 import { EditMainComponent } from './manage-cars/edit-car/edit-main/edit-main.component';
 import { EditSecondaryComponent } from './manage-cars/edit-car/edit-secondary/edit-secondary.component';
@@ -36,6 +34,9 @@ import { EditExtrasComponent } from './manage-cars/edit-car/edit-extras/edit-ext
 import { EditImagesComponent } from './manage-cars/edit-car/edit-secondary/edit-images/edit-images.component';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatIconModule } from '@angular/material/icon';
+import { SharedModule } from 'src/app/shared/shared.module';
+import { CarResItemComponent } from './manage-reservations/car-res-item/car-res-item.component';
+import { MomentModule } from 'ngx-moment';
 
 
 @NgModule({
@@ -46,17 +47,16 @@ import { MatIconModule } from '@angular/material/icon';
     FormAmenitiesComponent,
     FormDescriptionComponent,
     FormRulesComponent,
-    FormPricingComponent,
     ImageUploadComponent,
     DragDropDirective,
     ManageCarsComponent,
     EditCarComponent,
     ManageReservationsComponent,
-    CarReservationsComponent,
     EditMainComponent,
     EditSecondaryComponent,
     EditExtrasComponent,
     EditImagesComponent,
+    CarResItemComponent,
   ],
   imports: [
     CommonModule,
@@ -78,7 +78,9 @@ import { MatIconModule } from '@angular/material/icon';
     VehiclesModule,
     MatTabsModule,
     MatTooltipModule,
-    MatIconModule
+    MatIconModule,
+    SharedModule,
+    MomentModule
   ],
 })
 export class HostingModule { }

@@ -82,8 +82,8 @@ export class AddVehicleComponent implements OnInit {
     let smoking = this.formStepFive.value.smoking
     let includedKm = this.formStepFive.value.includedKm
     let pricePerExtraKm = this.formStepFive.value.pricePerExtraKm
-    let minRent = this.formStepFive.value.minRent
-    let maxRent = this.formStepFive.value.maxRent
+    // let minRent = this.formStepFive.value.minRent
+    // let maxRent = this.formStepFive.value.maxRent
     let price = this.formStepFive.value.price
     let weeklyDiscount = this.formStepFive.value.weeklyDiscount
     let monthlyDiscount = this.formStepFive.value.monthlyDiscount
@@ -92,7 +92,7 @@ export class AddVehicleComponent implements OnInit {
 
     // console.log(year, make, model, transmission, engine, type, region, city, address, zipCode, extras, pictures)
     this.service.createCar(year, make, model, transmission, engine, horsepower, consumption, seats, type, region, city, address, zipCode, extras, pictures,
-                           pets, smoking, includedKm, pricePerExtraKm, minRent, maxRent, price, weeklyDiscount, monthlyDiscount).subscribe(res => {
+      pets, smoking, includedKm, pricePerExtraKm, price, weeklyDiscount, monthlyDiscount).subscribe(res => {
       console.log(res)
     })
   }

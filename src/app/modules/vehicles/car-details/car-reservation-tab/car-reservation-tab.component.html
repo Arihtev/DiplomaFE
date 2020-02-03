@@ -1,72 +1,77 @@
 <div class="h1">
-    Резервация
+  Резервация
 </div>
 
-<img class="w-100 opacity-30" src="assets/images/linebreak.png" alt="">
+<!-- <img class="w-100 opacity-30" src="assets/images/linebreak.png" alt="" /> -->
 
-<!-- <div class="h4">
-    Дата и час на наемане:
-</div>
-<div class="form-group cal-input">
-    <div class="input-group">
-        <div class="input-group-prepend">
-            <div class="input-group-text bg-white">
-                <i class="fa fa-calendar"></i>
-            </div>
-        </div>
-        <input class="form-control" (ngModelChange)="calculateReservedDays($event)" [owlDateTimeTrigger]="dt12" [owlDateTime]="dt12" [(ngModel)]="selectedMoments" [owlDateTimeFilter]="myFilter"
-            [selectMode]="'rangeFrom'" [min]="min">
-        <owl-date-time #dt12 [firstDayOfWeek]=1 [stepMinute]=60></owl-date-time>
-    </div>
+<div class="col-12 text-center">
+  <owl-date-time-inline
+  [(ngModel)]="selectedMoments"
+  [selectMode]="'range'"
+  [pickerType]="'calendar'"
+  [min]="min"
+  [max]="max"
+  [firstDayOfWeek]="1"
+  [owlDateTimeFilter]="datesFilter"
+  (ngModelChange)="processDates($event)"
+  ></owl-date-time-inline>
 </div>
 
-<div class="h4">
-    Дата и час на връщане:
-</div>
-<div class="form-group cal-input">
-    <div class="input-group">
-        <div class="input-group-prepend">
-            <div class="input-group-text bg-white">
-                <i class="fa fa-calendar"></i>
-            </div>
-        </div>
-        <input class="form-control" (ngModelChange)="calculateReservedDays($event)" [owlDateTimeTrigger]="dt13" [owlDateTime]="dt13" [(ngModel)]="selectedMoments" [selectMode]="'rangeTo'">
-        <owl-date-time #dt13 [firstDayOfWeek]=1 [stepMinute]=60></owl-date-time>
-    </div>
-</div> -->
-<div class="col-12">
-    <i class="fa fa-calendar cal-start"></i>
-    <mat-form-field class="example-full-width col-10">
-        <input readonly matInput id="date-input" class="text-center" autocomplete="off" placeholder="Дати на наемане"
-            [(ngModel)]="selectedMoments" [selectMode]="'range'" [min]="min" [owlDateTimeFilter]="datesFilter"
-            [owlDateTimeTrigger]="dtPicker1" [owlDateTime]="dtPicker1" (ngModelChange)="calculateReservedDays($event)">
-    </mat-form-field>
-    <owl-date-time #dtPicker1 [pickerType]="'calendar'" [startAt]="startAt" [firstDayOfWeek]=1 (yearSelected)="chosenYearHandler($event)"></owl-date-time>
-</div>
-
-<button (click)=print()>wtf</button>
-
+<a [routerLink]="" (click)="resetDates()">Изчисти датите</a>
 
 <div class="container pricing">
+  <div class="h4">
+    Ценоразпис:
+  </div>
 
-    <div class="h4">
-        Ценоразпис:
-    </div>
+  <hr />
 
-    <hr>
+  <span class="price-left">{{ car.price }}лв х {{ daysReserved }} дни</span>
+  <span class="price-right">{{ car.price * daysReserved }}лв</span>
 
-    <span class="price-left">{{ car.price }}лв х {{ daysReserved }} дни</span> <span class="price-right">{{ car.price*daysReserved }}лв</span>
+  <hr class="custom-hr" />
 
-    <hr class="custom-hr">
-    
-    <span class="price-left">Такса</span> <span class="price-right">7лв</span>
+  <span *ngIf="discount>0" class="price-left">Отстъпка</span>
+  <span *ngIf="discount>0" class="price-right">{{ discount }}%</span>
 
-    <hr class="custom-hr">
+  <hr *ngIf="discount>0" class="custom-hr" />
 
-    <span class="price-left font-weight-bold">Общо</span> <span class="price-right font-weight-bold">{{ car.price*daysReserved + 7 }}лв</span>
+  <span class="price-left">Такса <mat-icon
+    class="far fa-question-circle h6"
+    matTooltip="Това ни помага да поддържаме платформата активна 24/7"
+    matTooltipPosition="above"
+  ></mat-icon></span> <span class="price-right">7лв</span>
+
+  <hr class="custom-hr" />
+
+  <span class="price-left font-weight-bold">Общо</span>
+  <span class="price-right font-weight-bold"
+    >{{ reservationPrice }}лв</span
+  >
 </div>
 
-<button *ngIf="loggedIn(); else elseBlock" [disabled]="selectedMoments.length == 0" type="button" class="reserve-btn" mdbBtn size="lg" mdbWavesEffect (click)="openReservationForm()">Резервирай</button>
+<button
+  *ngIf="loggedIn(); else elseBlock"
+  [disabled]="!selectedMoments[1]"
+  type="button"
+  class="reserve-btn"
+  mdbBtn
+  size="lg"
+  mdbWavesEffect
+  (click)="openReservationForm()"
+>
+  Резервирай
+</button>
 <ng-template #elseBlock>
-    <button type="button" class="login-btn" mdbBtn gradient="blue" size="lg" mdbWavesEffect (click)="openModalWithComponent(loginComponent)">Влезте в акаунта си, за да довършите резервацията</button>
+  <button
+    type="button"
+    class="login-btn"
+    mdbBtn
+    gradient="blue"
+    size="lg"
+    mdbWavesEffect
+    (click)="openModalWithComponent(loginComponent)"
+  >
+    Влезте в акаунта си, за да довършите резервацията
+  </button>
 </ng-template>

@@ -48,15 +48,23 @@
 </div>
 <div class="car-summary text-center">
     <i class="far fa-calendar-check text-primary mr-1"></i>
-    <span class="font-weight-bold">{{ selectedMoments[0]| amLocale:'bg' | amDateFormat: 'D MMM, YYYY' }} &#8594;
+    <span>{{ selectedMoments[0]| amLocale:'bg' | amDateFormat: 'D MMM, YYYY' }} &#8594;
     {{ selectedMoments[1]| amLocale:'bg' | amDateFormat: 'D MMM, YYYY' }}</span>
-    <hr>
+    <hr class="m-2">
     <div class="row">
         <div class="col-6 text-left">
-            <span>{{ car.price }}лв х {{ 2 }} дни</span> 
+            <span>{{ car.price }}лв х {{ daysReserved }} дни</span> 
         </div>
         <div class="col-6 text-right">
-            <span>{{ car.price*2 }}лв</span>
+            <span>{{ car.price*daysReserved }}лв</span>
+        </div>
+    </div>
+    <div *ngIf="discount>0" class="row">
+        <div class="col-6 text-left">
+            <span>Отстъпка</span> 
+        </div>
+        <div class="col-6 text-right">
+            <span>{{ discount }}%</span>
         </div>
     </div>
     <div class="row mt-1">
@@ -69,14 +77,17 @@
     </div>
     <!-- <br>
         <span class="price-left">Такса</span> <span class="price-right">7лв</span> -->
-        <hr>
+        <hr class="m-2">
         <div class="row mt-1">
             <div class="col-6 text-left">
                 <span class="font-weight-bold">Общо</span>
             </div>
             <div class="col-6 text-right">
-                <span class="font-weight-bold">{{ car.price*2 + 7 }}лв</span>
+                <span class="font-weight-bold">{{ reservationPrice }}лв</span>
             </div>
+        </div>
+        <div *ngIf="refundable" class="text-center mt-3">
+            <i class="fas fa-hand-holding-usd text-success"></i> <span class="font-italic"> Безплатно анулиране до {{ refundable | amLocale:'bg' | amDateFormat: 'D MMM, YYYY' }} </span>
         </div>
     </div>
 </div>

@@ -1,0 +1,46 @@
+<div class="text-center">
+  <h1 mat-dialog-title>
+    Как ще оцените изживяването?
+  </h1>
+  <div mat-dialog-content>
+    <ng-template #t let-fill="fill">
+      <span class="star" [class.full]="fill === 100">
+        <span class="half" [style.width.%]="fill"
+          ><i class="fas fa-star"></i></span
+        ><i class="fas fa-star"></i>
+      </span>
+    </ng-template>
+
+    <ngb-rating
+      class="rating"
+      [(rate)]="rate"
+      [starTemplate]="t"
+      max="5"
+    ></ngb-rating>
+    <hr />
+    <mat-form-field class="example-full-width col-12" appearance="fill">
+      <textarea
+        [(ngModel)]="comment"
+        matInput
+        matTextareaAutosize="true"
+        matAutosizeMinRows="8"
+        placeholder="Оставете коментар ..."
+        maxlength="500"
+      ></textarea>
+    </mat-form-field>
+  </div>
+
+  <div class="text-center">
+    <button mat-raised-button class="m-2" (click)="onCancelClick()">
+      Отмени
+    </button>
+    <button
+      mat-raised-button
+      class="m-2"
+      color="primary"
+      (click)="submitReview()"
+    >
+      Изпрати
+    </button>
+  </div>
+</div>

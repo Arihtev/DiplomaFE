@@ -1,0 +1,42 @@
+.reservation{
+    border-radius: 8px;
+    background: linear-gradient(to right, rgb(87, 166, 255), rgb(187, 211, 255), white);
+}
+
+.date-box{
+    display: inline-block;
+    height: 60px;
+    width: 60px;
+    border-radius: 10px;
+    background-color: rgb(238, 238, 238);
+    font-size: 1rem;
+}
+
+.date-info{
+    display: inline-block;
+    margin-left: 20px;
+    font-size: 1rem;
+}
+
+.renter-img{
+    width: 8em;
+    height: 8em;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.owner-img{
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+}
+
+.price{
+    font-size: 1rem;
+    .fa-times{
+        font-size: 1.6rem;
+    }
+    .decline{
+        cursor: pointer;
+    }
+}

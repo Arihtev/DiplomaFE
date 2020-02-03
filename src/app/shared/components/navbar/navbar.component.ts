@@ -21,7 +21,7 @@ export class NavbarComponent implements OnInit {
   landingPageClass = "navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar intro-fixed-nav"
   otherPageClass = "navbar sticky-top navbar-expand-lg navbar-dark black-color"
 
-  loginComponent = {title: "Логин", component: "login"}
+  loginComponent = {title: "Вход", component: "login"}
   registrationComponent = {title: "Регистрация", component: "registration"}
 
   constructor(private authService: AuthService, private router: Router, private navService: NavbarService, private modalService: BsModalService) { 
@@ -30,7 +30,7 @@ export class NavbarComponent implements OnInit {
     });
     this.router.events.subscribe((event: Event) => {
       if (event instanceof NavigationEnd) {
-        if (event.url == "/"){
+        if (event.url == "/" && window.innerWidth >=893){
           this.sideclass = this.landingPageClass
         }
         else{
@@ -41,7 +41,7 @@ export class NavbarComponent implements OnInit {
   }
 
   public openModalWithComponent(component) {
-    console.log(component)
+    // console.log(component)
     const initialState = {
       title: component.title,
       component: component.component

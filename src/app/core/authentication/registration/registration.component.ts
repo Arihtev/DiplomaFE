@@ -1,70 +1,128 @@
-import { AuthService } from '../../services/authentication/auth.service';
-import { Component, OnInit } from '@angular/core';
-import { FormGroup, Validators, FormBuilder, AbstractControl, ValidationErrors } from '@angular/forms';
-import { HttpErrorResponse } from '@angular/common/http';
-import { Router } from '@angular/router';
-import { MustMatch, ValidateUsername, ValidateEmail } from './registration.validators';
-import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
-import { LoginComponent } from 'src/app/core/authentication/login/login.component';
-
+import { AuthService } from "../../services/authentication/auth.service";
+import { Component, OnInit, Output, EventEmitter } from "@angular/core";
+import {
+  FormGroup,
+  Validators,
+  FormBuilder,
+  AbstractControl,
+  ValidationErrors
+} from "@angular/forms";
+import { HttpErrorResponse } from "@angular/common/http";
+import { Router } from "@angular/router";
+import {
+  MustMatch,
+  ValidateUsername,
+  ValidateEmail
+} from "./registration.validators";
+import { BsModalRef, BsModalService } from "ngx-bootstrap/modal";
+import { LoginComponent } from "src/app/core/authentication/login/login.component";
+import { MatSnackBar } from '@angular/material';
+import { AuthenticationComponent } from '../authentication.component';
+import * as moment from "moment";
 
 @Component({
-  selector: 'app-registration',
-  templateUrl: './registration.component.html',
-  styleUrls: ['./registration.component.scss']
+  selector: "app-registration",
+  templateUrl: "./registration.component.html",
+  styleUrls: ["./registration.component.scss"]
 })
 export class RegistrationComponent implements OnInit {
+  @Output() close: EventEmitter<any> = new EventEmitter();
+  registerForm: FormGroup;
 
-  registerForm: FormGroup
-  
   closeBtnName: string;
 
-  constructor(private formBuilder: FormBuilder, private auth: AuthService, public bsModalRef: BsModalRef, private modalService: BsModalService) {
-    this.registerForm = this.formBuilder.group({
-      username: [''],
-      email: ['', [Validators.email]],
-      firstName: [''],
-      lastName: [''],
-      password: ['', [Validators.required, Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}'), Validators.minLength(8)]],
-      confirmPassword: [''],
-    }, {
-      validators: [MustMatch('password', 'confirmPassword'), ValidateUsername('username', auth), ValidateEmail('email', auth)],
-    });
+  hide: boolean = true;
+
+  constructor(
+    private formBuilder: FormBuilder,
+    private auth: AuthService,
+    public bsModalRef: BsModalRef,
+    private modalService: BsModalService,
+    private _snackBar: MatSnackBar,
+  ) {
+    this.registerForm = this.formBuilder.group(
+      {
+        username: [""],
+        email: ["", [Validators.email]],
+        firstName: [""],
+        lastName: [""],
+        phone: [""],
+        dateOfBirth: [""],
+        password: [
+          "",
+          [
+            Validators.required,
+            Validators.pattern(
+              "(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-zd$@$!%*?&].{7,}"
+            ),
+            Validators.minLength(8)
+          ]
+        ],
+        confirmPassword: [""]
+      },
+      {
+        validators: [
+          MustMatch("password", "confirmPassword"),
+          ValidateUsername("username", auth),
+          ValidateEmail("email", auth)
+        ]
+      }
+    );
+  }
+  private openLoginModal() {
+    const initialState = {
+      title: "Вход",
+      component: "login"
+    };
+    this.bsModalRef = this.modalService.show(AuthenticationComponent, {ignoreBackdropClick: true, class: "modal-dialog-centered", initialState});
+    this.bsModalRef.content.closeBtnName = 'Close';
   }
 
-  ngOnInit() {
+  ngOnInit() {}
+
+  openSnackBar(message: string, action: string) {
+    let snackBarRef = this._snackBar.open(message, action, {
+      duration: 66000,
+      panelClass: ["registered-snackbar"],
+      verticalPosition: 'top'
+    });
+    snackBarRef.onAction().subscribe(() => this.openLoginModal());
   }
 
   printInfo() {
-    this.validateUsername(this.registerForm.controls.username.value)
+    this.validateUsername(this.registerForm.controls.username.value);
   }
 
   private validateUsername(userName) {
     this.auth.validateUsername(userName).subscribe(res => {
-      console.log(res)
-    })
+      console.log(res);
+    });
   }
 
   registerUser() {
-    let controls = this.registerForm.controls
+    let controls = this.registerForm.controls;
     let user = {
       username: controls.username.value,
       email: controls.email.value,
       password: controls.password.value,
       firstName: controls.firstName.value,
       lastName: controls.lastName.value,
-    }
-    this.auth.registerUser(user).subscribe(res => {
-      console.log(res)
-    },
-    err => {
-      console.log(err)
-    })
+      phone: controls.phone.value,
+      dateOfBirth: moment(controls.dateOfBirth.value).format("YYYY-MM-D")
+    };
+    this.auth.registerUser(user).subscribe(
+      res => {
+        this.close.emit();
+        this.openSnackBar("Вашият профил беше създаден успешно!", "Вход")
+      },
+      err => {
+        console.log(err);
+      }
+    );
   }
 
-  goToLogin(){
+  goToLogin() {
     // this.bsModalRef.hide()
     // this.bsModalRef = this.modalService.show(LoginComponent, {class: 'modal-dialog-centered'})
   }
-
 }

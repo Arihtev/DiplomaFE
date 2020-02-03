@@ -1,0 +1,20 @@
+<div class="text-center">
+  <h1 mat-dialog-title>
+    Успешнo резервирахте {{ data.car.make }} {{ data.car.model }}!
+  </h1>
+  <div mat-dialog-content>
+    <p>
+      <i class="far fa-calendar-check text-primary mr-1"></i>
+      <span class="h5"
+        >{{ data.dates[0] | amLocale: "bg" | amDateFormat: "D MMM, YYYY" }}
+        &#8594;
+        {{ data.dates[1] | amLocale: "bg" | amDateFormat: "D MMM, YYYY" }}</span
+      >
+    </p>
+  </div>
+  <div>
+    <img src="assets/images/blue-checkmark.png" class="checkmark" alt="" />
+  </div>
+  <!-- <button mat-button (click)="onNoClick()">No Thanks</button> -->
+  <button class="mt-3" mat-raised-button (click)="closeDialog()">Напред</button>
+</div>

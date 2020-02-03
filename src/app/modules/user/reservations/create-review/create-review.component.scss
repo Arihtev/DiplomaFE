@@ -1,0 +1,23 @@
+.star {
+    cursor: pointer;
+    position: relative;
+    display: inline-block;
+    font-size: 2rem;
+    color: #d3d3d3;
+  }
+.full {
+    cursor: pointer;
+    color: rgb(255, 136, 0);
+  }
+.half {
+    cursor: pointer;
+    position: absolute;
+    display: inline-block;
+    overflow: hidden;
+    color: rgb(255, 136, 0);
+  }
+
+.rating:hover{
+  cursor: pointer;
+  outline: none;
+}

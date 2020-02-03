@@ -1,4 +1,4 @@
-import { ICar, IFilters, IReservation } from '../../../../shared/models/site-db/cars';
+import { ICar, IFilters, ICreateReservation } from '../../../../shared/models/site-db/cars';
 import { Component, OnInit, Input, EventEmitter } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { AuthService } from 'src/app/core/services/authentication/auth.service';
@@ -20,19 +20,18 @@ export class CarReservationTabComponent implements OnInit {
 
   bsModalRef: BsModalRef;
   loginComponent = {title: "Логин", component: "login"}
+  discount = 0;
+  reservationPrice = 7;
 
   daysReserved: number = 0
 
   today = new Date();
   min = new Date(this.today.getFullYear(),this.today.getMonth(),this.today.getDate());
+  max
   // start = new Date(this.today.getFullYear(),this.today.getMonth(),this.today.getDate())
   // end = new Date(this.today.getFullYear(),this.today.getMonth(),this.today.getDate()+1, )
 
   disabledDays: Array<Date> = []
-
-  changes: MutationObserver
-
-  // public domChange = new EventEmitter();
 
   public selectedMoments = [
     // this.start,
@@ -45,9 +44,7 @@ export class CarReservationTabComponent implements OnInit {
     return day !== 0 && day !== 6;
   }
 
-  constructor(private authService: AuthService, private modalService: BsModalService, private router: Router) { 
-    // const element = document.evaluate("//html/body/div/div[2]/div/owl-date-time-container/div[2]/div/div[1]/span/span[2]", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
-  }
+  constructor(private authService: AuthService, private modalService: BsModalService, private router: Router) {}
 
   ngOnInit() { 
     if (window.history.state.filters && this.filters.start && this.filters.end){
@@ -57,32 +54,29 @@ export class CarReservationTabComponent implements OnInit {
     if (this.car.reservations.length){
       this.reservationsToDates(this.car.reservations)
     }
-    // console.log(this.disabledDays)
-    this.changes = new MutationObserver((mutations: MutationRecord[]) => {
-      mutations.forEach((mutation: MutationRecord) => console.log(mutation));
-    })
-    let element = document.evaluate("//html/body/div/div[2]/div/owl-date-time-container/div[2]/div/div[1]/span/span[2]", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
-    console.log(element)
-    // this.changes.observe(element, {
-    //   attributes: false,
-    //   childList: false,
-    //   characterData: true
-    // });
   }
 
   private loggedIn() {
     return this.authService.loggedIn()
   }
 
-  private calculateReservedDays(event){
-    var Difference_In_Time = event[1].getTime() - event[0].getTime(); 
+  private calculateReservedDays(days){
+    var Difference_In_Time = days[1].getTime() - days[0].getTime(); 
     var Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24) + 1; 
-    this.daysReserved = Difference_In_Days
-    // console.log(event)
-  }
-
-  private printInfo(){
-    console.log(this.selectedMoments)
+    this.daysReserved = Math.round(Difference_In_Days)
+    
+    if (Difference_In_Days >= 30 && this.car.monthly_discount > 0){
+      this.discount = this.car.monthly_discount
+    }
+    else if (Difference_In_Days >= 7 && this.car.weekly_discount > 0){
+      this.discount = this.car.weekly_discount
+    }
+    else{
+      this.discount = 0
+    }
+    let basePrice = (this.car.price * this.daysReserved)
+    let discount = (this.car.price * this.daysReserved) * (this.discount/100)
+    this.reservationPrice = Math.round((basePrice - discount + 7)*100)/100
   }
 
   private openModalWithComponent(component) {
@@ -100,13 +94,16 @@ export class CarReservationTabComponent implements OnInit {
     this.router.navigate([`/cars/${this.car.id}/reservation`], { 
       state: { 
         car: this.car, 
-        selectedMoments: this.selectedMoments
+        selectedMoments: this.selectedMoments,
+        daysReserved: this.daysReserved,
+        discount: this.discount,
+        reservationPrice: this.reservationPrice
       } 
     })
   }
 
   private reservationsToDates(reservations){
-    reservations.forEach((res: IReservation) => {
+    reservations.forEach((res: ICreateReservation) => {
       this.getDates(res.start_date,  res.end_date)
     });
   }
@@ -128,19 +125,33 @@ export class CarReservationTabComponent implements OnInit {
     return !this.disabledDays.find(date => moment(date).format('YYYY-MM-DD') == moment(day).format('YYYY-MM-DD'))
   }
 
-  print(){
-    // let el = document.
-    console.log(this.getElementByXpath("//html/body/div/div[2]/div/owl-date-time-container/div[2]/div/div[1]/span/span[2]"));
+  private processDates(dates) {
+    if (dates){
+      if (dates[0]!=null && dates[1]==null){
+        this.max = this.calculateMaxDate(dates[0])
+      }
+      else if(dates[0]!=null && dates[1]!=null){
+        this.max = null
+        this.calculateReservedDays(dates)
+      }
+    }
   }
 
-  getElementByXpath(path) {
-    return document.evaluate(path, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
+  calculateMaxDate(date){
+    if (this.disabledDays.length){
+      for (let i = 0; i <= this.disabledDays.length; i++){
+        if (date<this.disabledDays[i]){
+          return this.disabledDays[i]
+        }
+      }
+    }
+    else {
+      return null
+    }
   }
 
-  chosenYearHandler( normalizedYear ) {
-    let element = this.getElementByXpath("//html/body/div/div[2]/div/owl-date-time-container/div[2]/div/div[1]/span/span[2]")
-    console.log(element)
-}
-
-
+  resetDates(){
+    this.selectedMoments = []
+    this.max = null
+  }
 }

@@ -2,8 +2,8 @@
     <form [formGroup]="locationForm">
         <div class="row mt-5">
             <div class="col-6">
-                <h4>Област:</h4>
-                <mat-form-field>
+                <h5>Област:</h5>
+                <mat-form-field class="w-75">
                     <input type="text" placeholder="Изберете област" aria-label="Number" matInput formControlName="region" [matAutocomplete]="auto1">
                     <mat-autocomplete autoActiveFirstOption #auto1="matAutocomplete" [displayWith]="displayFn">
                         <mat-option *ngFor="let region of filteredRegions | async" [value]="region">
@@ -15,8 +15,8 @@
             </div>
 
             <div class="col-6">
-                <h4>Град:</h4>
-                <mat-form-field>
+                <h5>Град:</h5>
+                <mat-form-field class="w-75">
                     <input type="text" placeholder="Изберете град" matInput formControlName="city" [matAutocomplete]="auto2">
                     <mat-autocomplete autoActiveFirstOption #auto2="matAutocomplete" [displayWith]="displayFn">
                         <mat-option *ngFor="let city of filteredCities | async" [value]="city">
@@ -29,15 +29,15 @@
 
         <div class="row mt-5">
             <div class="col-6">
-                <h4>Адрес:</h4>
-                <mat-form-field class="col-12">
+                <h5>Адрес:</h5>
+                <mat-form-field class="w-75">
                     <input matInput placeholder="Въведете адрес" formControlName="address" required>
                     <mat-error>Моля въведете адрес</mat-error>
                 </mat-form-field>
             </div>
             <div class="col-6">
-                <h4>Пощенски код:</h4>
-                <mat-form-field>
+                <h5>Пощенски код:</h5>
+                <mat-form-field class="w-75">
                     <input matInput placeholder="Въведете п.к." formControlName="zipCode" required>
                     <mat-error>Моля въведете п.к.</mat-error>
                 </mat-form-field>
@@ -45,6 +45,6 @@
         </div>
     </form>    
 
-    <button mat-button matStepperPrevious>Back</button>
-    <button mat-button matStepperNext>Next</button>
+    <button mat-button matStepperPrevious>Назад</button>
+    <button mat-button matStepperNext>Напред</button>
 </div>

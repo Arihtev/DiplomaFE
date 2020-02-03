@@ -1,0 +1,164 @@
+<div class="gradient"></div>
+<div class="container">
+  <h1 class="mt-2">
+    Настройки
+  </h1>
+  <div class="row mt-3">
+    <div class="text-center col-12 mt-2">
+      <h4>Създайте вашият профил</h4>
+      <h6>Възползвайте се максимално от нашите услуги</h6>
+      <hr />
+    </div>
+
+    <mat-form-field class="col-4 mat-field">
+      <input
+        type="text"
+        placeholder="Потребителско име"
+        matInput
+        [(ngModel)]="user.username"
+        readonly
+      />
+    </mat-form-field>
+    <mat-form-field class="col-4 mat-field">
+			<input
+        type="text"
+        placeholder="Име"
+        matInput
+        [(ngModel)]="user.first_name"
+        readonly
+      />
+		</mat-form-field>
+		<mat-form-field class="col-4 mat-field">
+      <input
+        type="text"
+        placeholder="Фамилия"
+        matInput
+        [(ngModel)]="user.last_name"
+        readonly
+      />
+		</mat-form-field>
+		<mat-form-field class="col-4 mat-field">
+      <input
+        type="text"
+        placeholder="E-mail"
+        matInput
+        [(ngModel)]="user.email"
+        readonly
+      />
+    </mat-form-field>
+    <mat-form-field class="col-4 mat-field">
+			<input
+        type="text"
+        placeholder="Дата на раждане"
+        matInput
+        [(ngModel)]="user.birth_date"
+        readonly
+      />
+		</mat-form-field>
+		<mat-form-field class="col-4 mat-field">
+      <input
+        type="text"
+        placeholder="Фамилия"
+        matInput
+        [(ngModel)]="user.last_name"
+        readonly
+      />
+    </mat-form-field>
+
+    <form
+      class="form-fields row"
+      [formGroup]="registerForm"
+      (keyup.enter)="registerUser()"
+    >
+      <mat-form-field class="col-6">
+        <input
+          type="email"
+          placeholder="E-mail"
+          matInput
+          formControlName="email"
+          autocomplete="off"
+          required
+          pattern="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$"
+        />
+        <mat-error *ngIf="registerForm.hasError('emailTaken', 'email')"
+          >Посоченият e-mail е зает</mat-error
+        >
+        <mat-error *ngIf="registerForm.hasError('required', 'email')"
+          >Въведете вашият e-mail</mat-error
+        >
+        <mat-error *ngIf="registerForm.hasError('pattern', 'email')"
+          >Посоченият e-mail е невалиден</mat-error
+        >
+      </mat-form-field>
+      <mat-form-field class="col-6">
+        <input
+          type="text"
+          placeholder="Име"
+          matInput
+          formControlName="firstName"
+          autocomplete="off"
+          style="text-transform: capitalize;"
+          pattern="[a-zA-Z\u0400-\u04FF]+"
+          required
+        />
+        <mat-error *ngIf="registerForm.hasError('required', 'firstName')"
+          >Моля въведете вашето име</mat-error
+        >
+        <mat-error *ngIf="registerForm.hasError('pattern', 'firstName')"
+          >Невалиден формат</mat-error
+        >
+      </mat-form-field>
+      <mat-form-field class="col-6">
+        <input
+          type="text"
+          placeholder="Фамилия"
+          matInput
+          formControlName="lastName"
+          autocomplete="off"
+          pattern="[a-zA-Z\u0400-\u04FF]+"
+          style="text-transform: capitalize;"
+          required
+        />
+        <mat-error *ngIf="registerForm.hasError('required', 'lastName')"
+          >Моля въведете вашата фамилия</mat-error
+        >
+        <mat-error *ngIf="registerForm.hasError('pattern', 'lastName')"
+          >Невалиден формат</mat-error
+        >
+      </mat-form-field>
+      <mat-form-field class="col-6">
+        <input
+          type="text"
+          placeholder="Телефон"
+          matInput
+          formControlName="phone"
+          autocomplete="off"
+          required
+          pattern="^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\./0-9]*$"
+        />
+        <mat-error *ngIf="registerForm.hasError('required', 'phone')"
+          >Моля въведете телефон</mat-error
+        >
+        <mat-error *ngIf="registerForm.hasError('pattern', 'phone')"
+          >Невалиден формат</mat-error
+        >
+      </mat-form-field>
+    </form>
+    <div class="text-center mt-3">
+      <button
+        class="search-btn"
+        type="button"
+        mdbBtn
+        gradient="blue"
+        size="lg"
+        mdbWavesEffect
+        (click)="registerUser()"
+        [disabled]="registerForm.invalid"
+      >
+        Регистрация
+      </button>
+      <!-- <p class="message">Имате профил? <a (click)="goToLogin()">Логнете се тук</a></p> -->
+    </div>
+    <!-- <button (click)="printInfo()">Print</button> -->
+  </div>
+</div>

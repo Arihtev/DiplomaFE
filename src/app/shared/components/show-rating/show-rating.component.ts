@@ -9,8 +9,6 @@ export class ShowRatingComponent implements OnInit {
 
   @Input() rate
 
-  currentRate = 2.4;
-
   constructor() { }
 
   ngOnInit() {

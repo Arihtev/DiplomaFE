@@ -1,13 +1,13 @@
 <div class="container text-center">
     <div class="row">
-        <div class="col-6">
+        <div class="col-12 col-md-6">
             <h4>Добавете описание:</h4>
             <mat-form-field class="example-full-width col-12" appearance="fill">
                 <textarea matInput matTextareaAutosize="true" matAutosizeMinRows=25 placeholder="Leave a comment"></textarea>
             </mat-form-field>
         </div>
     
-        <div class="col-6">
+        <div class="col-12 col-md-6">
             <h4>Добавете снимки:</h4>
             <app-image-upload (messageEvent)="receiveImages($event)"></app-image-upload>
         </div>

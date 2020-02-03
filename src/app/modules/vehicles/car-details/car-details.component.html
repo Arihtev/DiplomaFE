@@ -1,109 +1,132 @@
-<div class="container" *ngIf="(car | async) as car">
+<div class="container" *ngIf="car | async as car">
   <div class="row">
-    <app-car-carousel class="col-xl-8 col-lg-12" [pictures]="car.pictures"></app-car-carousel>
-    <div class="col-xl-4 reservation text-center">
-      <app-car-reservation-tab [car]="car" [filters]="filters"></app-car-reservation-tab>
+    <div class="col-12 col-lg-8 row pr-0">
+      <app-car-carousel
+        class="col-12"
+        [pictures]="car.pictures"
+      ></app-car-carousel>
+      <div class="col-12 primary-info row">
+        <div class="col-12 col-md-7">
+          <span class="car-make"> {{ car.make }} {{ car.model }} </span>
+          <span class="car-year">
+            {{ car.year }}
+          </span>
+        </div>
+        <div class="car-rating col-12 col-md-5 pt-0">
+          <app-show-rating></app-show-rating>
+          <span class="small-caption">&bull; 23 наемателя</span>
+        </div>
+      </div>
+
+        <div class="col-12 secondary-info">
+          <div class="row mt-2 text-left">
+            <div class="col-6 col-md-4">
+              <i class="fas fa-burn"> </i>
+              <span class="car-second-info"> {{ car.consumption }}л/100км</span>
+            </div>
+            <div class="col-6 col-md-4">
+              <i class="fas fa-gas-pump"></i>
+              <span class="car-second-info"> {{ car.engine_type }}</span>
+            </div>
+            <div class="col-6 col-md-4">
+              <img src="assets/images/gearbox.svg" class="car-icon" alt="" />
+              <span class="car-second-info"> {{ car.transmission }}</span>
+            </div>
+            <!-- </div>
+          <div class="row mt-1 text-left"> -->
+            <div class="col-6 col-md-4">
+              <img src="assets/images/horsepower.png" class="car-icon" alt="" />
+              <span class="car-second-info"> {{ car.horsepower }} к.с.</span>
+            </div>
+            <div class="col-6 col-md-4">
+              <i class="fas fa-car"></i>
+              <span class="car-second-info">
+                {{ car.category | convertCategory }}</span
+              >
+            </div>
+            <div class="col-6 col-md-4">
+              <img src="assets/images/seat.png" class="car-icon" alt="" />
+              <span class="car-second-info"> {{ car.seats }} места</span>
+            </div>
+          </div>
+        </div>
+    </div>
+    <div class="col-12 col-lg-4 reservation text-center">
+      <app-car-reservation-tab
+        [car]="car"
+        [filters]="filters"
+      ></app-car-reservation-tab>
     </div>
   </div>
-  <div class="row">
-    <div class="col-xl-8 primary-info">
-      <span class="car-make">
-        {{ car.make }} {{ car.model }}
-      </span>
-      <span class="car-year">
-        {{ car.year }}
-      </span>
-      <div class="car-rating">
-        <app-show-rating></app-show-rating> <span class="small-caption">&bull; 23 наемателя</span>
-      </div>
-
-      <div class="col-xl-12 secondary-info">
-        <div class="row mt-2 text-left">
-          <div class="col-4">
-            <i class="fas fa-burn"> </i> <span class="car-second-info"> {{ car.consumption }}л/100км</span>
-          </div>
-          <div class="col-4">
-            <i class="fas fa-gas-pump"></i> <span class="car-second-info"> {{ car.engine_type }}</span>
-          </div>
-          <div class="col-4">
-            <img src="assets/images/gearbox.svg" class="car-icon" alt=""> <span class="car-second-info">
-              {{ car.transmission }}</span>
-          </div>
-        </div>
-        <div class="row mt-1 text-left">
-          <div class="col-4">
-            <img src="assets/images/horsepower.png" class="car-icon" alt=""> <span class="car-second-info">
-              {{ car.horsepower }} к.с.</span>
-          </div>
-          <div class="col-4">
-            <i class="fas fa-car"></i> <span class="car-second-info"> {{ car.category | convertCategory }}</span>
-          </div>
-          <div class="col-4">
-            <img src="assets/images/seat.png" class="car-icon" alt=""> <span class="car-second-info"> {{ car.seats }}
-              места</span>
-          </div>
-        </div>
-      </div>
-    </div>
-
+  <!-- <div class="row">
     <div class="col-xl-4 owner text-center">
       <div>
-        Собственик: 
+        Собственик:
       </div>
-      <img [src]="car.owner.photo" alt="">
+      <img [src]="car.owner.photo" alt="" />
       {{ car.owner.first_name }}
     </div>
-  </div>
+  </div> -->
 
-  <hr>
+  <hr />
 
-  <div class="row extras">
-    <div class="col-4">
-      <img src="assets/images/safety.svg" class="icon" alt=""><span class="label"> Безопасност</span>
-    </div>
-    <div class="col-8">
+  <div class="row">
+    <div class="col-4 extras">
+      <div class="text-center">
+        <img src="assets/images/safety.svg" class="icon" alt="" /><span
+          class="label"
+        >
+          Безопасност</span
+        >
+      </div>
       <span *ngFor="let extra of car.extras">
         <span *ngIf="extra.category_id == 1" class="extra-label">
-          &bull;{{ extra.name }}
+          &#10003;<!-- &bull; -->  
+          {{ extra.name }} <br />
         </span>
       </span>
     </div>
-  </div>
+    <hr />
 
-  <hr>
-
-  <div class="row extras">
-    <div class="col-4">
-      <img src="assets/images/comfort.png" class="icon" alt=""><span class="label"> Комфорт</span>
-    </div>
-    <div class="col-8">
+    <div class="col-4 extras">
+      <div class="text-center">
+        <img src="assets/images/comfort.png" class="icon" alt="" /><span
+          class="label"
+        >
+          Комфорт</span
+        >
+      </div>
       <span *ngFor="let extra of car.extras">
         <span *ngIf="extra.category_id == 2" class="extra-label">
-          &bull;{{ extra.name }}
+          &#10003;<!-- &bull; -->
+          {{ extra.name }} <br />
         </span>
       </span>
     </div>
-  </div>
 
-  <hr>
+    <hr />
 
-  <div class="row extras">
-    <div class="col-4">
-      <img src="assets/images/others.png" class="icon" alt=""><span class="label"> Други</span>
-    </div>
-    <div class="col-8">
+    <div class="col-4 extras">
+      <div class="text-center">
+        <img src="assets/images/others.png" class="icon" alt="" /><span
+          class="label"
+        >
+          Други</span
+        >
+      </div>
       <span *ngFor="let extra of car.extras">
         <span *ngIf="extra.category_id == 3" class="extra-label">
-          &bull;{{ extra.name }}
+          &#10003;<!-- &bull; -->
+          {{ extra.name }} <br />
         </span>
       </span>
     </div>
   </div>
+  <hr />
 
-  <hr>
-
-  <div class="reservation">
-    comment section
+  <div *ngIf="car.reviews.length" class="reservation">
+    <div *ngFor="let review of car.reviews" >
+      <p>{{ review.rate }}</p>
+    </div>
   </div>
-
 </div>

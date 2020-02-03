@@ -1,13 +1,60 @@
 <div class="gradient"></div>
-<div class="container">
+<div class="container mb-3">
   <h1 class="mt-2">
     Резервации
   </h1>
-  <h3 class="mt-5">
+  <h3 *ngIf="upcomingReservations.length" class="mt-5">
     Предстоящи
   </h3>
 
-  <h3 class="mt-5">
+  <div *ngIf="loading">
+    <app-spinner></app-spinner>
+  </div>
+
+  <div
+    *ngFor="let reservation of upcomingReservations"
+    class="col-12 text-center mt-4"
+  >
+    <app-reservation-item
+      [reservation]="reservation"
+      (refreshReservations)="updateReservations($event)"
+    ></app-reservation-item>
+  </div>
+
+  <h3 *ngIf="passedReservations.length" class="mt-5">
     Стари
   </h3>
+
+  <div
+    *ngFor="let reservation of passedReservations"
+    class="col-12 text-center mt-4"
+  >
+    <app-reservation-item
+      [reservation]="reservation"
+      (refreshReservations)="updateReservations($event)"
+    ></app-reservation-item>
+  </div>
+
+  <h3 *ngIf="canceledReservations.length" class="mt-5">
+    Анулирани
+  </h3>
+
+  <div
+    *ngFor="let reservation of canceledReservations"
+    class="col-12 text-center mt-4"
+  >
+    <app-reservation-item
+      [reservation]="reservation"
+      (refreshReservations)="updateReservations($event)"
+    ></app-reservation-item>
+  </div>
+  <div
+    *ngIf="!upcomingReservations.length && !passedReservations.length && !canceledReservations.length"
+    class="text-center all-cars"
+    (click)="redirectToAll()"
+  >
+    <h3>Нямате предстоящи резервации!</h3>
+    <h3>Разгледайте нашите предложения тук</h3>
+    <div class="img"></div>
+  </div>
 </div>

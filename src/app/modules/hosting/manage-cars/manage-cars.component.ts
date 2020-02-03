@@ -21,7 +21,6 @@ export class ManageCarsComponent implements OnInit {
       this.currentUser = res
     })
     this.service.get_all_cars().subscribe((res: ICar[]) => {
-      console.log(res)
       this.cars = res.filter(x => x.owner.id == this.currentUser.id)
     },
     err => {

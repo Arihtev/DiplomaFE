@@ -5,6 +5,8 @@ import { Directive, ElementRef, HostListener, Input } from '@angular/core';
 })
 export class DigitOnlyDirective {
   private decimalCounter = 0;
+  private decimalDigits = 0;
+  private digitsCount = 0;
   private navigationKeys = [
     'Backspace',
     'Delete',
@@ -21,6 +23,9 @@ export class DigitOnlyDirective {
   ];
   @Input() decimal ? = false;
   @Input() decimalSeparator ? = '.';
+  @Input() maxDecimalDigits ? = 0;
+  @Input() maxDigits ? = 999;
+
   inputElement: HTMLInputElement;
 
   constructor(public el: ElementRef) {
@@ -48,14 +53,28 @@ export class DigitOnlyDirective {
     if (e.key === ' ' || isNaN(Number(e.key))) {
       e.preventDefault();
     }
+    if (this.maxDecimalDigits){
+      if (this.decimalDigits >= this.maxDecimalDigits){
+        e.preventDefault()
+      }
+    }
+    if (this.maxDigits){
+      if (this.digitsCount >= this.maxDigits){
+        e.preventDefault()
+      }
+    }
   }
 
   @HostListener('keyup', ['$event'])
   onKeyUp(e: KeyboardEvent) {
     if (!this.decimal) {
+      this.digitsCount = this.el.nativeElement.value.length
       return;
     } else {
       this.decimalCounter = this.el.nativeElement.value.split(this.decimalSeparator).length - 1;
+      if (this.decimalCounter > 0){
+        this.decimalDigits = this.el.nativeElement.value.split(this.decimalSeparator)[1].length;
+      }
     }
   }
 

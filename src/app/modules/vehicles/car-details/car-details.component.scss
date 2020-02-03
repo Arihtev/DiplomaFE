@@ -8,22 +8,22 @@
 
 .primary-info{
     .car-make{
-        font-size: 2.2rem;
+        font-size: 1.5rem;
         font-weight: bold;
     }
     .car-year{
         color: rgb(119, 119, 119);
-        font-size: 1.8rem;
+        font-size: 1.2rem;
         line-height: normal;
         font-weight: bold;
     }
     .car-rating{
         float: right;
         padding: 10px;
-        font-size: 1.3rem;
+        font-size: 1.2rem;
     }
     .small-caption{
-        font-size: 1rem;
+        font-size: 0.9rem;
     }
 }
 
@@ -38,8 +38,7 @@
     // height: 100px;
     background-color: white;
     padding: 5px 20px;
-    font-size: 1.2rem;
-    font-weight: bold;
+    font-size: 1.1rem;
     top: 0;
     transition: all 0.5s ease;
     .car-year{
@@ -48,12 +47,11 @@
     }
     .car-second-info{
         color: rgb(37, 37, 37);
-        font-size: 1.3rem;
         font-weight: normal;
     }
     .car-icon{
-        height: 20px;
-        width: 20px;
+        height: 17px;
+        width: 17px;
     }
     .car-city{
         font-weight: normal;
@@ -73,10 +71,10 @@
 
 .extras{
     .label{
-        font-size: 1.4rem;
+        font-size: 1.2rem;
     }
     .extra-label{
-        font-size: 1.2rem;
+        font-size: 1rem;
     }
     .icon{
         height: 40px;

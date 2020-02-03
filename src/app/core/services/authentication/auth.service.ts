@@ -36,6 +36,8 @@ export class AuthService {
       password: user.password,
       first_name: user.firstName,
       last_name: user.lastName,
+      birth_date: user.dateOfBirth,
+      phone: user.phone
     }))
   }
 
@@ -80,7 +82,7 @@ export class AuthService {
   isAuthenticated(): boolean {
     let token = localStorage.getItem('token');
     if (this.jwtHelper.isTokenExpired(token)){
-      console.log("expired")
+      // console.log("expired")
       localStorage.removeItem('token')
       localStorage.removeItem('currentUser')
       return false

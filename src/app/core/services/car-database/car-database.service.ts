@@ -34,7 +34,7 @@ export class CarDatabaseService {
   
   // createCar(year, make, extras, pictures) {
   createCar(year, make, model, transmission, engine_type, horsepower, consumption, seats, category, region, city, address, zip_code, extras, pictures,
-            pets, smoking, includedKm, pricePerExtraKm, minRent, maxRent, price, weeklyDiscount, monthlyDiscount) {
+            pets, smoking, includedKm, pricePerExtraKm, price, weeklyDiscount, monthlyDiscount) {
     return this.service.post(`${this.CAR_DB_URL}/cars/create/`, {
       year: year,
       make: make,
@@ -54,9 +54,7 @@ export class CarDatabaseService {
       pets: pets, 
       smoking: smoking, 
       included_km: includedKm, 
-      price_per_extra_km: pricePerExtraKm, 
-      min_rent: minRent, 
-      max_rent: maxRent, 
+      price_per_extra_km: pricePerExtraKm,
       price: price, 
       weekly_discount: weeklyDiscount, 
       monthly_discount: monthlyDiscount

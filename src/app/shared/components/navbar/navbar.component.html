@@ -42,16 +42,16 @@
         <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu" role="menu" aria-labelledby="button-basic">
           <li role="menuitem"><a class="dropdown-item" [routerLink]="['host/add-new']"><i class="fas fa-plus"></i>
               Добави кола</a></li>
-          <li role="menuitem"><a class="dropdown-item" [routerLink]="['host/manage-cars']">
+          <li role="menuitem" *ngIf="currentUser.cars_owned.length"><a class="dropdown-item" [routerLink]="['host/manage-cars']">
               <mdb-icon fas icon="cog"></mdb-icon> Моите коли
             </a></li>
           <!-- <li role="menuitem"><a class="dropdown-item" [routerLink]="['login']" (click)="authService.logoutUser()"><i class="fas fa-sign-out-alt"></i><span class="text-right"> Log Out</span></a></li> -->
         </ul>
       </div>
-      <li class="nav-item waves-light" mdbWavesEffect>
+      <!-- <li class="nav-item waves-light" mdbWavesEffect>
         <a class="nav-link" [routerLink]="['user/favourites']">Любими
         </a>
-      </li>
+      </li> -->
       <li class="nav-item waves-light" mdbWavesEffect>
         <a class="nav-link" [routerLink]="['user/reservations']">Резервации
         </a>
@@ -67,12 +67,12 @@
           <li role="menuitem" [routerLink]="['user/favourites']"><a class="dropdown-item">
             <i class="fas fa-list-ul"></i> Любими</a>
           </li>
-          <li role="menuitem"><a class="dropdown-item">
+          <li role="menuitem" [routerLink]="['user/settings']"><a class="dropdown-item">
               <mdb-icon fas icon="cog"></mdb-icon> Настройки
             </a></li>
-          <li role="menuitem" (click)="printInfo()"><a class="dropdown-item">
+          <!-- <li role="menuitem" (click)="printInfo()"><a class="dropdown-item">
               <mdb-icon fas icon="envelope"></mdb-icon> Съобщения
-            </a></li>
+            </a></li> -->
           <li class="divider dropdown-divider"></li>
           <li role="menuitem"><a class="dropdown-item" (click)="authService.logoutUser()"><i
                 class="fas fa-sign-out-alt"></i><span class="text-right"> Изход</span></a></li>

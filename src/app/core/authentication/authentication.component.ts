@@ -43,7 +43,7 @@ export class AuthenticationComponent implements OnInit {
       this.component="registration"
     }
     else{
-      this.title="Логин"
+      this.title="Вход"
       this.component="login"
     }
   }

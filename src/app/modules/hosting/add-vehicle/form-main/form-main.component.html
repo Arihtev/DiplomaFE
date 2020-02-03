@@ -1,9 +1,9 @@
 <div class="container text-center">
     <form [formGroup]="mainForm">
-        <div class="row mt-5">
-            <div class="col-4">
-                <h4>Година:</h4>
-                <mat-form-field>
+        <div class="row mt-5 justify-content-center">
+            <div class="col-6 col-md-4">
+                <h5>Година:</h5>
+                <mat-form-field class="w-75">
                     <mat-label>Изберете година:</mat-label>
                     <mat-select formControlName="year">
                         <mat-option *ngFor="let year of years" [value]="year">{{ year }}</mat-option>
@@ -11,9 +11,9 @@
                 </mat-form-field>
             </div>
         
-            <div class="col-4">
-                <h4>Марка:</h4>
-                <mat-form-field>
+            <div class="col-6 col-md-4">
+                <h5>Марка:</h5>
+                <mat-form-field class="w-75">
                     <mat-label>Изберете марка:</mat-label>
                     <mat-select formControlName="make">
                         <mat-option *ngFor="let make of makes" [value]="make">{{ make.make_display }}</mat-option>
@@ -21,9 +21,9 @@
                 </mat-form-field>
             </div>
             
-            <div class="col-4">
-                <h4>Модел:</h4>
-                <mat-form-field>
+            <div class="col-6 col-md-4">
+                <h5>Модел:</h5>
+                <mat-form-field class="w-75">
                     <mat-label>Изберете модел:</mat-label>
                     <mat-select formControlName="model">
                         <mat-option *ngFor="let model of models" [value]="model">{{ model.model_name }}</mat-option>
@@ -33,17 +33,17 @@
         </div>
 
         <div class="row mt-5">
-            <div class="col-4 text-center">
-                <h4>Скоростна кутия:</h4>
-                <mat-radio-group color="primary" formControlName="transmission">
+            <div class="col-12 col-md-4 text-center">
+                <h5>Скоростна кутия:</h5>
+                <mat-radio-group class="w-75" color="primary" formControlName="transmission">
                     <mat-radio-button class="m-2" value="Ръчна">Ръчна</mat-radio-button>
                     <mat-radio-button class="m-2" value="Автоматична">Автоматична</mat-radio-button>
                 </mat-radio-group>                          
             </div>
 
-            <div class="col-4 text-center">
-                <h4>Тип двигател:</h4>
-                <mat-form-field>
+            <div class="col-6 col-md-4 text-center">
+                <h5>Тип двигател:</h5>
+                <mat-form-field class="w-75">
                     <mat-label>Изберете тип двигател</mat-label>
                     <mat-select formControlName="engine">
                         <mat-option value="Бензинов">Бензинов</mat-option>
@@ -54,9 +54,9 @@
                 </mat-form-field>
             </div>
 
-            <div class="col-4 text-center">
-                <h4>Категория:</h4>
-                <mat-form-field>
+            <div class="col-6 col-md-4 text-center">
+                <h5>Категория:</h5>
+                <mat-form-field class="w-75">
                     <mat-label>Изберете категория:</mat-label>
                     <mat-select formControlName="type">
                         <mat-option value="car">Лек автомобил</mat-option>
@@ -68,30 +68,30 @@
             </div>
         </div>
 
-        <div class="row mt-5">
-            <div class="col-4 text-center">
-                <h4>Мощност:</h4>
-                <mat-form-field class="example-full-width">
-                    <input matInput formControlName="horsepower" placeholder="Въведете мощност">
+        <div class="row mt-5 justify-content-center">
+            <div class="col-6 col-md-4 text-center">
+                <h5>Мощност:</h5>
+                <mat-form-field class="w-75">
+                    <input matInput digitOnly autocomplete="off" formControlName="horsepower" placeholder="Въведете мощност">
                 </mat-form-field>                          
             </div>
 
-            <div class="col-4 text-center">
-                <h4>Разход:</h4>
-                <mat-form-field class="example-full-width">
-                    <input matInput formControlName="consumption" placeholder="Въведете разход">
+            <div class="col-6 col-md-4 text-center">
+                <h5>Разход:</h5>
+                <mat-form-field class="w-75">
+                    <input matInput digitOnly decimal="true" maxDecimalDigits="1" autocomplete="off" formControlName="consumption" placeholder="Въведете разход">
                 </mat-form-field>
             </div>
 
-            <div class="col-4 text-center">
-                <h4>Брой места:</h4>
-                <mat-form-field class="example-full-width">
-                    <input matInput formControlName="seats" placeholder="Въведете брой">
+            <div class="col-6 col-md-4 text-center">
+                <h5>Брой места:</h5>
+                <mat-form-field class="w-75">
+                    <input matInput digitOnly autocomplete="off" formControlName="seats" placeholder="Въведете брой">
                 </mat-form-field>
             </div>
         </div>
             
-        <button (click)="printCars()">INFO</button>
+        <!-- <button (click)="printCars()">INFO</button> -->
     </form>
-    <button mat-button matStepperNext>Next</button>
+    <button mat-button matStepperNext>Напред</button>
 </div>

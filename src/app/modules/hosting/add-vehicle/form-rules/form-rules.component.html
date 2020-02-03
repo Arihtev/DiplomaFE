@@ -1,90 +1,182 @@
 <div class="container text-center">
-    <div class="row" [formGroup]="rulesForm">
-        <div class="col-6 conditions">
-            <h1>Условия за наемане</h1>
-            <div class="row">
-                <div class="col-12 mt-4 row">
-                    <h4 class="col-8 text-left">Домашни любимци</h4>
-                    <mat-radio-group color="primary" class="col-4 text-right" formControlName="pets">
-                        <mat-radio-button class="ml-2" value="true">Да</mat-radio-button>
-                        <mat-radio-button class="ml-2" value="false">Не</mat-radio-button>
-                    </mat-radio-group>
-                </div>
-
-                <div class="col-12 mt-4 row">
-                    <h4 class="col-8 text-left">Пушене в колата</h4>
-                    <mat-radio-group color="primary" class="col-4 text-right" formControlName="smoking">
-                        <mat-radio-button class="ml-2" value="true">Да</mat-radio-button>
-                        <mat-radio-button class="ml-2" value="false">Не</mat-radio-button>
-                    </mat-radio-group>
-                </div>
-
-                <hr class="col-11 mt-4">
-
-                <div class="col-12 mt-4 row">
-                    <div class="col-10 text-left">
-                        <h4>Включени километри <mat-icon class="far fa-question-circle h5" matTooltip="My tooltip" matTooltipPosition="above"></mat-icon></h4>
-                    </div>
-                    <input mdbInput type="text" class="form-control col-2" placeholder="км" formControlName="includedKm">
-                </div>
-                <div class="col-12 mt-4 row">
-                    <div class="col-10 text-left">
-                        <h4>Цена за км над включените <mat-icon class="far fa-question-circle h5" matTooltip="My tooltip" matTooltipPosition="above"></mat-icon></h4>
-                    </div>
-                    <input mdbInput type="text" class="form-control col-2" placeholder="лв/км" formControlName="pricePerExtraKm">
-                </div>
-
-                <hr class="col-11 mt-4">
-
-                <div class="col-12 mt-4 row">
-                    <div class="col-10 text-left">
-                        <h4>Минимален брой дни за наем</h4>
-                    </div>
-                    <input mdbInput type="text" class="form-control col-2" placeholder="" formControlName="minRent">
-                </div>
-                <div class="col-12 mt-4 row">
-                    <div class="col-10 text-left">
-                        <h4>Максимален брой дни за наем</h4>
-                    </div>
-                    <input mdbInput type="text" class="form-control col-2" placeholder="" formControlName="maxRent">
-                </div>
-
-            </div>
-            <!-- <mat-checkbox color="primary">Съгласен/на съм</mat-checkbox> -->
+  <div class="row" [formGroup]="rulesForm">
+    <div class="col-12 col-md-6 conditions">
+      <h4>Условия за наемане</h4>
+      <div class="row">
+        <div class="col-12 mt-4 row">
+          <h6 class="col-8 text-left">Домашни любимци</h6>
+          <mat-radio-group
+            color="primary"
+            class="col-4 text-right"
+            formControlName="pets"
+          >
+            <mat-radio-button class="ml-2" value="true">Да</mat-radio-button>
+            <mat-radio-button class="ml-2" value="false">Не</mat-radio-button>
+          </mat-radio-group>
         </div>
 
-        <div class="col-6 price">
-            <h1>Цена</h1>
-            <div class="row">
-                <div class="col-12 mt-4 row">
-                    <div class="col-10 text-left">
-                        <h4>Цена на автомобила за ден: <mat-icon class="far fa-question-circle h5" matTooltip="My tooltip" matTooltipPosition="above"></mat-icon></h4>
-                    </div>
-                    <input mdbInput type="text" class="form-control col-2" placeholder="лв" formControlName="price">
-                </div>
-
-                <hr class="col-11 mt-4">
-
-                <div class="col-12 mt-4 row">
-                    <div class="col-10 text-left">
-                        <h4>Седмична отстъпка: <mat-icon class="far fa-question-circle h5" matTooltip="Отстъпка при наемане на колата за повече от седмица" matTooltipPosition="above"></mat-icon></h4>
-                    </div>
-                    <input mdbInput type="text" class="form-control col-2" placeholder="%" formControlName="weeklyDiscount">
-                </div>
-
-                <div class="col-12 mt-4 row">
-                    <div class="col-10 text-left">
-                        <h4>Месечна отстъпка: <mat-icon class="far fa-question-circle h5" matTooltip="Отстъпка при наемане на колата за повече от месец" matTooltipPosition="above"></mat-icon></h4>
-                    </div>
-                    <input mdbInput type="text" class="form-control col-2" placeholder="%" formControlName="monthlyDiscount">
-                </div>
-            </div>
+        <div class="col-12 mt-4 row">
+          <h6 class="col-8 text-left">Пушене в колата</h6>
+          <mat-radio-group
+            color="primary"
+            class="col-4 text-right"
+            formControlName="smoking"
+          >
+            <mat-radio-button class="ml-2" value="true">Да</mat-radio-button>
+            <mat-radio-button class="ml-2" value="false">Не</mat-radio-button>
+          </mat-radio-group>
         </div>
 
+        <hr class="col-11 mt-4" />
+
+        <div class="col-12 mt-4 row">
+          <div class="col-10 text-left">
+            <h6>
+              Включени километри
+              <mat-icon
+                class="far fa-question-circle h6"
+                matTooltip="My tooltip"
+                matTooltipPosition="above"
+              ></mat-icon>
+            </h6>
+          </div>
+          <input
+            mdbInput
+            digitOnly
+            maxDigits="5"
+            class="form-control col-2"
+            placeholder="км"
+            formControlName="includedKm"
+          />
+        </div>
+        <div class="col-12 mt-4 row">
+          <div class="col-10 text-left">
+            <h6>
+              Цена за км над включените
+              <mat-icon
+                class="far fa-question-circle h6"
+                matTooltip="My tooltip"
+                matTooltipPosition="above"
+              ></mat-icon>
+            </h6>
+          </div>
+          <input
+            mdbInput
+            digitOnly
+            decimal="true"
+            maxDecimalDigits="2"
+            class="form-control col-2"
+            placeholder="лв/км"
+            formControlName="pricePerExtraKm"
+          />
+        </div>
+
+        <!-- <hr class="col-11 mt-4">
+
+                <div class="col-12 mt-4 row">
+                    <div class="col-10 text-left">
+                        <h6>Минимален брой дни за наем</h6>
+                    </div>
+                    <input mdbInput digitOnly maxDigits="2" class="form-control col-2" placeholder="" formControlName="minRent">
+                </div>
+                <div class="col-12 mt-4 row">
+                    <div class="col-10 text-left">
+                        <h6>Максимален брой дни за наем</h6>
+                    </div>
+                    <input mdbInput digitOnly maxDigits="3" class="form-control col-2" placeholder="" formControlName="maxRent">
+                </div> -->
+      </div>
     </div>
 
-    <button (click)="print()">print</button>
+    <div class="col-12 col-md-6 price">
+      <h4>Цена</h4>
+      <div class="row">
+        <div class="col-12 mt-4 row">
+          <div class="col-10 text-left">
+            <h6>
+              Цена на автомобила за ден:
+              <mat-icon
+                class="far fa-question-circle h6"
+                matTooltip="My tooltip"
+                matTooltipPosition="above"
+              ></mat-icon>
+            </h6>
+          </div>
+          <input
+            mdbInput
+            digitOnly
+            decimal="true"
+            maxDecimalDigits="2"
+            class="form-control col-2"
+            placeholder="лв"
+            formControlName="price"
+          />
+        </div>
 
-    <button mat-button matStepperPrevious>Back</button>
-    
+        <hr class="col-11 mt-4" />
+
+        <div class="col-12 mt-4 row">
+          <div class="col-10 text-left">
+            <h6>
+              Седмична отстъпка:
+              <mat-icon
+                class="far fa-question-circle h6"
+                matTooltip="Отстъпка при наемане на колата за повече от седмица"
+                matTooltipPosition="above"
+              ></mat-icon>
+            </h6>
+          </div>
+          <input
+            mdbInput
+            digitOnly
+            maxDigits="2"
+            class="form-control col-2"
+            placeholder="%"
+            formControlName="weeklyDiscount"
+          />
+        </div>
+
+        <div class="col-12 mt-4 row">
+          <div class="col-10 text-left">
+            <h6>
+              Месечна отстъпка:
+              <mat-icon
+                class="far fa-question-circle h6"
+                matTooltip="Отстъпка при наемане на колата за повече от месец"
+                matTooltipPosition="above"
+              ></mat-icon>
+            </h6>
+          </div>
+          <input
+            mdbInput
+            digitOnly
+            maxDigits="2"
+            class="form-control col-2"
+            placeholder="%"
+            formControlName="monthlyDiscount"
+          />
+        </div>
+      </div>
+
+      <mat-checkbox class="col-12" color="primary"
+        >Съгласен/на съм с условията</mat-checkbox
+      >
+      <button
+        [disabled]="false"
+        type="button"
+        class="create-btn"
+        mdbBtn
+        size="lg"
+        gradient="blue"
+        mdbWavesEffect
+        (click)="print()"
+      >
+        Добави
+      </button>
+    </div>
+  </div>
+
+  <!-- <button (click)="print()">print</button> -->
+
+  <button mat-button matStepperPrevious>Назад</button>
 </div>

@@ -1,67 +1,193 @@
 <div class="container">
-	<div class="register-form">
-		<!-- <div class="modal-header">
+  <div class="register-form">
+    <!-- <div class="modal-header">
 			<h4 class="modal-title pull-left">Modal</h4>
 			<button type="button" class="close pull-right" aria-label="Close" (click)="bsModalRef.hide()">
 				<span aria-hidden="true">&times;</span>
 			</button>
 		</div> -->
 
-		<form class="form-fields row" [formGroup]="registerForm" (keyup.enter)="registerUser()" >
-			<div class="text-center col-12 mt-2">
-				<h1>Създайте вашият профил</h1>
-				<h5>Възползвайте се максимално от нашите услуги</h5>
-				<hr>
-			</div>
+    <form
+      class="form-fields row"
+      [formGroup]="registerForm"
+      (keyup.enter)="registerUser()"
+    >
+      <div class="text-center col-12 mt-2">
+        <h4>Създайте вашият профил</h4>
+        <h6>Възползвайте се максимално от нашите услуги</h6>
+        <hr />
+      </div>
 
-
-			<mat-form-field class="col-6">
-				<input type="text" placeholder="Потребителско име" matInput formControlName="username" autocomplete="off" required>
-				<mat-error *ngIf="registerForm.hasError('required', 'username')">Въведете потребителско име
-				</mat-error>
-				<mat-error *ngIf="registerForm.hasError('usernameTaken', 'username')">Потребителското име е заето
-				</mat-error>
-			</mat-form-field>
-			<mat-form-field class="col-6">
-				<input type="email" placeholder="E-mail" matInput formControlName="email" autocomplete="off" required />
-				<!-- <mat-error *ngIf="registerForm.controls.email.errors">
-					<span *ngIf="registerForm.controls.email.errors.required">Моля въведете вашият e-mail</span>
-					<span *ngIf="registerForm.controls.email.errors.email">Посоченият e-mail е невалиден</span>
-				</mat-error> -->
-				<mat-error *ngIf="registerForm.hasError('emailTaken', 'email')">Посоченият e-mail е зает</mat-error>
-				<mat-error *ngIf="registerForm.hasError('required', 'email')">Въведете вашият e-mail</mat-error>
-				<mat-error *ngIf="registerForm.hasError('email', 'email')">Посоченият e-mail е невалиден</mat-error>
-			</mat-form-field>
-			<mat-form-field class="col-6">
-				<input type="text" placeholder="Име" matInput formControlName="firstName" autocomplete="off" required />
-				<mat-error>Моля въведете вашето име</mat-error>
-				<!-- <mat-error *ngIf="registerForm.hasError('required', 'firstName')">Посоченият e-mail е невалиден</mat-error>				 -->
-				<!-- <mat-error *ngIf="registerForm.hasError('name', 'firstName')">Посоченият e-mail е невалиден</mat-error> -->
-			</mat-form-field>
-			<mat-form-field class="col-6">
-				<input type="text" placeholder="Фамилия" matInput formControlName="lastName" autocomplete="off" required />
-				<mat-error>Моля въведете вашата фамилия</mat-error>
-			</mat-form-field>
-			<mat-form-field class="col-6">
-				<input type="password" placeholder="Парола" matInput formControlName="password" required>
-				<mat-error *ngIf="registerForm.hasError('required', 'password')">Моля въведете парола</mat-error>
-				<!-- <mat-error *ngIf="registerForm.hasError('minlength', 'password')">Паролата трябва да бъде минимум 8 символа</mat-error> -->
-				<mat-error *ngIf="registerForm.hasError('pattern', 'password')">Паролата трябва да бъде минимум 8
-					символа и да съдържа поне: 1 главна буква, 1 малка буква, 1 цифра, 1 специален символ</mat-error>
-			</mat-form-field>
-			<mat-form-field class="col-6">
-				<input type="password" placeholder="Потвърдете паролата" matInput formControlName="confirmPassword"
-					required>
-				<mat-error *ngIf="registerForm.hasError('required', 'confirmPassword')">Потвърдете паролата</mat-error>
-				<mat-error *ngIf="registerForm.hasError('mustMatch', 'confirmPassword')">Паролите не съвпадат!
-				</mat-error>
-			</mat-form-field>
-		</form>
-		<div class="text-center">
-			<button class="search-btn" type="button" mdbBtn gradient="blue" size="lg" mdbWavesEffect
-				(click)="registerUser()" [disabled]="registerForm.invalid">Регистрация</button>
-			<!-- <p class="message">Имате профил? <a (click)="goToLogin()">Логнете се тук</a></p> -->
-		</div>
-		<!-- <button (click)="printInfo()">Print</button> -->
-	</div>
+      <mat-form-field class="col-6">
+        <input
+          type="text"
+          placeholder="Потребителско име"
+          matInput
+          formControlName="username"
+          autocomplete="off"
+          required
+        />
+        <mat-error *ngIf="registerForm.hasError('required', 'username')"
+          >Въведете потребителско име
+        </mat-error>
+        <mat-error *ngIf="registerForm.hasError('usernameTaken', 'username')"
+          >Потребителското име е заето
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="col-6">
+        <input
+          type="email"
+          placeholder="E-mail"
+          matInput
+          formControlName="email"
+          autocomplete="off"
+					required
+					pattern="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$"
+        />
+        <mat-error *ngIf="registerForm.hasError('emailTaken', 'email')"
+          >Посоченият e-mail е зает</mat-error
+        >
+        <mat-error *ngIf="registerForm.hasError('required', 'email')"
+          >Въведете вашият e-mail</mat-error
+        >
+        <mat-error *ngIf="registerForm.hasError('pattern', 'email')"
+          >Посоченият e-mail е невалиден</mat-error
+        >
+      </mat-form-field>
+      <mat-form-field class="col-6">
+        <input
+          type="text"
+          placeholder="Име"
+          matInput
+          formControlName="firstName"
+          autocomplete="off"
+          style="text-transform: capitalize;"
+          pattern="[a-zA-Z\u0400-\u04FF]+"
+          required
+				/>
+				<mat-error *ngIf="registerForm.hasError('required', 'firstName')"
+          >Моля въведете вашето име</mat-error
+        >
+        <mat-error *ngIf="registerForm.hasError('pattern', 'firstName')"
+          >Невалиден формат</mat-error
+        >
+      </mat-form-field>
+      <mat-form-field class="col-6">
+        <input
+          type="text"
+          placeholder="Фамилия"
+          matInput
+          formControlName="lastName"
+          autocomplete="off"
+          pattern="[a-zA-Z\u0400-\u04FF]+"
+          style="text-transform: capitalize;"
+          required
+        />
+        <mat-error *ngIf="registerForm.hasError('required', 'lastName')"
+          >Моля въведете вашата фамилия</mat-error
+        >
+        <mat-error *ngIf="registerForm.hasError('pattern', 'lastName')"
+          >Невалиден формат</mat-error
+        >
+      </mat-form-field>
+      <mat-form-field class="col-6">
+        <input
+          type="text"
+          placeholder="Телефон"
+          matInput
+          formControlName="phone"
+          autocomplete="off"
+					required
+					pattern="^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\./0-9]*$"
+				/>
+				<mat-error *ngIf="registerForm.hasError('required', 'phone')"
+          >Моля въведете телефон</mat-error
+        >
+        <mat-error *ngIf="registerForm.hasError('pattern', 'phone')"
+          >Невалиден формат</mat-error
+        >
+      </mat-form-field>
+      <mat-form-field class="col-6">
+        <input
+          readonly
+          type="text"
+          placeholder="Дата на раждане"
+          matInput
+          formControlName="dateOfBirth"
+          autocomplete="off"
+          required
+          [owlDateTimeTrigger]="birthPicker"
+          [owlDateTime]="birthPicker"
+        />
+        <mat-error>Моля въведете рожденна дата</mat-error>
+      </mat-form-field>
+      <owl-date-time
+        #birthPicker
+        startView="multi-years"
+        [pickerType]="'calendar'"
+        [firstDayOfWeek]="1"
+      ></owl-date-time>
+      <mat-form-field class="col-6">
+        <input
+          [type]="hide ? 'password' : 'text'"
+          placeholder="Парола"
+          matInput
+          formControlName="password"
+          required
+        />
+        <button
+          mat-icon-button
+          matSuffix
+          (click)="hide = !hide"
+          [attr.aria-label]="'Hide password'"
+          [attr.aria-pressed]="hide"
+        >
+          <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+        </button>
+        <mat-icon
+          class="far fa-question-circle password-specs"
+          placement="top"
+          ngbTooltip="Паролата трябва да бъде минимум 8
+				символа и да съдържа поне: 1 главна буква, 1 малка буква, 1 цифра, 1 специален символ"
+        ></mat-icon>
+        <mat-error *ngIf="registerForm.hasError('required', 'password')"
+          >Моля въведете парола</mat-error
+        >
+        <mat-error *ngIf="registerForm.hasError('pattern', 'password')"
+          >Паролата не отговаря на изискванията</mat-error
+        >
+      </mat-form-field>
+      <mat-form-field class="col-6">
+        <input
+          type="password"
+          placeholder="Потвърдете паролата"
+          matInput
+          formControlName="confirmPassword"
+          required
+        />
+        <mat-error *ngIf="registerForm.hasError('required', 'confirmPassword')"
+          >Потвърдете паролата</mat-error
+        >
+        <mat-error *ngIf="registerForm.hasError('mustMatch', 'confirmPassword')"
+          >Паролите не съвпадат!
+        </mat-error>
+      </mat-form-field>
+    </form>
+    <div class="text-center mt-3">
+      <button
+        class="search-btn"
+        type="button"
+        mdbBtn
+        gradient="blue"
+        size="lg"
+        mdbWavesEffect
+        (click)="registerUser()"
+        [disabled]="registerForm.invalid"
+      >
+        Регистрация
+      </button>
+      <!-- <p class="message">Имате профил? <a (click)="goToLogin()">Логнете се тук</a></p> -->
+    </div>
+    <!-- <button (click)="printInfo()">Print</button> -->
+  </div>
 </div>

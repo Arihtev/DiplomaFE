@@ -295,3 +295,13 @@ input.ng-valid{
 .width18{
   width: 18px !important;
 }
+
+.price-backup{
+  display: none;
+}
+
+@media screen and (max-width: 992px) {
+  .price-backup{
+    display: block;
+  }
+}

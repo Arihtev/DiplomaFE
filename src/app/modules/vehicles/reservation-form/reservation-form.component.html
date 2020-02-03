@@ -1,7 +1,7 @@
 <div class="gradient"></div>
 <div class="container" *ngIf="car">
   <div class="row">
-    <div class="col-7">
+    <div class="col-12 col-lg-7">
       <h1 class="mt-2">
         Резервация
       </h1>
@@ -9,7 +9,7 @@
         Важни дати
       </h3>
       <div class="row">
-        <div class="col-6">
+        <div class="col-12 col-md-6">
           <div class="date-box text-center p-1">
             <span class="font-weight-bold h4">{{
               selectedMoments[0] | amLocale: "bg" | amDateFormat: "D"
@@ -29,7 +29,7 @@
             след 06:00 часа
           </div>
         </div>
-        <div class="col-6 dates">
+        <div class="col-12 col-md-6 dates">
           <div class="date-box text-center p-1">
             <span class="font-weight-bold h4">{{
               selectedMoments[1] | amLocale: "bg" | amDateFormat: "D"
@@ -82,6 +82,43 @@
       <h3 class="mt-5 mb-3">
         Потвърждение и плащане
       </h3>
+
+      <div class="price-backup">
+        <div class="row">
+          <div class="col-6 text-left">
+            <span>{{ car.price }}лв х {{ 2 }} дни</span>
+          </div>
+          <div class="col-6 text-right">
+            <span>{{ car.price * 2 }}лв</span>
+          </div>
+        </div>
+        <div class="row mt-1">
+          <div class="col-6 text-left">
+            <span
+              >Такса
+              <mat-icon
+                class="far fa-question-circle h6"
+                matTooltip="My tooltip"
+                matTooltipPosition="above"
+              ></mat-icon
+            ></span>
+          </div>
+          <div class="col-6 text-right">
+            <span>7лв</span>
+          </div>
+        </div>
+        <!-- <br>
+        <span class="price-left">Такса</span> <span class="price-right">7лв</span> -->
+        <hr />
+        <div class="row mt-1">
+          <div class="col-6 text-left">
+            <span class="font-weight-bold">Общо</span>
+          </div>
+          <div class="col-6 text-right">
+            <span class="font-weight-bold">{{ car.price * 2 + 7 }}лв</span>
+          </div>
+        </div>
+      </div>
 
       <div class="icon-item">
         Начин на плащане
@@ -199,7 +236,7 @@
         </div>
 
         <div class="icon-item row">
-          <div class="col-8">
+          <div class="col-12 col-md-8 mb-3">
             <span class="centered-text h5">
               Съгласен съм с условията за ползване
             </span>
@@ -221,7 +258,7 @@
               </label>
             </div>
           </div>
-          <div class="col-4 text-center">
+          <div class="col-12 col-md-4 text-center">
             <button
               type="submit"
               class="mt-0"
@@ -238,11 +275,14 @@
         </div>
       </form>
     </div>
-    <div class="col-5">
+    <div class="col-5 car-summary">
       <app-car-summary
         class="car-fixed"
         [car]="car"
         [selectedMoments]="selectedMoments"
+        [daysReserved]="daysReserved"
+        [reservationPrice]="reservationPrice"
+        [discount]="discount"
       ></app-car-summary>
     </div>
   </div>

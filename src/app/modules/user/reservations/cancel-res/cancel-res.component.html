@@ -1,0 +1,19 @@
+<div class="text-center">
+  <h1 mat-dialog-title>
+    Сигурни ли сте, че искате да отмените резервацията?
+  </h1>
+  <div mat-dialog-content>
+    <p *ngIf="data.refundable?.amount=='half'">
+      Ако решите да отмените ще ви бъде върната 50% от стойността на резервацията: <span class="font-weight-bold">{{ data.reservation.total_price / 2 | number : '1.2-2'  }}лв</span>
+    </p>
+    <p *ngIf="data.refundable?.amount=='full'">
+      Ако решите да отмените ще ви бъде върната пълната стойност на резервацията: <span class="font-weight-bold">{{ data.reservation.total_price }}лв</span>
+    </p>
+  </div>
+  <div>
+  </div>
+  <div class="text-center">
+    <button mat-raised-button class="m-2" (click)="onNoClick()">Не</button>
+    <button mat-raised-button class="m-2" color="warn" (click)="cancelReservation()">Да</button>
+  </div>
+</div>

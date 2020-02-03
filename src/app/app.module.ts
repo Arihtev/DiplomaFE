@@ -33,6 +33,10 @@ import { AuthGuard } from './core/guards/auth-guard/auth.guard';
 import { SpinnerComponent } from './shared/components/spinner/spinner.component';
 import { SharedModule } from './shared/shared.module';
 import { MomentModule } from 'ngx-moment';
+import { MatTooltipModule, MatIconModule } from '@angular/material';
+import { OwlDateTimeModule, OwlNativeDateTimeModule, OwlDateTimeIntl } from 'ng-pick-datetime';
+import { DefaultIntl } from './shared/pipes/custom-date-time-adapter.class';
+
 
 
 @NgModule({
@@ -41,7 +45,7 @@ import { MomentModule } from 'ngx-moment';
     NavbarComponent,
     RegistrationComponent,
     LoginComponent,
-    AuthenticationComponent
+    AuthenticationComponent,
   ],
   imports: [
     BrowserModule,
@@ -71,7 +75,12 @@ import { MomentModule } from 'ngx-moment';
     TabsModule.forRoot(),
     MatProgressSpinnerModule,
     SharedModule,
-    MomentModule
+    MomentModule,
+    MatTooltipModule,
+    MatIconModule,
+    VehiclesModule,
+    OwlDateTimeModule,
+    OwlNativeDateTimeModule,
   ],
   entryComponents: [
     AuthenticationComponent
@@ -81,7 +90,9 @@ import { MomentModule } from 'ngx-moment';
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptorService,
       multi: true
-    }],
+    },
+    {provide: OwlDateTimeIntl, useClass: DefaultIntl},
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

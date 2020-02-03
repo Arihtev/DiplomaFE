@@ -16,8 +16,8 @@ export class FormRulesComponent implements OnInit {
       smoking: new FormControl('false', Validators.required),
       includedKm: new FormControl('', Validators.required),
       pricePerExtraKm: new FormControl('', Validators.required),
-      minRent: new FormControl('', Validators.required),
-      maxRent: new FormControl('', Validators.required),
+      // minRent: new FormControl('', Validators.required),
+      // maxRent: new FormControl('', Validators.required),
       price: new FormControl('', Validators.required),
       weeklyDiscount: new FormControl('', Validators.required),
       monthlyDiscount: new FormControl('', Validators.required)

@@ -1,0 +1,72 @@
+<div class="reservation row">
+  <div class="col-12 col-lg-6 row">
+    <div class="col-12 col-md-6">
+      <img
+        class="renter-img mt-1"
+        [src]="reservation.renter_id?.photo"
+        alt=""
+        (click)="carDetails()"
+      />
+    </div>
+    <div class="col-12 col-md-6">
+      <p class="mt-3 mb-1">Наемател:</p>
+      <h5>
+        {{ reservation.renter_id.username }}
+      </h5>
+      <h6>
+        <i class="fas fa-mobile-alt"></i> 0899123456
+      </h6>
+    </div>
+  </div>
+  <div class="col-12 col-lg-6 row text-left">
+    <div class="col-12 col-md-6 col-lg-8">
+      <div class="col-12 p-1">
+        <div class="date-box text-center p-1">
+          <span class="font-weight-bold h4">{{
+            reservation.start_date | amLocale: "bg" | amDateFormat: "D"
+          }}</span>
+          <br class="p-0 m-0" />
+          {{ reservation.start_date | amLocale: "bg" | amDateFormat: "MMM" }}
+        </div>
+        <div class="date-info">
+          {{
+            reservation.start_date
+              | amLocale: "bg"
+              | amDateFormat: "dddd"
+              | titlecase
+          }}
+          - получаване
+          <br class="p-0 m-0" />
+          след 06:00 часа
+        </div>
+      </div>
+      <div class="col-12 p-1">
+        <div class="date-box text-center p-1">
+          <span class="font-weight-bold h4">{{
+            reservation.end_date | amLocale: "bg" | amDateFormat: "D"
+          }}</span>
+          <br class="p-0 m-0" />
+          {{ reservation.end_date | amLocale: "bg" | amDateFormat: "MMM" }}
+        </div>
+        <div class="date-info">
+          {{
+            reservation.end_date
+              | amLocale: "bg"
+              | amDateFormat: "dddd"
+              | titlecase
+          }}
+          - връщане
+          <br class="p-0 m-0" />
+          до 22:00 часа
+        </div>
+      </div>
+    </div>
+    <div class="col-12 col-md-6 col-lg-4 text-center price">
+      <p class="m-1">Платено:</p>
+      <h5>{{ reservation.total_price }}лв</h5>
+      <hr class="m-1" />
+      <p class="m-1">Продължителност:</p>
+      <h5>{{ reservation.days_reserved }} {{ reservation.days_reserved == 1 ? 'ден' : 'дни' }}</h5>
+    </div>
+  </div>
+</div>

@@ -36,7 +36,35 @@ export class SiteCardbService {
       car_id: reservationData.carId,
       renter_id: reservationData.renterId,
       start_date: reservationData.startDate,
-      end_date: reservationData.endDate
+      end_date: reservationData.endDate,
+      days_reserved: reservationData.daysReserved,
+      total_price: reservationData.totalPrice,
+      status: 'paid'
+    })
+  }
+
+  getUserReservations(){
+    return this.customService.get(`${this.CAR_DB_URL}/reservations/user/`)
+  }
+
+  getCarReservations(id){
+    return this.customService.get(`${this.CAR_DB_URL}/reservations/car/${id}`)
+  }
+
+  cancelReservation(id, reservationStatus, priceAfter){
+    return this.customService.patch(`${this.CAR_DB_URL}/reservations/cancel/${id}`, {
+      status: reservationStatus,
+      total_price: priceAfter
+    })
+  }
+
+  submitReview(reservation_id, car_id, rate, comment){
+    return this.customService.post(`${this.CAR_DB_URL}/reservations/create-review/`, {
+      reservation: reservation_id,
+      car_id: car_id,
+      comment: comment,
+      rate: rate,
+      date: new Date()
     })
   }
 }

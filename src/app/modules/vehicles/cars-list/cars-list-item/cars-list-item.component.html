@@ -3,7 +3,7 @@
 <div class="car-card" (click)="openCarDetails()">
     <!-- [routerLink]="'/cars/'+car.id" -->
     <div class="car-price">
-        <i class="fas fa-tag custom-green"></i><span class="h5">{{ car.price }}лв</span>/ден
+        <i class="fas fa-tag custom-green"></i><span class="h5">{{ car.price | number:'1.0-0' }}лв</span>/ден
     </div>
     <!-- <div class="car-fav" (click)="addToFavourites(car.id)" *ngIf="currentUser"> -->
         <div class="car-fav" (click)="addToFavourites(car.id);$event.stopPropagation()" *ngIf="currentUser">
@@ -16,40 +16,46 @@
     <img class="car-img" [src]="car.pictures[0].picture" alt="">
     <div class="car-info">
         <div class="row">
-            <div class="col-7 text-left">
+            <div class="col-7 text-left pr-0">
                 {{ car.make }} {{ car.model }} <span class="car-year">{{ car.year }}</span>
+            </div>            
+            <div class="col-5 text-right">
+                <app-show-rating [rate]="car.rating"></app-show-rating>
             </div>
-            <div class="col-5 text-right car-city">
+            <div class="col-6 text-left car-city">
                 <i class="fas fa-map-marker-alt text-primary" style="font-size: 1rem"></i> {{ car.city }}
             </div>
+            <div class="col-6 text-right times-rented">
+                {{ car.times_rented }} наемателя
+            </div>
         </div>
-        <div class="row">
+        <!-- <div class="row">
             <div class="col-6 text-left">
                 <app-show-rating [rate]="car.id"></app-show-rating>
             </div>
             <div class="col-6 text-right car-city">
                 <i class="fas fa-user-check" style="font-size: 1rem"></i> {{ car.owner.username }}
             </div>
-        </div>
+        </div> -->
         <div class="row mt-2 text-left">
-            <div class="col-4">
+            <div class="col-6 pr-0">
                 <i class="fas fa-burn"> </i> <span class="car-second-info"> {{ car.consumption }}л/100км</span>
             </div>
-            <div class="col-4"> 
+            <div class="col-6 pr-0"> 
                 <i class="fas fa-gas-pump custom-green"></i> <span class="car-second-info"> {{ car.engine_type }}</span>
             </div>
-            <div class="col-4">
+            <!-- <div class="col-4 pr-0">
                 <img src="assets/images/gearbox.svg" class="car-icon" alt=""> <span class="car-second-info"> {{ car.transmission }}</span>
-            </div>
+            </div> -->
         </div>
         <div class="row mt-1 text-left">
-            <div class="col-4">
+            <div class="col-6 pr-0">
                 <img src="assets/images/horsepower.png" class="car-icon" alt=""> <span class="car-second-info"> {{ car.horsepower }} к.с.</span>
             </div>
-            <div class="col-4"> 
+            <!-- <div class="col-4 pr-0"> 
                 <i class="fas fa-car"></i> <span class="car-second-info"> {{ car.category | convertCategory }}</span>
-            </div>
-            <div class="col-4">
+            </div> -->
+            <div class="col-6 pr-0">
                 <img src="assets/images/seat.png" class="car-icon" alt=""> <span class="car-second-info"> {{ car.seats }} места</span>
             </div>
         </div>

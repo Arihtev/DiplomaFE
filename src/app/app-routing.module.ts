@@ -1,17 +1,15 @@
-import { LoginComponent } from './core/authentication/login/login.component';
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-import { RegistrationComponent } from './core/authentication/registration/registration.component';
-import { AuthGuard } from './core/guards/auth-guard/auth.guard';
+import { LoginComponent } from "./core/authentication/login/login.component";
+import { NgModule } from "@angular/core";
+import { Routes, RouterModule } from "@angular/router";
+import { RegistrationComponent } from "./core/authentication/registration/registration.component";
+import { AuthGuard } from "./core/guards/auth-guard/auth.guard";
 
 const routes: Routes = [
   {
     path: "",
     pathMatch: "full",
     loadChildren: () =>
-      import("./modules/home/home.module").then(
-        module => module.HomeModule
-      ),
+      import("./modules/home/home.module").then(module => module.HomeModule)
   },
   {
     path: "host",
@@ -27,21 +25,19 @@ const routes: Routes = [
       import("./modules/user/user.module").then(
         module => module.UserModule
       ),
+    canActivate: [AuthGuard]
   },
   {
     path: "cars",
     loadChildren: () =>
       import("./modules/vehicles/vehicles.module").then(
         module => module.VehiclesModule
-      ),
+      )
   },
   {
-    path: "register",
-    component: RegistrationComponent,
-  },
-  {
-    path: "login",
-    component: LoginComponent,
+    path: "**",
+    loadChildren: () =>
+      import("./modules/home/home.module").then(module => module.HomeModule)
   }
 ];
 
@@ -49,4 +45,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

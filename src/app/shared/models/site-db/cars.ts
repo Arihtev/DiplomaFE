@@ -1,23 +1,31 @@
+import { IUser } from '../authentication/user';
+
 export interface ICar{
     id: number,
-    year: String,
+    year: number,
     make: String,
     model: String,
     transmission: String,
     engine_type: String,
     category: String,
     seats: String,
-    consumption: String,
+    consumption: number,
     horsepower: String,
     region: String,
     city: String,
     address: String,
-    zip_code: String,
+    zip_code: number,
     pictures: IPicture[],
     extras: IExtra[],
     description: String,
     owner: IOwner,
-    reservations: IReservation[]
+    reservations?: IReservation[],
+    reviews?: IReview[],
+    weekly_discount: number,
+    monthly_discount: number,
+    price: number,
+    rating?: number,
+    times_rented?: number
 }
 
 export interface IPicture{
@@ -47,9 +55,33 @@ export interface IFilters{
     end: Date
 }
 
-export interface IReservation{
+export interface ICreateReservation{
     car_id: number,
     renter_id: number,
     start_date: string | Date,
-    end_date: string | Date
+    end_date: string | Date,
+    status: string,
+    total_price: string,
+    days_reserved: number,
+    present: boolean
+}
+
+export interface IReservation{
+    id: number,
+    car_id: ICar,
+    renter_id: IUser,
+    start_date: string | Date,
+    end_date: string | Date,
+    status: string,
+    total_price: string,
+    days_reserved: number,
+    present: boolean
+}
+
+export interface IReview{
+    car_id: number,
+    reservation: number,
+    comment: string,
+    rete: number,
+    date: string
 }

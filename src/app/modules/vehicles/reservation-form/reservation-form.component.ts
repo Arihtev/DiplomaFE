@@ -4,7 +4,9 @@ import { Router, ActivatedRoute } from "@angular/router";
 import * as moment from "moment";
 import { IUser } from "src/app/shared/models/authentication/user";
 import { AuthService } from "src/app/core/services/authentication/auth.service";
-import { SiteCardbService } from 'src/app/core/services/site-cardb/site-cardb.service';
+import { SiteCardbService } from "src/app/core/services/site-cardb/site-cardb.service";
+import { MatSnackBar, MatDialog } from "@angular/material";
+import { ReservationDialogComponent } from "./reservation-dialog/reservation-dialog.component";
 
 @Component({
   selector: "app-reservation-form",
@@ -21,6 +23,9 @@ export class ReservationFormComponent implements OnInit {
   // selectedMoments = [this.start, this.end]
   currentUser: IUser;
   car;
+  reservationPrice;
+  discount;
+  daysReserved
   selectedMoments;
   formData = {
     card_owner_name: "GEORGI ARIHTEV",
@@ -34,7 +39,9 @@ export class ReservationFormComponent implements OnInit {
     private router: Router,
     private activatedRoute: ActivatedRoute,
     private authService: AuthService,
-    private dbService: SiteCardbService
+    private dbService: SiteCardbService,
+    private _snackBar: MatSnackBar,
+    public dialog: MatDialog
   ) {
     this.authService.currentUser.subscribe(user => {
       this.currentUser = user;
@@ -52,6 +59,9 @@ export class ReservationFormComponent implements OnInit {
     if (window.history.state.car && window.history.state.selectedMoments) {
       this.car = window.history.state.car;
       this.selectedMoments = window.history.state.selectedMoments;
+      this.reservationPrice = window.history.state.reservationPrice;
+      this.discount = window.history.state.discount;
+      this.daysReserved = window.history.state.daysReserved;
     } else {
       this.activatedRoute.params.subscribe(params => {
         this.router.navigate(["cars/" + params.id]);
@@ -59,18 +69,41 @@ export class ReservationFormComponent implements OnInit {
     }
   }
 
+  openSnackBar(message: string, action: string) {
+    this._snackBar.open(message, action, {
+      duration: 3000,
+      panelClass: ["custom-snackbar"]
+    });
+  }
+
+  openDialog(): void {
+    const dialogRef = this.dialog.open(ReservationDialogComponent, {
+      width: "450px",
+      data: { car: this.car, dates: this.selectedMoments },
+      autoFocus: false,
+      disableClose: true
+    });
+  }
+
   sendReservation() {
     let reservationData = {
       carId: this.car.id,
       renterId: this.currentUser.id,
       startDate: moment(this.selectedMoments[0]).format("YYYY-MM-D"),
-      endDate: moment(this.selectedMoments[1]).format("YYYY-MM-D")
+      endDate: moment(this.selectedMoments[1]).format("YYYY-MM-D"),
+      daysReserved: this.daysReserved,
+      totalPrice: this.reservationPrice,
     };
-    this.dbService.sendReservation(reservationData).subscribe((res: any) => {
-        console.log(res)
-      },error => {
-        console.log(error)
+    this.dbService.sendReservation(reservationData).subscribe(
+      (res: any) => {
+        // this.openSnackBar("Вашата резервация беше успешна!", "Затвори")
+        //   this.router.navigate(["user/reservations/"])
+
+        this.openDialog();
+      },
+      error => {
+        console.log(error);
       }
-    )
+    );
   }
 }

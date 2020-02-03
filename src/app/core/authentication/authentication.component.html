@@ -8,7 +8,7 @@
     <div class="modal-body">    
         <app-login *ngIf="component == 'login'" (close)="closeModal($event)"></app-login>
         <p *ngIf="component == 'login'" class="message text-center">Нямате профил? <a (click)="switchComponent()">Регистрирайте се тук</a></p>
-        <app-registration *ngIf="component == 'registration'"></app-registration>
-        <p *ngIf="component == 'registration'" class="message text-center">Имате профил? <a (click)="switchComponent()">Логнете се тук</a></p>
+        <app-registration *ngIf="component == 'registration'" (close)="closeModal($event)"></app-registration>
+        <p *ngIf="component == 'registration'" class="message text-center">Имате профил? <a (click)="switchComponent()">Влезте от тук</a></p>
     </div>
 </div>

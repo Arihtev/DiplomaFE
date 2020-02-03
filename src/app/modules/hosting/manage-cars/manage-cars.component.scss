@@ -13,7 +13,7 @@
         opacity: 0;
         color: white;
         text-shadow: 2px 2px 8px black;
-        font-size: 2rem;
+        font-size: 1.4rem;
         transition: all 0.5s ease;
     }
     .car-view{
@@ -56,9 +56,9 @@
             border-top-left-radius: 8px;
             border-bottom-left-radius: 8px;
             &:hover{
-                .title{
-                    font-size: 2.2rem;
-                }
+                // .title{
+                //     font-size: 2.2rem;
+                // }
                 .view-wrapper{
                     background-color: rgba(0, 160, 0, 0.45);
                 }
@@ -70,9 +70,9 @@
             border-top-right-radius: 8px;
             border-bottom-right-radius: 8px;
             &:hover{
-                .title{
-                    font-size: 2.2rem;
-                }
+                // .title{
+                //     font-size: 2.2rem;
+                // }
                 .edit-wrapper{
                     background-color: rgba(255, 0, 0, 0.45);
                 }
@@ -81,9 +81,9 @@
         .car-reservations{
             opacity: 1;
             &:hover{
-                .title{
-                    font-size: 2.2rem;
-                }
+                // .title{
+                //     font-size: 2.2rem;
+                // }
                 .reservations-wrapper{
                     background-color: rgba(0, 47, 255, 0.45);
                 }
@@ -120,4 +120,65 @@
     height: 100%;
     width: 100%;
     transition: all 0.5s ease;
+}
+
+@media screen and (max-width: 500px){
+    .choose{
+        .title{
+            position: absolute; 
+            top: 50%;
+            left:50%;
+            transform: translate(-50%,-50%);
+            transition: all 0.3s ease;
+            opacity: 0;
+            color: white;
+            text-shadow: 2px 2px 8px black;
+            font-size: 1rem;
+            transition: all 0.5s ease;
+        }
+        .car-view{
+            // background-color: rgba(0, 160, 0, 0.3);
+            opacity: 1;
+            border-top-left-radius: 8px;
+            border-bottom-left-radius: 8px;
+            &:hover{
+                // .title{
+                //     font-size: 2.2rem;
+                // }
+                .view-wrapper{
+                    background-color: rgba(0, 160, 0, 0.45);
+                }
+            }
+        }
+        .car-edit{
+            // background-color: rgba(255, 0, 0, 0.3);
+            opacity: 1;
+            border-top-right-radius: 8px;
+            border-bottom-right-radius: 8px;
+            &:hover{
+                // .title{
+                //     font-size: 2.2rem;
+                // }
+                .edit-wrapper{
+                    background-color: rgba(255, 0, 0, 0.45);
+                }
+            }
+        }
+        .car-reservations{
+            opacity: 1;
+            &:hover{
+                // .title{
+                //     font-size: 2.2rem;
+                // }
+                .reservations-wrapper{
+                    background-color: rgba(0, 47, 255, 0.45);
+                }
+            }
+        }
+        .title{
+            opacity: 1;
+            transition: all 0.5s ease;
+        }
+    }
+
 }
