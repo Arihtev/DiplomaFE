@@ -6,6 +6,7 @@ export interface IUser{
     first_name: string,
     last_name: string,
     photo: string,
+    phone: string,
     user_type: string,
     gender: string,
     cars_owned: number[],

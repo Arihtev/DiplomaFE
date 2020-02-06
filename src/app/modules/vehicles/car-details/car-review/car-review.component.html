@@ -1,0 +1,15 @@
+<div class="review row">
+    <div class="col-6 text-left">
+        <img class="renter-img" [src]="review.reservation.renter_id.photo" alt="">
+        <span class="user-name">{{ review.reservation.renter_id.first_name }} {{ review.reservation.renter_id.last_name }} </span>
+        <span class="date"> {{ review.date | amLocale: "bg" | amDateFormat: "L" }}</span>
+    </div>
+    <div class="col-6 text-right">
+        <app-show-rating [rate]="review.rate"></app-show-rating>
+    </div>
+    <div class="col-12 mt-2 comment">
+        <span>
+            {{ review.comment }}
+        </span>
+    </div>
+</div>

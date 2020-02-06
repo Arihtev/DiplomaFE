@@ -12,7 +12,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatStepperModule } from '@angular/material/stepper';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS, HttpClient } from '@angular/common/http';
 import { NavbarComponent } from './shared/components/navbar/navbar.component';
 import { CollapseModule, BsDropdownModule, PopoverModule } from 'ngx-bootstrap';
 import { NgxPageScrollCoreModule } from 'ngx-page-scroll-core';
@@ -36,8 +36,12 @@ import { MomentModule } from 'ngx-moment';
 import { MatTooltipModule, MatIconModule } from '@angular/material';
 import { OwlDateTimeModule, OwlNativeDateTimeModule, OwlDateTimeIntl } from 'ng-pick-datetime';
 import { DefaultIntl } from './shared/pipes/custom-date-time-adapter.class';
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
-
+export function createTranslateLoader(http: HttpClient) {
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+}
 
 @NgModule({
   declarations: [
@@ -81,6 +85,13 @@ import { DefaultIntl } from './shared/pipes/custom-date-time-adapter.class';
     VehiclesModule,
     OwlDateTimeModule,
     OwlNativeDateTimeModule,
+    TranslateModule.forRoot({
+      loader: {
+          provide: TranslateLoader,
+          useFactory: (createTranslateLoader),
+          deps: [HttpClient]
+      }
+  })
   ],
   entryComponents: [
     AuthenticationComponent

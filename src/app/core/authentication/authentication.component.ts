@@ -13,7 +13,7 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
         overflow: 'hidden',
       })),
       state('login',   style({
-        height: '274px',
+        height: '374px',
         overflow: 'hidden',
       })),
       transition('* => *', animate('400ms ease-in-out'))

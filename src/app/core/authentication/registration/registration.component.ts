@@ -82,7 +82,7 @@ export class RegistrationComponent implements OnInit {
 
   openSnackBar(message: string, action: string) {
     let snackBarRef = this._snackBar.open(message, action, {
-      duration: 66000,
+      duration: 6000,
       panelClass: ["registered-snackbar"],
       verticalPosition: 'top'
     });

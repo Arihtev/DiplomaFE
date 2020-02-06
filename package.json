@@ -26,6 +26,8 @@
     "@auth0/angular-jwt": "^3.0.0",
     "@fortawesome/fontawesome-free": "^5.10.2",
     "@ng-bootstrap/ng-bootstrap": "^5.1.1",
+    "@ngx-translate/core": "^11.0.1",
+    "@ngx-translate/http-loader": "^4.0.0",
     "@types/chart.js": "^2.8.4",
     "@types/googlemaps": "^3.37.0",
     "angular-bootstrap-md": "^8.2.0",

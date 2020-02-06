@@ -13,8 +13,8 @@
           </span>
         </div>
         <div class="car-rating col-12 col-md-5 pt-0">
-          <app-show-rating></app-show-rating>
-          <span class="small-caption">&bull; 23 наемателя</span>
+          <app-show-rating [rate]="car.rating"></app-show-rating>
+          <span class="small-caption">&bull; {{ car.times_rented }} наемателя</span>
         </div>
       </div>
 
@@ -125,8 +125,10 @@
   <hr />
 
   <div *ngIf="car.reviews.length" class="reservation">
+    <h3 class="mb-3">Оценки и коментари</h3>
     <div *ngFor="let review of car.reviews" >
-      <p>{{ review.rate }}</p>
+      <app-car-review class="m-2 p-2" [review]="review"></app-car-review>
+      <hr>
     </div>
   </div>
 </div>

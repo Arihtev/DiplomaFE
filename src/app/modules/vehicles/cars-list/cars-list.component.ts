@@ -75,6 +75,9 @@ export class CarsListComponent implements OnInit {
     } else {
       this.noCars = false;
     }
+    // filtered = filtered.filter(car => [15, 14, 9, 10].includes(car.id))
+    //remove later
+    // return filtered.sort((a,b) => (a.id < b.id) ? 1 : ((b.id < a.id) ? -1 : 0));
     return filtered;
   }
 

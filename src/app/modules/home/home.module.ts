@@ -15,6 +15,7 @@ import { DefaultIntl } from '../../shared/pipes/custom-date-time-adapter.class';
 import { MatInputModule } from '@angular/material/input';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { SearchFiltersComponent } from './homepage/search-form/search-filters/search-filters.component';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 
 @NgModule({
@@ -34,7 +35,8 @@ import { SearchFiltersComponent } from './homepage/search-form/search-filters/se
     WavesModule,
     CollapseModule,
     MatInputModule,
-    MatAutocompleteModule
+    MatAutocompleteModule,
+    SharedModule
   ],
   exports: [
     SearchFiltersComponent

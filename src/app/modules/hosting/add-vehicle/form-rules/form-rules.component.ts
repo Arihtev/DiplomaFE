@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
@@ -8,7 +8,10 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 })
 export class FormRulesComponent implements OnInit {
 
-  rulesForm: FormGroup
+  @Output() submit: EventEmitter<any> = new EventEmitter();
+
+  rulesForm: FormGroup;
+  agreed: boolean = false;
 
   constructor() { 
     this.rulesForm = new FormGroup({
@@ -20,15 +23,19 @@ export class FormRulesComponent implements OnInit {
       // maxRent: new FormControl('', Validators.required),
       price: new FormControl('', Validators.required),
       weeklyDiscount: new FormControl('', Validators.required),
-      monthlyDiscount: new FormControl('', Validators.required)
+      monthlyDiscount: new FormControl('', Validators.required),
+      agreed: new FormControl(false)
     })
   }
 
   ngOnInit() {
   }
 
+  submitForm(){
+    this.submit.emit()
+  }
   print(){
-    console.log(this.rulesForm.value)
+    console.log(this.rulesForm.invalid)
   }
 
 }

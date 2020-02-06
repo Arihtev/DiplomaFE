@@ -14,8 +14,8 @@ export class FormMainComponent implements OnInit {
 
   // years: Observable<IYear[]>;
   years: number[] = [];
-  makes: IMake[] = [{make_id:"audi", make_display:"Audi", make_is_common:"1", make_country:"Germany"}];
-  models: IModel[] = [{model_name:"RS6",model_make_id:"audi"}];
+  makes: IMake[] //= [{make_id:"audi", make_display:"Audi", make_is_common:"1", make_country:"Germany"}];
+  models: IModel[] //= [{model_name:"RS6",model_make_id:"audi"}];
   // engines: IEngine[] = [{id: "1", type: "Petrol"}, {id: "2", type: "Diesel"}, {id: "3", type: "Electric"}, {id: "4", type: "Hybrid"}]
   
   //Selects diability
@@ -40,13 +40,13 @@ export class FormMainComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.mainForm.controls['year'].setValue(2020)
-    this.mainForm.controls['make'].setValue(this.makes[0])
-    this.mainForm.controls['model'].setValue(this.models[0])
+    // this.mainForm.controls['year'].setValue(2020)
+    // this.mainForm.controls['make'].setValue(this.makes[0])
+    // this.mainForm.controls['model'].setValue(this.models[0])
     this.mainForm.controls['year'].valueChanges.subscribe(res => {
       // console.log(res)
       this.models = []
-      this.mainForm.controls['make'].setValue("")
+      // this.mainForm.controls['make'].setValue("")
       this.service.getMakes(res).subscribe(res => {
         let newres: IcarApiMakesResponse = JSON.parse(res.slice(2, -2))
         // console.log(newres.Makes)

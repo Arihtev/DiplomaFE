@@ -35,7 +35,7 @@
               Включени километри
               <mat-icon
                 class="far fa-question-circle h6"
-                matTooltip="My tooltip"
+                matTooltip="Лимит километри на автомобила за ден"
                 matTooltipPosition="above"
               ></mat-icon>
             </h6>
@@ -55,7 +55,7 @@
               Цена за км над включените
               <mat-icon
                 class="far fa-question-circle h6"
-                matTooltip="My tooltip"
+                matTooltip="Цена за всеки километър над включените"
                 matTooltipPosition="above"
               ></mat-icon>
             </h6>
@@ -90,16 +90,16 @@
 
     <div class="col-12 col-md-6 price">
       <h4>Цена</h4>
-      <div class="row">
+      <div class="row mb-3">
         <div class="col-12 mt-4 row">
           <div class="col-10 text-left">
             <h6>
               Цена на автомобила за ден:
-              <mat-icon
+              <!-- <mat-icon
                 class="far fa-question-circle h6"
                 matTooltip="My tooltip"
                 matTooltipPosition="above"
-              ></mat-icon>
+              ></mat-icon> -->
             </h6>
           </div>
           <input
@@ -158,23 +158,24 @@
         </div>
       </div>
 
-      <mat-checkbox class="col-12" color="primary"
+      <mat-checkbox formControlName="agreed" class="col-12" color="primary"
         >Съгласен/на съм с условията</mat-checkbox
       >
       <button
-        [disabled]="false"
+        [disabled]="rulesForm.invalid || !rulesForm.controls['agreed'].value"
         type="button"
         class="create-btn"
         mdbBtn
         size="lg"
         gradient="blue"
         mdbWavesEffect
-        (click)="print()"
+        (click)="submitForm()"
       >
         Добави
       </button>
     </div>
   </div>
+  <!-- {{rulesForm.invalid}}  {{rulesForm.controls['agreed'].value!=true}} -->
 
   <!-- <button (click)="print()">print</button> -->
 

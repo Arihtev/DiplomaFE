@@ -46,6 +46,7 @@ import { DigitOnlyDirective } from "src/app/shared/directives/numbersOnly";
 import { MatDialogModule } from "@angular/material/dialog";
 import { ReservationDialogComponent } from "./reservation-form/reservation-dialog/reservation-dialog.component";
 import { MatButtonModule } from "@angular/material/button";
+import { CarReviewComponent } from './car-details/car-review/car-review.component';
 
 @NgModule({
   declarations: [
@@ -59,7 +60,8 @@ import { MatButtonModule } from "@angular/material/button";
     ReservationFormComponent,
     CarSummaryComponent,
     DigitOnlyDirective,
-    ReservationDialogComponent
+    ReservationDialogComponent,
+    CarReviewComponent
     // SearchFiltersComponent,
   ],
   imports: [

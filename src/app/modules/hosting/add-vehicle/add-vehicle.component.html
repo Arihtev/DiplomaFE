@@ -14,7 +14,7 @@
 	<mat-step>
 		<ng-template matStepLabel><span class="mat-label">Допълнителна информация</span></ng-template>
 		<app-form-description></app-form-description>
-		<button mat-button (click)="show()">Show Pics</button>
+		<!-- <button mat-button (click)="show()">Show Pics</button> -->
 	</mat-step>
 
 	<mat-step>
@@ -24,8 +24,8 @@
 
 	<mat-step>
 		<ng-template matStepLabel><span class="mat-label">Условия и цена</span></ng-template>
-		<app-form-rules></app-form-rules>
-		<button mat-button (click)="submit()">Submit</button>
+		<app-form-rules (submit)="submit($event)"></app-form-rules>
+		<!-- <button mat-button (click)="submit()">Submit</button> -->
 	</mat-step>
 
 </mat-horizontal-stepper>
