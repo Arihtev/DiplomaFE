@@ -1,7 +1,20 @@
 {
-    "HOME": {
-      "TITLE": "Здравей ангулар!",
-      "SELECT": "Change language"
+  "HOME": {
+    "TITLE": "Здравей ангулар!",
+    "SELECT": "Change language",
+    "FILTERS": {
+      "SEARCH": "Търсене",
+      "FIND_YOUR_CAR": "Намерете вашата кола",
+      "AREA": "Област",
+      "CITY": "Град",
+      "RENT_DATES": "Дати на наемане"
     }
+  },
+  "NAVBAR": {
+    "SEARCH": "Търсене",
+    "ABOUT": "За нас",
+    "ALL_CARS": "Всички коли",
+    "LOGIN": "Вход",
+    "REGISTER": "Регистрация"
   }
-  
+}

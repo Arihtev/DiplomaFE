@@ -5,7 +5,7 @@
       <mat-form-field class="example-full-width w-75">
         <input
           type="text"
-          placeholder="Област"
+          placeholder="{{ 'HOME.FILTERS.AREA' | translate }}"
           aria-label="Number"
           matInput
           formControlName="region"
@@ -31,7 +31,7 @@
       <mat-form-field class="example-full-width w-75">
         <input
           type="text"
-          placeholder="Град"
+          placeholder="{{ 'HOME.FILTERS.CITY' | translate }}"
           matInput
           formControlName="city"
           [matAutocomplete]="auto2"
@@ -61,7 +61,7 @@
           matInput
           class="text-center"
           autocomplete="off"
-          placeholder="Дати на наемане"
+          placeholder="{{ 'HOME.FILTERS.RENT_DATES' | translate }}"
           [(ngModel)]="selectedMoments"
           [selectMode]="'range'"
           [min]="min"

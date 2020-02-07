@@ -9,6 +9,8 @@ import {
   NavigationError
 } from "@angular/router";
 import { CustomHttpService } from "./core/services/custom-http/custom-http.service";
+import { TranslateService } from "@ngx-translate/core";
+import { LanguageService } from './core/services/language/language.service';
 
 @Component({
   selector: "app-root",
@@ -18,7 +20,11 @@ import { CustomHttpService } from "./core/services/custom-http/custom-http.servi
 export class AppComponent {
   title = "rent-project";
 
-  constructor(private router: Router, customHttp: CustomHttpService) {
+  constructor(
+    private router: Router,
+    private languageService: LanguageService,
+    // public translate: TranslateService
+  ) {
     this.router.events.subscribe(event => {
       if (event instanceof NavigationStart) {
         // this.routeLoading = true
@@ -27,6 +33,10 @@ export class AppComponent {
         // this.routeLoading = false
       }
     });
+    this.languageService.init()
+    // translate.addLangs(["bg", "en"]);
+    // translate.setDefaultLang("bg");
+    // translate.use("bg");
   }
   ngOnInit() {
     this.router.events.subscribe(evt => {

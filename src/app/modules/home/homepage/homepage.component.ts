@@ -1,6 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { EasingLogic } from "ngx-page-scroll-core";
 import { TranslateService } from "@ngx-translate/core";
+import { LanguageService } from 'src/app/core/services/language/language.service';
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: "app-homepage",
@@ -8,10 +10,15 @@ import { TranslateService } from "@ngx-translate/core";
   styleUrls: ["./homepage.component.scss"]
 })
 export class HomepageComponent implements OnInit {
-  constructor(translate: TranslateService) {
-    translate.setDefaultLang("bg");
-    translate.use("bg");
+
+  language: BehaviorSubject<string> = new BehaviorSubject('bg');
+  constructor(private languageService: LanguageService) {
+    // translate.addLangs(['bg', 'en']);
+    // translate.setDefaultLang('bg')
+    // translate.use('bg');
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    // this.language = this.languageService.loaderSubject
+  }
 }

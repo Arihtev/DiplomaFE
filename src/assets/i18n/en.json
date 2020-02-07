@@ -1,7 +1,20 @@
 {
-    "HOME": {
-      "TITLE": "Hello Angular with ngx-translate!",
-      "SELECT": "Change language"
+  "HOME": {
+    "TITLE": "Hello Angular with ngx-translate!",
+    "SELECT": "Change language",    
+    "FILTERS": {
+      "SEARCH": "Search",
+      "FIND_YOUR_CAR": "Find your car",
+      "AREA": "Region",
+      "CITY": "City",
+      "RENT_DATES": "Renting dates"
     }
+  },
+  "NAVBAR": {
+    "SEARCH": "Search",
+    "ABOUT": "About us",
+    "ALL_CARS": "All cars",
+    "LOGIN": "Login",
+    "REGISTER": "Register"
   }
-  
+}

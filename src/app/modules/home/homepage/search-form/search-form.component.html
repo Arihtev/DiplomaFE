@@ -1,83 +1,12 @@
 <div class="form-container text-center">
-    <h3 class="text-center pt-3">Намерете вашата кола</h3>
+    <h3 class="text-center pt-3">{{ 'HOME.FILTERS.FIND_YOUR_CAR' | translate }}</h3>
 
     <!-- <hr> -->
 
     <img class="w-100 linebreak" src="assets/images/linebreak2.png" alt="">
-    <!-- <div class="row container">
-        <form [formGroup]="locationForm" class="col-6 row">
-            <div class="col-6 car-location">
-                <div class="h4">
-                    Област:
-                </div>
-                <i class="fas fa-globe text-primary"></i>
-                <mat-form-field class="example-full-width w-75">
-                    <input type="text" placeholder="Изберете област" aria-label="Number" matInput
-                        formControlName="region" [matAutocomplete]="auto1">
-                    <mat-autocomplete autoActiveFirstOption #auto1="matAutocomplete" [displayWith]="displayFn">
-                        <mat-option *ngFor="let region of filteredRegions | async" [value]="region">
-                            {{ region.name }}
-                        </mat-option>
-                    </mat-autocomplete>
-                </mat-form-field>
-            </div>
-
-            <div class="col-6 car-location">
-                <div class="h4">
-                    Град:
-                </div>
-                <i class="fas fa-location-arrow text-primary"></i>
-                <mat-form-field class="example-full-width w-75">
-                    <input type="text" placeholder="Изберете град" matInput formControlName="city"
-                        [matAutocomplete]="auto2">
-                    <mat-autocomplete autoActiveFirstOption #auto2="matAutocomplete" [displayWith]="displayFn">
-                        <mat-option *ngFor="let city of filteredCities | async" [value]="city">
-                            {{ city.name }}
-                        </mat-option>
-                    </mat-autocomplete>
-                </mat-form-field>
-            </div>
-
-        </form>
-
-        <div class="col-3">
-            <div class="h4">
-                От:
-            </div>
-            <div class="cal-input m-0">
-                <i class="fa fa-calendar cal-start"></i>
-
-                <mat-form-field class="example-full-width">
-
-                    <input matInput class="text-center" autocomplete="off" placeholder="Дата на наемане"
-                        [owlDateTimeTrigger]="dt12" [owlDateTime]="dt12" [(ngModel)]="selectedMoments"
-                        [owlDateTimeFilter]="myFilter" [selectMode]="'rangeFrom'" [min]="min">
-                </mat-form-field>
-                <owl-date-time #dt12 [firstDayOfWeek]=1 [stepMinute]=60></owl-date-time>
-            </div>
-        </div>
-
-
-        <div class="col-3">
-            <div class="h4">
-                До:
-            </div>
-            <div class="cal-input m-0">
-                <i class="fa fa-calendar cal-end"></i>
-
-                <mat-form-field class="example-full-width">
-
-                    <input matInput class="text-center" autocomplete="off" placeholder="Дата на връщане"
-                        [owlDateTimeTrigger]="dt13" [owlDateTime]="dt13" [(ngModel)]="selectedMoments"
-                        [selectMode]="'rangeTo'">
-                </mat-form-field>
-                <owl-date-time #dt13 [firstDayOfWeek]=1 [stepMinute]=60></owl-date-time>
-            </div>
-        </div>
-    </div> -->
     <app-search-filters></app-search-filters>
 
-    <button class="search-btn" type="button" mdbBtn gradient="blue" size="lg" mdbWavesEffect (click)="search()">Търсене <i
+    <button class="search-btn" type="button" mdbBtn gradient="blue" size="lg" mdbWavesEffect (click)="search()">{{ 'HOME.FILTERS.SEARCH' | translate }} <i
             class="fas fa-search"></i></button>
 
 </div>

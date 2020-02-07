@@ -1,27 +1,20 @@
-# RentProject
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.0.6.
+<p align="center">
+  <a href="https://angular.io/">
+    <img src="https://www.angularexampleapp.com/assets/images/angular.svg" alt="Logo" width=72 height=72>
+  </a>
 
-## Development server
+  <h3 align="center">Angular Rent Project</h3>
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+  <p align="center">
+    Car rental app with Angular 8 + Angular CLI. This is the client side app, related to <a href="https://github.com/Arihtev/DiplomaBE">GA Rent Project Django REST API</a>
+    <a href="https://github.com/Ismaestro/angular8-example-app/issues/new">
+  </p>
+</p>
 
-## Code scaffolding
+## Quick start
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+ ```bash
+ npm install
+ ng serve
+ ```
