@@ -1,10 +1,10 @@
 <div class="gradient"></div>
 <div class="container mb-3">
   <h1 class="mt-2">
-    Резервации
+    {{'COMMON.RESERVATIONS'|translate}}
   </h1>
   <h3 *ngIf="upcomingReservations.length" class="mt-5">
-    Предстоящи
+    {{'USER.UPCOMING'|translate}}
   </h3>
 
   <div *ngIf="loading">
@@ -22,7 +22,7 @@
   </div>
 
   <h3 *ngIf="passedReservations.length" class="mt-5">
-    Стари
+    {{'USER.OLD'|translate}}
   </h3>
 
   <div
@@ -36,7 +36,7 @@
   </div>
 
   <h3 *ngIf="canceledReservations.length" class="mt-5">
-    Анулирани
+    {{'USER.CANCELED'|translate}}
   </h3>
 
   <div
@@ -53,8 +53,8 @@
     class="text-center all-cars"
     (click)="redirectToAll()"
   >
-    <h3>Нямате предстоящи резервации!</h3>
-    <h3>Разгледайте нашите предложения тук</h3>
+    <h3>{{'USER.NO_UPCOMING'|translate}}</h3>
+    <h3>{{'USER.CHECK_OUR_OFFERS'|translate}}</h3>
     <div class="img"></div>
   </div>
 </div>

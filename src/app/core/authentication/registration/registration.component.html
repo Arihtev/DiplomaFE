@@ -13,25 +13,25 @@
       (keyup.enter)="registerUser()"
     >
       <div class="text-center col-12 mt-2">
-        <h4>Създайте вашият профил</h4>
-        <h6>Възползвайте се максимално от нашите услуги</h6>
+        <h4>{{ 'HOME.AUTH.REGISTER.CREATE_H1'|translate }}</h4>
+        <h6>{{ 'HOME.AUTH.REGISTER.CREATE_H2'|translate }}</h6>
         <hr />
       </div>
 
       <mat-form-field class="col-6">
         <input
           type="text"
-          placeholder="Потребителско име"
+          placeholder="{{ 'HOME.AUTH.REGISTER.USERNAME'|translate }}"
           matInput
           formControlName="username"
           autocomplete="off"
           required
         />
         <mat-error *ngIf="registerForm.hasError('required', 'username')"
-          >Въведете потребителско име
+          >{{ 'HOME.AUTH.REGISTER.USERNAME_ERROR_EMPTY'|translate }}
         </mat-error>
         <mat-error *ngIf="registerForm.hasError('usernameTaken', 'username')"
-          >Потребителското име е заето
+          >{{ 'HOME.AUTH.REGISTER.USERNAME_ERROR_TAKEN'|translate }}
         </mat-error>
       </mat-form-field>
       <mat-form-field class="col-6">
@@ -45,19 +45,19 @@
 					pattern="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$"
         />
         <mat-error *ngIf="registerForm.hasError('emailTaken', 'email')"
-          >Посоченият e-mail е зает</mat-error
+          >{{ 'HOME.AUTH.REGISTER.EMAIL_ERROR_TAKEN'|translate }}</mat-error
         >
         <mat-error *ngIf="registerForm.hasError('required', 'email')"
-          >Въведете вашият e-mail</mat-error
+          >{{ 'HOME.AUTH.REGISTER.EMAIL_ERROR_EMPTY'|translate }}</mat-error
         >
         <mat-error *ngIf="registerForm.hasError('pattern', 'email')"
-          >Посоченият e-mail е невалиден</mat-error
+          >{{ 'HOME.AUTH.REGISTER.EMAIL_ERROR_INVALID'|translate }}</mat-error
         >
       </mat-form-field>
       <mat-form-field class="col-6">
         <input
           type="text"
-          placeholder="Име"
+          placeholder="{{ 'HOME.AUTH.REGISTER.FIRST_NAME'|translate }}"
           matInput
           formControlName="firstName"
           autocomplete="off"
@@ -66,16 +66,16 @@
           required
 				/>
 				<mat-error *ngIf="registerForm.hasError('required', 'firstName')"
-          >Моля въведете вашето име</mat-error
+          >{{ 'HOME.AUTH.REGISTER.FIRST_NAME_ERROR_EMPTY'|translate }}</mat-error
         >
         <mat-error *ngIf="registerForm.hasError('pattern', 'firstName')"
-          >Невалиден формат</mat-error
+          >{{ 'HOME.AUTH.REGISTER.FIRST_NAME_ERROR_INVALID'|translate }}</mat-error
         >
       </mat-form-field>
       <mat-form-field class="col-6">
         <input
           type="text"
-          placeholder="Фамилия"
+          placeholder="{{ 'HOME.AUTH.REGISTER.LAST_NAME'|translate }}"
           matInput
           formControlName="lastName"
           autocomplete="off"
@@ -84,16 +84,16 @@
           required
         />
         <mat-error *ngIf="registerForm.hasError('required', 'lastName')"
-          >Моля въведете вашата фамилия</mat-error
+          >{{ 'HOME.AUTH.REGISTER.LAST_NAME_ERROR_EMPTY'|translate }}</mat-error
         >
         <mat-error *ngIf="registerForm.hasError('pattern', 'lastName')"
-          >Невалиден формат</mat-error
+          >{{ 'HOME.AUTH.REGISTER.FIRST_NAME_ERROR_INVALID'|translate }}</mat-error
         >
       </mat-form-field>
       <mat-form-field class="col-6">
         <input
           type="text"
-          placeholder="Телефон"
+          placeholder="{{ 'HOME.AUTH.REGISTER.PHONE'|translate }}"
           matInput
           formControlName="phone"
           autocomplete="off"
@@ -101,17 +101,17 @@
 					pattern="^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\./0-9]*$"
 				/>
 				<mat-error *ngIf="registerForm.hasError('required', 'phone')"
-          >Моля въведете телефон</mat-error
+          >{{ 'HOME.AUTH.REGISTER.PHONE_ERROR_EMPTY'|translate }}</mat-error
         >
         <mat-error *ngIf="registerForm.hasError('pattern', 'phone')"
-          >Невалиден формат</mat-error
+          >{{ 'HOME.AUTH.REGISTER.FIRST_NAME_ERROR_INVALID'|translate }}</mat-error
         >
       </mat-form-field>
       <mat-form-field class="col-6">
         <input
           readonly
           type="text"
-          placeholder="Дата на раждане"
+          placeholder="{{ 'HOME.AUTH.REGISTER.BIRTH_DATE'|translate }}"
           matInput
           formControlName="dateOfBirth"
           autocomplete="off"
@@ -119,7 +119,7 @@
           [owlDateTimeTrigger]="birthPicker"
           [owlDateTime]="birthPicker"
         />
-        <mat-error>Моля въведете рожденна дата</mat-error>
+        <mat-error>{{ 'HOME.AUTH.REGISTER.BIRTH_DATE_ERROR_EMPTY'|translate }}</mat-error>
       </mat-form-field>
       <owl-date-time
         #birthPicker
@@ -130,7 +130,7 @@
       <mat-form-field class="col-6">
         <input
           [type]="hide ? 'password' : 'text'"
-          placeholder="Парола"
+          placeholder="{{ 'HOME.AUTH.REGISTER.PASSWORD'|translate }}"
           matInput
           formControlName="password"
           required
@@ -147,29 +147,28 @@
         <mat-icon
           class="far fa-question-circle password-specs"
           placement="top"
-          ngbTooltip="Паролата трябва да бъде минимум 8
-				символа и да съдържа поне: 1 главна буква, 1 малка буква, 1 цифра, 1 специален символ"
+          ngbTooltip="{{ 'HOME.AUTH.REGISTER.PASSWORD_REQUIREMENTS'|translate }}"
         ></mat-icon>
         <mat-error *ngIf="registerForm.hasError('required', 'password')"
-          >Моля въведете парола</mat-error
+          >{{ 'HOME.AUTH.REGISTER.PASSWORD_ERROR_EMPTY'|translate }}</mat-error
         >
         <mat-error *ngIf="registerForm.hasError('pattern', 'password')"
-          >Паролата не отговаря на изискванията</mat-error
+          >{{ 'HOME.AUTH.REGISTER.PASSWORD_ERROR_REQUIREMENTS'|translate }}</mat-error
         >
       </mat-form-field>
       <mat-form-field class="col-6">
         <input
           type="password"
-          placeholder="Потвърдете паролата"
+          placeholder="{{ 'HOME.AUTH.REGISTER.CONFIRM_PASSWORD'|translate }}"
           matInput
           formControlName="confirmPassword"
           required
         />
         <mat-error *ngIf="registerForm.hasError('required', 'confirmPassword')"
-          >Потвърдете паролата</mat-error
+          >{{ 'HOME.AUTH.REGISTER.CONFIRM_PASSWORD'|translate }}</mat-error
         >
         <mat-error *ngIf="registerForm.hasError('mustMatch', 'confirmPassword')"
-          >Паролите не съвпадат!
+          >{{ 'HOME.AUTH.REGISTER.CONFIRM_PASSWORD_ERROR'|translate }}
         </mat-error>
       </mat-form-field>
     </form>
@@ -184,7 +183,7 @@
         (click)="registerUser()"
         [disabled]="registerForm.invalid"
       >
-        Регистрация
+      {{ 'HOME.AUTH.REGISTER.REGISTER'|translate }}
       </button>
       <!-- <p class="message">Имате профил? <a (click)="goToLogin()">Логнете се тук</a></p> -->
     </div>

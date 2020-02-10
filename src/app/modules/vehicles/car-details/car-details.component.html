@@ -14,7 +14,7 @@
         </div>
         <div class="car-rating col-12 col-md-5 pt-0">
           <app-show-rating [rate]="car.rating"></app-show-rating>
-          <span class="small-caption">&bull; {{ car.times_rented }} наемателя</span>
+          <span class="small-caption">&bull; {{ car.times_rented }} {{'CARS.DETAILS.RENTERS'|translate}}</span>
         </div>
       </div>
 
@@ -22,7 +22,7 @@
           <div class="row mt-2 text-left">
             <div class="col-6 col-md-4">
               <i class="fas fa-burn"> </i>
-              <span class="car-second-info"> {{ car.consumption }}л/100км</span>
+              <span class="car-second-info"> {{ car.consumption }}{{'CARS.DETAILS.CONSUMPTION'|translate}}</span>
             </div>
             <div class="col-6 col-md-4">
               <i class="fas fa-gas-pump"></i>
@@ -36,7 +36,7 @@
           <div class="row mt-1 text-left"> -->
             <div class="col-6 col-md-4">
               <img src="assets/images/horsepower.png" class="car-icon" alt="" />
-              <span class="car-second-info"> {{ car.horsepower }} к.с.</span>
+              <span class="car-second-info"> {{ car.horsepower }} {{'CARS.DETAILS.HORSEPOWERS'|translate}}</span>
             </div>
             <div class="col-6 col-md-4">
               <i class="fas fa-car"></i>
@@ -46,7 +46,7 @@
             </div>
             <div class="col-6 col-md-4">
               <img src="assets/images/seat.png" class="car-icon" alt="" />
-              <span class="car-second-info"> {{ car.seats }} места</span>
+              <span class="car-second-info"> {{ car.seats }} {{'CARS.DETAILS.SEATS'|translate}}</span>
             </div>
           </div>
         </div>
@@ -76,7 +76,7 @@
         <img src="assets/images/safety.svg" class="icon" alt="" /><span
           class="label"
         >
-          Безопасност</span
+        {{'CARS.DETAILS.SAFETY'|translate}}</span
         >
       </div>
       <span *ngFor="let extra of car.extras">
@@ -93,7 +93,7 @@
         <img src="assets/images/comfort.png" class="icon" alt="" /><span
           class="label"
         >
-          Комфорт</span
+        {{'CARS.DETAILS.COMFORT'|translate}}</span
         >
       </div>
       <span *ngFor="let extra of car.extras">
@@ -111,7 +111,7 @@
         <img src="assets/images/others.png" class="icon" alt="" /><span
           class="label"
         >
-          Други</span
+        {{'CARS.DETAILS.OTHER'|translate}}</span
         >
       </div>
       <span *ngFor="let extra of car.extras">
@@ -125,7 +125,7 @@
   <hr />
 
   <div *ngIf="car.reviews.length" class="reservation">
-    <h3 class="mb-3">Оценки и коментари</h3>
+    <h3 class="mb-3">{{'CARS.DETAILS.REVIEWS_AND_COMMENTS'|translate}}</h3>
     <div *ngFor="let review of car.reviews" >
       <app-car-review class="m-2 p-2" [review]="review"></app-car-review>
       <hr>

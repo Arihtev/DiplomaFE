@@ -1,7 +1,57 @@
 {
+  "COMMON": {
+    "LV": "лв",
+    "DAY": "ден",
+    "DAYS": "дни",
+    "DISCOUNT": "Отстъпка",
+    "TAX": "Такса",
+    "TOTAL": "Общо",    
+    "SEARCH": "Търсене",
+    "RESERVE": "Резервирай",
+    "RESERVATION": "Резервация",
+    "RESERVATIONS": "Резервации"
+  },
   "HOME": {
-    "TITLE": "Здравей ангулар!",
-    "SELECT": "Change language",
+    "AUTH": {
+      "NO_PROFILE": "Нямате профил?",
+      "REGISTER_HERE": "Регистрирайте се тук",
+      "HAVE_PROFILE": "Имате профил?",
+      "LOGIN_HERE": "Влезте от тук",
+      "LOGIN": {
+        "LOGIN": "Вход",
+        "USERNAME": "Потребителско име",
+        "USERNAME_EMPTY_ERROR": "Въведете потребителско име",
+        "PASSWORD": "Парола",
+        "PASSWORD_EMPTY_ERROR": "Въведете парола",
+        "LOGIN_ERROR": "Грешно потребителско име или парола!"
+      },
+      "REGISTER": {
+        "REGISTER": "Регистрация",
+        "CREATE_H1": "Създайте вашият профил",
+        "CREATE_H2": "Възползвайте се максимално от нашите услуги",
+        "USERNAME": "Потребителско име",
+        "USERNAME_ERROR_EMPTY": "Въведете потребителско име",
+        "USERNAME_ERROR_TAKEN": "Потребителското име е заето",
+        "EMAIL_ERROR_TAKEN": "Посоченият e-mail е зает",
+        "EMAIL_ERROR_EMPTY": "Въведете вашият e-mail",
+        "EMAIL_ERROR_INVALID": "Посоченият e-mail е невалиден",
+        "FIRST_NAME": "Име",
+        "FIRST_NAME_ERROR_EMPTY": "Моля въведете вашето име",
+        "FIRST_NAME_ERROR_INVALID": "Невалиден формат",
+        "LAST_NAME": "Фамилия",
+        "LAST_NAME_ERROR_EMPTY": "Моля въведете вашата фамилия",
+        "PHONE": "Телефон",
+        "PHONE_ERROR_EMPTY": "Моля въведете телефон",
+        "BIRTH_DATE": "Дата на раждане",
+        "BIRTH_DATE_ERROR_EMPTY": "Въведете дата на разждане",
+        "PASSWORD": "Парола",
+        "PASSWORD_REQUIREMENTS": "Паролата трябва да бъде минимум 8 символа и да съдържа поне 1 главна буква, 1 малка буква, 1 цифра, 1 специален символ",
+        "PASSWORD_ERROR_EMPTY": "Въведете парола",
+        "PASSWORD_ERROR_REQUIREMENTS": "Паролата не отговаря на изискванията",
+        "CONFIRM_PASSWORD": "Потвърдете паролата",
+        "CONFIRM_PASSWORD_ERROR": "Паролите не съвпадат"
+      }
+    },
     "FILTERS": {
       "SEARCH": "Търсене",
       "FIND_YOUR_CAR": "Намерете вашата кола",
@@ -15,6 +65,69 @@
     "ABOUT": "За нас",
     "ALL_CARS": "Всички коли",
     "LOGIN": "Вход",
-    "REGISTER": "Регистрация"
+    "REGISTER": "Регистрация",
+    "HOSTING": "Отдаване",
+    "ADD_CAR": "Добави кола",
+    "MY_CARS": "Моите коли",
+    "RESERVATIONS": "Резервации",
+    "FAVOURITES": "Любими",
+    "SETTINGS": "Настройки",
+    "LOGOUT": "Изход"
+  },
+  "CARS": {
+    "DETAILS": {
+      "RESERVATION": "Резервация",
+      "CLEAR_DATES": "Изчисти датите",
+      "PRICE_LIST": "Ценоразпис",
+      "RESERVE": "Резервирай",
+      "LOGIN_TO_RESERVE": "Влезте в акаунта си, за да довършите резервацията",
+      "TAX_HELP": "Това ни помага да поддържаме платформата активна 24/7",
+      "RENTERS": "наемателя",
+      "CONSUMPTION": "л/100км",
+      "HORSEPOWERS": "к.с.",
+      "SEATS": "места",
+      "SAFETY": "Безопасност",
+      "COMFORT": "Комфорт",
+      "OTHER": "Други",
+      "REVIEWS_AND_COMMENTS": "Оценки и коментари"
+    },
+    "LIST": {
+      "NO_CARS_FOUND": "Не намерихме автомобили отговарящи на вашето търсене"
+    },
+    "RESERVATION": {
+      "IMPORTANT_DATES": "Важни дати",
+      "PICKUP": "вземане",
+      "PICKUP_HOUR": "след 06:00 часа",
+      "RETURN": "връщане",
+      "RETURN_HOUR": "до 22:00 часа",
+      "HAVE_IN_MIND": "Имайте предвид",
+      "NO_PETS": "Не се допускат домашни любимци",
+      "NO_SMOKING": "Пушенето е забранено",
+      "YOU_HAVE": "Разполагате с",
+      "KM_PER_DAY": "км на ден",
+      "KM_TOTAL": "км общо",
+      "KM_LIMIT": "Всеки километър надвишаващ лимита се заплаща на цена",
+      "APPROVE_AND_PAY": "Потвърждение и плащане",
+      "PAYMENT_METHOD": "Начин на плащане",
+      "CARD_OWNER_NAME": "Име на притежателя",
+      "CARD_NUMBER": "Номер на карта",
+      "CARD_VALID": "Валидност MM/YY",
+      "CVV": "CVV код за сигурност",
+      "AGREE_WITH_RULES": "Съгласен съм с условията за използване",
+      "FREE_CANCELATION": "Безплатно анулиране до"
+    }
+  },
+  "USER": {
+    "UPCOMING": "Предстоящи",
+    "OLD": "Стари",
+    "CANCELED": "Анулирани",
+    "NO_UPCOMING": "Нямате предстоящи резервации!",
+    "CHECK_OUR_OFFERS": "Разгледайте нашите предложения тук",
+    "PAID": "Платено",
+    "REVIEW": "Оценете автомобила",
+    "FREE_CANCEL": "Откажи безплатно до",
+    "CHANGE_PICTURE": "Смяна на снимка",
+    "INFORMATION": "Информация",
+    "SAVE": "Запази"
   }
 }

@@ -67,4 +67,10 @@ export class SiteCardbService {
       date: new Date()
     })
   }
+
+  updateProfile(id, photo){
+    return this.customService.patch(`${this.CAR_DB_URL}/users/user/${id}`, {
+      photo
+    })
+  }
 }

@@ -48,6 +48,7 @@
     "ngx-file-drop": "^8.0.8",
     "ngx-gallery": "^5.10.0",
     "ngx-google-places-autocomplete": "^2.0.4",
+    "ngx-image-uploader": "^6.0.0-beta.1",
     "ngx-moment": "^3.5.0",
     "ngx-page-scroll": "^6.0.2",
     "ngx-page-scroll-core": "^6.0.2",

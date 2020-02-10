@@ -2,7 +2,7 @@
     <div class="car-card mt-4">
         <!-- [routerLink]="'/cars/'+car.id" -->
         <div class="car-price">
-            <i class="fas fa-tag custom-green"></i><span class="h5">{{ car.price }}лв</span>/ден
+            <i class="fas fa-tag custom-green"></i><span class="h5">{{ car.price }}лв</span>/{{'COMMON.DAY'|translate}}
         </div>
         <img class="car-img" [src]="car.pictures[0].picture" alt="">
         <div class="car-info">
@@ -24,7 +24,7 @@
         </div>
         <div class="row mt-2 text-left">
             <div class="col-4">
-                <i class="fas fa-burn"> </i> <span class="car-second-info"> {{ car.consumption }}л/100км</span>
+                <i class="fas fa-burn"> </i> <span class="car-second-info"> {{ car.consumption }}{{'CARS.DETAILS.CONSUMPTION'|translate}}</span>
             </div>
             <div class="col-4"> 
                 <i class="fas fa-gas-pump custom-green"></i> <span class="car-second-info"> {{ car.engine_type }}</span>
@@ -35,13 +35,13 @@
         </div>
         <div class="row mt-1 text-left">
             <div class="col-4">
-                <img src="assets/images/horsepower.png" class="car-icon" alt=""> <span class="car-second-info"> {{ car.horsepower }} к.с.</span>
+                <img src="assets/images/horsepower.png" class="car-icon" alt=""> <span class="car-second-info"> {{ car.horsepower }} {{'CARS.DETAILS.HORSEPOWERS'|translate}}</span>
             </div>
             <div class="col-4"> 
                 <i class="fas fa-car"></i> <span class="car-second-info"> {{ car.category | convertCategory }}</span>
             </div>
             <div class="col-4">
-                <img src="assets/images/seat.png" class="car-icon" alt=""> <span class="car-second-info"> {{ car.seats }} места</span>
+                <img src="assets/images/seat.png" class="car-icon" alt=""> <span class="car-second-info"> {{ car.seats }} {{'CARS.DETAILS.SEATS'|translate}}</span>
             </div>
         </div>
     </div>
@@ -53,15 +53,15 @@
     <hr class="m-2">
     <div class="row">
         <div class="col-6 text-left">
-            <span>{{ car.price }}лв х {{ daysReserved }} дни</span> 
+            <span>{{ car.price }}{{'COMMON.LV'|translate}} х {{ daysReserved }} {{'COMMON.DAYS'|translate}}</span> 
         </div>
         <div class="col-6 text-right">
-            <span>{{ car.price*daysReserved }}лв</span>
+            <span>{{ car.price*daysReserved }}{{'COMMON.LV'|translate}}</span>
         </div>
     </div>
     <div *ngIf="discount>0" class="row">
         <div class="col-6 text-left">
-            <span>Отстъпка</span> 
+            <span>{{'COMMON.DISCOUNT'|translate}}</span> 
         </div>
         <div class="col-6 text-right">
             <span>{{ discount }}%</span>
@@ -69,10 +69,10 @@
     </div>
     <div class="row mt-1">
         <div class="col-6 text-left">
-            <span>Такса <mat-icon class="far fa-question-circle h6" matTooltip="My tooltip" matTooltipPosition="above"></mat-icon></span>
+            <span>{{'COMMON.TAX'|translate}} <mat-icon class="far fa-question-circle h6" matTooltip="{{'CARS.DETAILS.TAX_HELP'|translate}}" matTooltipPosition="above"></mat-icon></span>
         </div>
         <div class="col-6 text-right">
-            <span>7лв</span>
+            <span>7{{'COMMON.LV'|translate}}</span>
         </div>
     </div>
     <!-- <br>
@@ -80,14 +80,14 @@
         <hr class="m-2">
         <div class="row mt-1">
             <div class="col-6 text-left">
-                <span class="font-weight-bold">Общо</span>
+                <span class="font-weight-bold">{{'COMMON.TOTAL'|translate}}</span>
             </div>
             <div class="col-6 text-right">
-                <span class="font-weight-bold">{{ reservationPrice }}лв</span>
+                <span class="font-weight-bold">{{ reservationPrice }}{{'COMMON.LV'|translate}}</span>
             </div>
         </div>
         <div *ngIf="refundable" class="text-center mt-3">
-            <i class="fas fa-hand-holding-usd text-success"></i> <span class="font-italic"> Безплатно анулиране до {{ refundable | amLocale:'bg' | amDateFormat: 'D MMM, YYYY' }} </span>
+            <i class="fas fa-hand-holding-usd text-success"></i> <span class="font-italic"> {{'CARS.RESERVATION.FREE_CANCELATION'}} {{ refundable | amLocale:'bg' | amDateFormat: 'D MMM, YYYY' }} </span>
         </div>
     </div>
 </div>

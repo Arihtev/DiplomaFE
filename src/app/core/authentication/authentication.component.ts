@@ -39,11 +39,11 @@ export class AuthenticationComponent implements OnInit {
 
   switchComponent(){
     if (this.component=="login"){
-      this.title="Регистрация"
+      this.title="HOME.AUTH.REGISTER.REGISTER"
       this.component="registration"
     }
     else{
-      this.title="Вход"
+      this.title="HOME.AUTH.LOGIN.LOGIN"
       this.component="login"
     }
   }

@@ -1,7 +1,57 @@
 {
+  "COMMON": {
+    "LV": "lv",
+    "DAY": "day",
+    "DAYS": "days",
+    "DISCOUNT": "Discount",
+    "TAX": "Taxes",
+    "TOTAL": "Total",
+    "SEARCH": "Search",
+    "RESERVE": "Reserve",
+    "RESERVATION": "Reservation",
+    "RESERVATIONS": "Reservations"
+  },
   "HOME": {
-    "TITLE": "Hello Angular with ngx-translate!",
-    "SELECT": "Change language",    
+    "AUTH": {
+      "NO_PROFILE": "Don't have an account?",
+      "REGISTER_HERE": "Register here",
+      "HAVE_PROFILE": "You have an account?",
+      "LOGIN_HERE": "Login here",
+      "LOGIN": {
+        "LOGIN": "Login",
+        "USERNAME": "Username",
+        "USERNAME_EMPTY_ERROR": "Enter username",
+        "PASSWORD": "Password",
+        "PASSWORD_EMPTY_ERROR": "Enter password",
+        "LOGIN_ERROR": "Wrong username or password!"
+      },
+      "REGISTER": {
+        "REGISTER": "Register",
+        "CREATE_H1": "Create your account",
+        "CREATE_H2": "Get the most out of our services",
+        "USERNAME": "Username",
+        "USERNAME_ERROR_EMPTY": "Enter username",
+        "USERNAME_ERROR_TAKEN": "Username is already taken",
+        "EMAIL_ERROR_TAKEN": "Email is already taken",
+        "EMAIL_ERROR_EMPTY": "Enter your e-mail",
+        "EMAIL_ERROR_INVALID": "Email is invalid",
+        "FIRST_NAME": "Name",
+        "FIRST_NAME_ERROR_EMPTY": "Please enter first name",
+        "FIRST_NAME_ERROR_INVALID": "Invalid format",
+        "LAST_NAME": "Last name",
+        "LAST_NAME_ERROR_EMPTY": "Please enter last name",
+        "PHONE": "Phone number",
+        "PHONE_ERROR_EMPTY": "Enter phone number",
+        "BIRTH_DATE": "Date of birth",
+        "BIRTH_DATE_ERROR_EMPTY": "Enter date of birth",
+        "PASSWORD": "Password",
+        "PASSWORD_REQUIREMENTS": "Password must be minimum 8 symbols and has to contain at least 1 upper and 1 lower character, 1 digit, 1 special symbol",
+        "PASSWORD_ERROR_EMPTY": "Enter password",
+        "PASSWORD_ERROR_REQUIREMENTS": "Password doesn't match the requirements",
+        "CONFIRM_PASSWORD": "Confirm the password",
+        "CONFIRM_PASSWORD_ERROR": "Passwords don't match"
+      }
+    },
     "FILTERS": {
       "SEARCH": "Search",
       "FIND_YOUR_CAR": "Find your car",
@@ -15,6 +65,69 @@
     "ABOUT": "About us",
     "ALL_CARS": "All cars",
     "LOGIN": "Login",
-    "REGISTER": "Register"
+    "REGISTER": "Register",
+    "HOSTING": "Hosting",
+    "ADD_CAR": "Add vehicle",
+    "MY_CARS": "My vehicles",
+    "RESERVATIONS": "Reservations",
+    "FAVOURITES": "Favourites",
+    "SETTINGS": "Settings",
+    "LOGOUT": "Logout"
+  },
+  "CARS": {
+    "DETAILS": {
+      "RESERVATION": "Reservation",
+      "CLEAR_DATES": "Clear dates",
+      "PRICE_LIST": "Price list",
+      "RESERVE": "Reserve",
+      "LOGIN_TO_RESERVE": "Login to finish your reservation",
+      "TAX_HELP": "This helps us keep the platform running 24/7",
+      "RENTERS": "renters",
+      "CONSUMPTION": "l/100km",
+      "HORSEPOWERS": "hp",
+      "SEATS": "seats",
+      "SAFETY": "Safety",
+      "COMFORT": "Comfort",
+      "OTHER": "Other",
+      "REVIEWS_AND_COMMENTS": "Reviews and comments"
+    },
+    "LIST": {
+      "NO_CARS_FOUND": "We couldn't find any vehicles matching your criteria"
+    },
+    "RESERVATION": {
+      "IMPORTANT_DATES": "Important dates",
+      "PICKUP": "pickup",
+      "PICKUP_HOUR": "after 06:00 AM",
+      "RETURN": "return",
+      "RETURN_HOUR": "before 10:00 PM",
+      "HAVE_IN_MIND": "Have in mind",
+      "NO_PETS": "Pets are not allowed",
+      "NO_SMOKING": "Smoking is forbidden",
+      "YOU_HAVE": "You have",
+      "KM_PER_DAY": "km per day",
+      "KM_TOTAL": "km total",
+      "KM_LIMIT": "Every km exceeding the limit is paid at price",
+      "APPROVE_AND_PAY": "Confirmation and payment",
+      "PAYMENT_METHOD": "Payment method",
+      "CARD_OWNER_NAME": "Card owned name",
+      "CARD_NUMBER": "Card number",
+      "CARD_VALID": "Valid thru MM/YY",
+      "CVV": "CVV security code",
+      "AGREE_WITH_RULES": "I agree with the terms of use",
+      "FREE_CANCELATION": "Free cancelation until"
+    }
+  },
+  "USER": {
+    "UPCOMING": "Upcoming",
+    "OLD": "Old",
+    "CANCELED": "Canceled",
+    "NO_UPCOMING": "You don't have any upcoming reservations!",
+    "CHECK_OUR_OFFERS": "Checkout our offers here",
+    "PAID": "Paid",
+    "REVIEW": "Rate the car",
+    "FREE_CANCEL": "Free cancelation till",
+    "CHANGE_PICTURE": "Change picture",
+    "INFORMATION": "Information",
+    "SAVE": "Save"
   }
 }

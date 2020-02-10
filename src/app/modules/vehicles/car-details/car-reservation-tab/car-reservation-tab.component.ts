@@ -19,7 +19,7 @@ export class CarReservationTabComponent implements OnInit {
   @Input() filters: IFilters;
 
   bsModalRef: BsModalRef;
-  loginComponent = {title: "Логин", component: "login"}
+  loginComponent = {title: "HOME.AUTH.LOGIN.LOGIN", component: "login"}
   discount = 0;
   reservationPrice = 7;
 

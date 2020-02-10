@@ -25,5 +25,15 @@
 }
 
 .section-2{
+    position: relative;
     height: 100vh;
+    .about{
+        display: block;
+        position: relative;
+        top: 50%;
+        transform: translateY(-50%);
+        padding: 25px;
+        background-color: rgba(245, 243, 239, 0.87);
+        box-shadow: 0 0 15px;
+    }
 }

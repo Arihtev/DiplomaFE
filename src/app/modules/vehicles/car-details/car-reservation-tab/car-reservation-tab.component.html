@@ -1,5 +1,5 @@
 <div class="h1">
-  Резервация
+  {{'CARS.DETAILS.RESERVATION'|translate}}
 </div>
 
 <!-- <img class="w-100 opacity-30" src="assets/images/linebreak.png" alt="" /> -->
@@ -18,36 +18,36 @@
   ></owl-date-time-inline>
 </div>
 
-<a [routerLink]="" (click)="resetDates()">Изчисти датите</a>
+<a [routerLink]="" (click)="resetDates()">{{'CARS.DETAILS.CLEAR_DATES'|translate}}</a>
 
 <div class="container pricing">
   <div class="h4">
-    Ценоразпис:
+    {{'CARS.DETAILS.PRICE_LIST'|translate}}:
   </div>
 
   <hr />
 
-  <span class="price-left">{{ car.price }}лв х {{ daysReserved }} дни</span>
+  <span class="price-left">{{ car.price }}{{'COMMON.LV'|translate}} х {{ daysReserved }} {{'COMMON.DAYS'|translate}}</span>
   <span class="price-right">{{ car.price * daysReserved }}лв</span>
 
   <hr class="custom-hr" />
 
-  <span *ngIf="discount>0" class="price-left">Отстъпка</span>
+  <span *ngIf="discount>0" class="price-left">{{'COMMON.DISCOUNT'|translate}}</span>
   <span *ngIf="discount>0" class="price-right">{{ discount }}%</span>
 
   <hr *ngIf="discount>0" class="custom-hr" />
 
-  <span class="price-left">Такса <mat-icon
+  <span class="price-left">{{'COMMON.TAX'|translate}} <mat-icon
     class="far fa-question-circle h6"
-    matTooltip="Това ни помага да поддържаме платформата активна 24/7"
+    matTooltip="{{'CARS.DETAILS.TAX_HELP'|translate}}"
     matTooltipPosition="above"
-  ></mat-icon></span> <span class="price-right">7лв</span>
+  ></mat-icon></span> <span class="price-right">7{{'COMMON.LV'|translate}}</span>
 
   <hr class="custom-hr" />
 
-  <span class="price-left font-weight-bold">Общо</span>
+  <span class="price-left font-weight-bold">{{'COMMON.TOTAL'|translate}}</span>
   <span class="price-right font-weight-bold"
-    >{{ reservationPrice }}лв</span
+    >{{ reservationPrice }}{{'COMMON.LV'|translate}}</span
   >
 </div>
 
@@ -61,7 +61,7 @@
   mdbWavesEffect
   (click)="openReservationForm()"
 >
-  Резервирай
+{{'CARS.DETAILS.RESERVE'|translate}}
 </button>
 <ng-template #elseBlock>
   <button
@@ -73,6 +73,6 @@
     mdbWavesEffect
     (click)="openModalWithComponent(loginComponent)"
   >
-    Влезте в акаунта си, за да довършите резервацията
+    {{'CARS.DETAILS.LOGIN_TO_RESERVE'|translate}}
   </button>
 </ng-template>

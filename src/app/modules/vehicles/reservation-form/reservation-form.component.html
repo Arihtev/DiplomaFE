@@ -3,10 +3,10 @@
   <div class="row">
     <div class="col-12 col-lg-7">
       <h1 class="mt-2">
-        Резервация
+        {{'COMMON.RESERVATION'|translate}}
       </h1>
       <h3 class="mt-5">
-        Важни дати
+        {{'CARS.RESERVATION.IMPORTANT_DATES'|translate}}
       </h3>
       <div class="row">
         <div class="col-12 col-md-6">
@@ -24,9 +24,9 @@
                 | amDateFormat: "dddd"
                 | titlecase
             }}
-            - получаване
+            - {{'CARS.RESERVATION.PICKUP'|translate}}
             <br class="p-0 m-0" />
-            след 06:00 часа
+            {{'CARS.RESERVATION.PICKUP_HOUR'|translate}}
           </div>
         </div>
         <div class="col-12 col-md-6 dates">
@@ -44,30 +44,30 @@
                 | amDateFormat: "dddd"
                 | titlecase
             }}
-            - връщане
+            - {{'CARS.RESERVATION.RETURN'|translate}}
             <br class="p-0 m-0" />
-            до 22:00 часа
+            {{'CARS.RESERVATION.RETURN_HOUR'|translate}}
           </div>
         </div>
       </div>
 
       <h3 class="mt-5 mb-3">
-        Имайте предвид
+        {{'CARS.RESERVATION.HAVE_IN_MIND'|translate}}
       </h3>
       <div class="icon-item" *ngIf="!car.pets">
         <img src="assets/images/no-pets.png" class="custom-icons" alt="" />
-        Не се допускат домашни любимци
+        {{'CARS.RESERVATION.NO_PETS'|translate}}
       </div>
 
       <div class="icon-item" *ngIf="!car.smoking">
         <img src="assets/images/no-smoking.svg" class="custom-icons" alt="" />
-        Пушенето е забранено
+        {{'CARS.RESERVATION.NO_SMOKING'|translate}}
       </div>
       <div class="icon-item">
         <img src="assets/images/km-included.png" class="custom-icons" alt="" />
-        Разполагате с {{ car.included_km }}км на ден ({{
-          car.included_km * 2
-        }}км общо)
+        {{'CARS.RESERVATION.YOU_HAVE'|translate}} {{ car.included_km }}{{'CARS.RESERVATION.KM_PER_DAY'|translate}} ({{
+          car.included_km * daysReserved
+        }}{{'CARS.RESERVATION.KM_TOTAL'|translate}})
       </div>
       <div class="icon-item">
         <img
@@ -75,36 +75,36 @@
           class="custom-icons"
           alt=""
         />
-        Всеки километър надвишаващ лимита се заплаща на цена
-        {{ car.price_per_extra_km }}лв
+        {{'CARS.RESERVATION.KM_LIMIT'|translate}}
+        {{ car.price_per_extra_km }}{{'COMMON.LV'|translate}}
       </div>
 
       <h3 class="mt-5 mb-3">
-        Потвърждение и плащане
+        {{'CARS.RESERVATION.APPROVE_AND_PAY'|translate}}
       </h3>
 
       <div class="price-backup">
         <div class="row">
           <div class="col-6 text-left">
-            <span>{{ car.price }}лв х {{ 2 }} дни</span>
+            <span>{{ car.price }}{{'COMMON.LV'|translate}} х {{ daysReserved }} {{'COMMON.DAYS'|translate}}</span>
           </div>
           <div class="col-6 text-right">
-            <span>{{ car.price * 2 }}лв</span>
+            <span>WTF{{ car.price * daysReserved }}{{'COMMON.LV'|translate}}</span>
           </div>
         </div>
         <div class="row mt-1">
           <div class="col-6 text-left">
             <span
-              >Такса
+              >{{'COMMON.TAX'|translate}}
               <mat-icon
                 class="far fa-question-circle h6"
-                matTooltip="My tooltip"
+                matTooltip="{{'CARS.DETAILS.TAX_HELP'|translate}}"
                 matTooltipPosition="above"
               ></mat-icon
             ></span>
           </div>
           <div class="col-6 text-right">
-            <span>7лв</span>
+            <span>7{{'COMMON.LV'|translate}}</span>
           </div>
         </div>
         <!-- <br>
@@ -112,16 +112,16 @@
         <hr />
         <div class="row mt-1">
           <div class="col-6 text-left">
-            <span class="font-weight-bold">Общо</span>
+            <span class="font-weight-bold">{{'COMMON.TOTAL'|translate}}</span>
           </div>
           <div class="col-6 text-right">
-            <span class="font-weight-bold">{{ car.price * 2 + 7 }}лв</span>
+            <span class="font-weight-bold">{{ car.price * 2 + 7 }}{{'COMMON.LV'|translate}}</span>
           </div>
         </div>
       </div>
 
       <div class="icon-item">
-        Начин на плащане
+        {{'CARS.RESERVATION.PAYMENT_METHOD'|translate}}
         <img
           src="assets/images/visa-mastercard-icon.png"
           class="visa-mc-icon"
@@ -151,7 +151,7 @@
               oninput="this.value = this.value.toUpperCase()"
               class="form-control"
               pattern="^[A-Z][A-Z\s]*$"
-              placeholder="Име на притежателя"
+              placeholder="{{'CARS.RESERVATION.CARD_OWNER_NAME'|translate}}"
               required
             />
           </div>
@@ -172,7 +172,7 @@
               #card_number="ngModel"
               [(ngModel)]="formData.card_number"
               class="form-control"
-              placeholder="Номер на карта"
+              placeholder="{{'CARS.RESERVATION.CARD_NUMBER'|translate}}"
               pattern="^\d{16}"
               digitOnly
               required
@@ -201,7 +201,7 @@
                 [(ngModel)]="formData.expiration_date"
                 pattern="^\d{2}\/\d{2}$"
                 class="form-control"
-                placeholder="Валидност MM/YY"
+                placeholder="{{'CARS.RESERVATION.CARD_VALID'|translate}}"
                 required
                 maxlength="5"
                 minlength="5"
@@ -225,7 +225,7 @@
                 #cvv="ngModel"
                 [(ngModel)]="formData.cvv"
                 class="form-control"
-                placeholder="CVV код за сигурност"
+                placeholder="{{'CARS.RESERVATION.CVV'|translate}}"
                 pattern="^\d{3}"
                 required
                 maxlength="3"
@@ -238,7 +238,7 @@
         <div class="icon-item row">
           <div class="col-12 col-md-8 mb-3">
             <span class="centered-text h5">
-              Съгласен съм с условията за ползване
+              {{'CARS.RESERVATION.AGREE_WITH_RULES'|translate}}
             </span>
             <div class="can-toggle demo-rebrand-2">
               <input
@@ -269,7 +269,7 @@
               [disabled]="form.invalid"
               (click)="sendReservation()"
             >
-              Резервирай
+              {{'COMMON.RESERVE'|translate}}
             </button>
           </div>
         </div>

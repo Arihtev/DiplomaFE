@@ -6,6 +6,8 @@ import * as moment from "moment";
 import { MatDialog } from "@angular/material";
 import { CancelResComponent } from "../cancel-res/cancel-res.component";
 import { CreateReviewComponent } from '../create-review/create-review.component';
+import { TranslateService } from '@ngx-translate/core';
+import { LanguageService } from 'src/app/core/services/language/language.service';
 
 export interface IRefundable {
   date: Date;
@@ -22,18 +24,23 @@ export class ReservationItemComponent implements OnInit {
   @Input() reservation: IReservation;
   @Output() refreshReservations: EventEmitter<any> = new EventEmitter();
   
-  refundable: IRefundable
+  refundable: IRefundable;
+  locale = "en";
 
   constructor(
     private router: Router,
     private dbService: SiteCardbService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private languageService: LanguageService
   ) {}
 
   ngOnInit() {
     if (this.reservation.start_date) {
       this.refundable = this.checkRefundability(this.reservation.start_date);
     }
+    
+    this.locale = this.languageService.currentLang
+    console.log(this.locale)
   }
 
   checkRefundability(start_date) : IRefundable {

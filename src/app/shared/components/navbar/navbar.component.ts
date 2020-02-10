@@ -25,8 +25,8 @@ export class NavbarComponent implements OnInit {
     "navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar intro-fixed-nav";
   otherPageClass = "navbar sticky-top navbar-expand-lg navbar-dark black-color";
 
-  loginComponent = { title: "Вход", component: "login" };
-  registrationComponent = { title: "Регистрация", component: "registration" };
+  loginComponent = { title: "HOME.AUTH.LOGIN.LOGIN", component: "login" };
+  registrationComponent = { title: "HOME.AUTH.REGISTER.REGISTER", component: "registration" };
 
   constructor(
     private authService: AuthService,

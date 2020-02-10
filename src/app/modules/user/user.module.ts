@@ -16,6 +16,7 @@ import { MatButtonModule } from "@angular/material/button";
 import { CreateReviewComponent } from "./reservations/create-review/create-review.component";
 import { MatInputModule, MatIconModule } from '@angular/material';
 import { SettingsComponent } from './settings/settings.component';
+import { ImageUploaderModule } from 'ngx-image-uploader';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { SettingsComponent } from './settings/settings.component';
     MatDialogModule,
     MatButtonModule,
     MatInputModule,
-    MatIconModule
+    MatIconModule,
+    ImageUploaderModule
   ],
   entryComponents: [CancelResComponent, CreateReviewComponent]
 })

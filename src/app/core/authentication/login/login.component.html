@@ -5,24 +5,25 @@
         <h1>Влезе във вашият профил</h1>
         <hr>
       </div> -->
+      
       <div class="col-12 text-center">
         <img class="login-img" src="assets/images/login-image.png" alt="">
       </div>
 
       <mat-form-field class="col-6">
-        <input type="text" placeholder="Потребителско име" matInput formControlName="username" autocomplete="off" required>
-        <mat-error *ngIf="loginForm.hasError('required', 'username')">Въведете потребителско име
+        <input type="text" placeholder="{{'HOME.AUTH.LOGIN.USERNAME'|translate}}" matInput formControlName="username" autocomplete="off" required>
+        <mat-error *ngIf="loginForm.hasError('required', 'username')">{{ 'HOME.AUTH.LOGIN.USERNAME_ERROR_EMPTY' | translate }}
         </mat-error>
       </mat-form-field>
       <mat-form-field class="col-6">
-        <input type="password" placeholder="Парола" matInput formControlName="password" required>
-        <mat-error *ngIf="loginForm.hasError('required', 'password')">Въведете парола</mat-error>
+        <input type="password" placeholder="{{'HOME.AUTH.LOGIN.PASSWORD'|translate}}" matInput formControlName="password" required>
+        <mat-error *ngIf="loginForm.hasError('required', 'password')">{{ 'HOME.AUTH.LOGIN.PASSWORD_ERROR_EMPTY' | translate }}</mat-error>
       </mat-form-field>
     </form>
     <div class="text-center">
-      <mat-error *ngIf="errors">Грешно потребителско име или парола!</mat-error>
+      <mat-error *ngIf="errors">{{ 'HOME.AUTH.LOGIN.LOGIN_ERROR' }}</mat-error>
       <button class="search-btn" type="button" mdbBtn gradient="blue" size="lg" mdbWavesEffect (click)="loginUser()"
-        [disabled]="loginForm.invalid">Вход</button>
+        [disabled]="loginForm.invalid">{{ 'HOME.AUTH.LOGIN.LOGIN' | translate }}</button>
       <!-- <p class="message">Нямате профил? <a (click)="goToRegister()">Регистрирайте се тук</a></p> -->
     </div>
     <!-- <button (click)="printInfo()">Print</button> -->

@@ -3,7 +3,7 @@
         <app-search-filters class="col-12 p-0" [filters]="filters"></app-search-filters>
         <div class="col-12 text-center">
             <!-- <button type="button" class="btn btn-primary btn-lg rounded-circle"><i class="fas fa-search"></i></button> -->
-            <button class="search-btn" type="button" mdbBtn gradient="blue" size="md" mdbWavesEffect (click)="searchCars()">Търси</button>
+            <button class="search-btn" type="button" mdbBtn gradient="blue" size="md" mdbWavesEffect (click)="searchCars()">{{'COMMON.SEARCH'|translate}}</button>
         </div>
     </div>
     <div class="row mb-5">
@@ -16,7 +16,7 @@
         </div>
 
         <div *ngIf="noCars">
-            <h1 class="text-center">Не намерихме автомобили отговарящи на вашето търсене</h1>
+            <h1 class="text-center">{{'CARS.LIST.NO_CARS_FOUND'|translate}}</h1>
         </div>
     </div>
 </div>

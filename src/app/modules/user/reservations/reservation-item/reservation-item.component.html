@@ -8,6 +8,7 @@
     />
     <div class="col-12 col-md-6">
       <h4>
+        <!-- {{ locale }} -->
         {{ reservation.car_id.make }}
       </h4>
       <h5>
@@ -22,7 +23,7 @@
       />
       {{ reservation.car_id.owner.username }}
       <br />
-      <i class="fas fa-mobile-alt"></i> 0899123456
+      <i class="fas fa-mobile-alt"></i> {{ reservation.renter_id.phone }}
     </div>
   </div>
   <div class="col-12 col-lg-6 row text-left">
@@ -30,7 +31,7 @@
       <div class="col-12 p-1">
         <div class="date-box text-center p-1">
           <span class="font-weight-bold h4">{{
-            reservation.start_date | amLocale: "bg" | amDateFormat: "D"
+            reservation.start_date | amLocale: locale | amDateFormat: "D"
           }}</span>
           <br class="p-0 m-0" />
           {{ reservation.start_date | amLocale: "bg" | amDateFormat: "MMM" }}
@@ -42,9 +43,9 @@
               | amDateFormat: "dddd"
               | titlecase
           }}
-          - получаване
+          - {{'CARS.RESERVATION.PICKUP'|translate}}
           <br class="p-0 m-0" />
-          след 06:00 часа
+          {{'CARS.RESERVATION.PICKUP_HOUR'|translate}}
         </div>
       </div>
       <div class="col-12 p-1">
@@ -62,27 +63,27 @@
               | amDateFormat: "dddd"
               | titlecase
           }}
-          - връщане
+          - {{'CARS.RESERVATION.RETURN'|translate}}
           <br class="p-0 m-0" />
-          до 22:00 часа
+          {{'CARS.RESERVATION.RETURN_HOUR'|translate}}
         </div>
       </div>
     </div>
     <div class="col-12 col-md-6 col-lg-4 text-center price">
-      <p class="m-1">Платено:</p>
+      <p class="m-1">{{'USER.PAID'|translate}}:</p>
       <!-- <p *ngIf="reservation.status == 'refunded'; else paidLabel" class="m-1">
         Възвърнато:
       </p>
       <ng-template #paidLabel>
         <p class="m-1">Платено:</p>
       </ng-template> -->
-      <h5>{{ reservation.total_price }}лв</h5>
+      <h5>{{ reservation.total_price }}{{'COMMON.LV'|translate}}</h5>
       <hr class="m-1" />
 
       <div *ngIf="!reservation.present; else preReservation">
         <div *ngIf="reservation.status=='paid' && !reservation.reviewed" class="pointer" (click)="reviewReservation()">
           <i class="fas fa-star"></i>
-          <p class="m-0">Оценете автомобила</p>
+          <p class="m-0">{{'USER.REVIEW'|translate}}</p>
         </div>
       </div>
       <ng-template #preReservation>
@@ -101,7 +102,7 @@
         >
           <i class="fas fa-times text-danger d-block"></i>
           <span class="font-italic">
-            Откажи безплатно до
+            {{'USER.FREE_CANCEL'|translate}}
             {{
               refundable.date | amLocale: "bg" | amDateFormat: "D MMM, YYYY"
             }}</span
