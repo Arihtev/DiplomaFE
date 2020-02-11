@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { IReservation } from 'src/app/shared/models/site-db/cars';
+import { LanguageService } from 'src/app/core/services/language/language.service';
 
 @Component({
   selector: 'app-car-res-item',
@@ -10,7 +11,7 @@ export class CarResItemComponent implements OnInit {
 
   @Input() reservation: IReservation;
 
-  constructor() { }
+  constructor(public languageService: LanguageService) { }
 
   ngOnInit() {
   }

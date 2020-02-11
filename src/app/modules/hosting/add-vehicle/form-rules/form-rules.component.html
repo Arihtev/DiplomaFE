@@ -1,29 +1,29 @@
 <div class="container text-center">
   <div class="row" [formGroup]="rulesForm">
     <div class="col-12 col-md-6 conditions">
-      <h4>Условия за наемане</h4>
+      <h4>{{'HOSTING.RENTING_RULES'|translate}}</h4>
       <div class="row">
         <div class="col-12 mt-4 row">
-          <h6 class="col-8 text-left">Домашни любимци</h6>
+          <h6 class="col-8 text-left">{{'HOSTING.PETS'|translate}}</h6>
           <mat-radio-group
             color="primary"
             class="col-4 text-right"
             formControlName="pets"
           >
-            <mat-radio-button class="ml-2" value="true">Да</mat-radio-button>
-            <mat-radio-button class="ml-2" value="false">Не</mat-radio-button>
+            <mat-radio-button class="ml-2" value="true">{{'COMMON.YES'|translate}}</mat-radio-button>
+            <mat-radio-button class="ml-2" value="false">{{'COMMON.NO'|translate}}</mat-radio-button>
           </mat-radio-group>
         </div>
 
         <div class="col-12 mt-4 row">
-          <h6 class="col-8 text-left">Пушене в колата</h6>
+          <h6 class="col-8 text-left">{{'HOSTING.SMOKING'|translate}}</h6>
           <mat-radio-group
             color="primary"
             class="col-4 text-right"
             formControlName="smoking"
           >
-            <mat-radio-button class="ml-2" value="true">Да</mat-radio-button>
-            <mat-radio-button class="ml-2" value="false">Не</mat-radio-button>
+            <mat-radio-button class="ml-2" value="true">{{'COMMON.YES'|translate}}</mat-radio-button>
+            <mat-radio-button class="ml-2" value="false">{{'COMMON.NO'|translate}}</mat-radio-button>
           </mat-radio-group>
         </div>
 
@@ -32,10 +32,10 @@
         <div class="col-12 mt-4 row">
           <div class="col-10 text-left">
             <h6>
-              Включени километри
+              {{'HOSTING.INCLUDED_KM'|translate}}
               <mat-icon
                 class="far fa-question-circle h6"
-                matTooltip="Лимит километри на автомобила за ден"
+                matTooltip="{{'HOSTING.INCLUDED_KM_TOOLTIP'|translate}}"
                 matTooltipPosition="above"
               ></mat-icon>
             </h6>
@@ -45,17 +45,17 @@
             digitOnly
             maxDigits="5"
             class="form-control col-2"
-            placeholder="км"
+            placeholder="{{'COMMON.KM'|translate}}"
             formControlName="includedKm"
           />
         </div>
         <div class="col-12 mt-4 row">
           <div class="col-10 text-left">
             <h6>
-              Цена за км над включените
+              {{'HOSTING.PRICE_AFTER_LIMIT'|translate}}
               <mat-icon
                 class="far fa-question-circle h6"
-                matTooltip="Цена за всеки километър над включените"
+                matTooltip="{{'HOSTING.PRICE_AFTER_LIMIT_TOOLTIP'|translate}}"
                 matTooltipPosition="above"
               ></mat-icon>
             </h6>
@@ -89,12 +89,12 @@
     </div>
 
     <div class="col-12 col-md-6 price">
-      <h4>Цена</h4>
+      <h4>{{'COMMON.PRICE'|translate}}</h4>
       <div class="row mb-3">
         <div class="col-12 mt-4 row">
           <div class="col-10 text-left">
             <h6>
-              Цена на автомобила за ден:
+              {{'HOSTING.PRICE_PER_DAY'|translate}}:
               <!-- <mat-icon
                 class="far fa-question-circle h6"
                 matTooltip="My tooltip"
@@ -108,7 +108,7 @@
             decimal="true"
             maxDecimalDigits="2"
             class="form-control col-2"
-            placeholder="лв"
+            placeholder="{{'COMMON.LV'|translate}}"
             formControlName="price"
           />
         </div>
@@ -118,10 +118,10 @@
         <div class="col-12 mt-4 row">
           <div class="col-10 text-left">
             <h6>
-              Седмична отстъпка:
+              {{'HOSTING.WEEKLY_DISCOUNT'|translate}}:
               <mat-icon
                 class="far fa-question-circle h6"
-                matTooltip="Отстъпка при наемане на колата за повече от седмица"
+                matTooltip="{{'HOSTING.WEEKLY_DISCOUNT'|translate}}"
                 matTooltipPosition="above"
               ></mat-icon>
             </h6>
@@ -139,10 +139,10 @@
         <div class="col-12 mt-4 row">
           <div class="col-10 text-left">
             <h6>
-              Месечна отстъпка:
+              {{'HOSTING.MONTHLY_DISCOUNT'|translate}}:
               <mat-icon
                 class="far fa-question-circle h6"
-                matTooltip="Отстъпка при наемане на колата за повече от месец"
+                matTooltip="{{'HOSTING.MONTHLY_DISCOUNT_TOOLTIP'|translate}}"
                 matTooltipPosition="above"
               ></mat-icon>
             </h6>
@@ -159,7 +159,7 @@
       </div>
 
       <mat-checkbox formControlName="agreed" class="col-12" color="primary"
-        >Съгласен/на съм с условията</mat-checkbox
+        >{{'HOSTING.RULES_AGREEMENT'|translate}}</mat-checkbox
       >
       <button
         [disabled]="rulesForm.invalid || !rulesForm.controls['agreed'].value"
@@ -171,7 +171,7 @@
         mdbWavesEffect
         (click)="submitForm()"
       >
-        Добави
+      {{'HOSTING.ADD'|translate}}
       </button>
     </div>
   </div>
@@ -179,5 +179,5 @@
 
   <!-- <button (click)="print()">print</button> -->
 
-  <button mat-button matStepperPrevious>Назад</button>
+  <button mat-button matStepperPrevious>{{'COMMON.BACK'|translate}}</button>
 </div>

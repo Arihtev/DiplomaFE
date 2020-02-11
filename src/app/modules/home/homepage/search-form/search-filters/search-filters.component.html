@@ -20,7 +20,7 @@
             *ngFor="let region of filteredRegions | async"
             [value]="region"
           >
-            {{ region.name }}
+            {{ region.name|translate }}
           </mat-option>
         </mat-autocomplete>
       </mat-form-field>
@@ -45,7 +45,7 @@
             *ngFor="let city of filteredCities | async"
             [value]="city"
           >
-            {{ city.name }}
+            {{ city.name|translate }}
           </mat-option>
         </mat-autocomplete>
       </mat-form-field>

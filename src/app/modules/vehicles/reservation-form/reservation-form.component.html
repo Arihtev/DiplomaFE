@@ -12,15 +12,15 @@
         <div class="col-12 col-md-6">
           <div class="date-box text-center p-1">
             <span class="font-weight-bold h4">{{
-              selectedMoments[0] | amLocale: "bg" | amDateFormat: "D"
+              selectedMoments[0] | amLocale: (languageService.languageChanged | async) | amDateFormat: "D"
             }}</span>
             <br class="p-0 m-0" />
-            {{ selectedMoments[0] | amLocale: "bg" | amDateFormat: "MMM" }}
+            {{ selectedMoments[0] | amLocale: (languageService.languageChanged | async) | amDateFormat: "MMM" }}
           </div>
           <div class="date-info">
             {{
               selectedMoments[0]
-                | amLocale: "bg"
+                | amLocale: (languageService.languageChanged | async)
                 | amDateFormat: "dddd"
                 | titlecase
             }}
@@ -32,15 +32,15 @@
         <div class="col-12 col-md-6 dates">
           <div class="date-box text-center p-1">
             <span class="font-weight-bold h4">{{
-              selectedMoments[1] | amLocale: "bg" | amDateFormat: "D"
+              selectedMoments[1] | amLocale: (languageService.languageChanged | async) | amDateFormat: "D"
             }}</span>
             <br class="p-0 m-0" />
-            {{ selectedMoments[1] | amLocale: "bg" | amDateFormat: "MMM" }}
+            {{ selectedMoments[1] | amLocale: (languageService.languageChanged | async) | amDateFormat: "MMM" }}
           </div>
           <div class="date-info">
             {{
               selectedMoments[1]
-                | amLocale: "bg"
+                | amLocale: (languageService.languageChanged | async)
                 | amDateFormat: "dddd"
                 | titlecase
             }}

@@ -12,13 +12,15 @@ import { Router } from "@angular/router";
 import {
   MustMatch,
   ValidateUsername,
-  ValidateEmail
+  ValidateEmail,
+  ValidateBirthDate
 } from "./registration.validators";
 import { BsModalRef, BsModalService } from "ngx-bootstrap/modal";
 import { LoginComponent } from "src/app/core/authentication/login/login.component";
 import { MatSnackBar } from '@angular/material';
 import { AuthenticationComponent } from '../authentication.component';
 import * as moment from "moment";
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: "app-registration",
@@ -39,6 +41,7 @@ export class RegistrationComponent implements OnInit {
     public bsModalRef: BsModalRef,
     private modalService: BsModalService,
     private _snackBar: MatSnackBar,
+    public translate: TranslateService
   ) {
     this.registerForm = this.formBuilder.group(
       {
@@ -64,7 +67,8 @@ export class RegistrationComponent implements OnInit {
         validators: [
           MustMatch("password", "confirmPassword"),
           ValidateUsername("username", auth),
-          ValidateEmail("email", auth)
+          ValidateEmail("email", auth),
+          ValidateBirthDate("dateOfBirth")
         ]
       }
     );
@@ -83,7 +87,7 @@ export class RegistrationComponent implements OnInit {
   openSnackBar(message: string, action: string) {
     let snackBarRef = this._snackBar.open(message, action, {
       duration: 6000,
-      panelClass: ["registered-snackbar"],
+      panelClass: ["registration-snackbar"],
       verticalPosition: 'top'
     });
     snackBarRef.onAction().subscribe(() => this.openLoginModal());
@@ -113,7 +117,9 @@ export class RegistrationComponent implements OnInit {
     this.auth.registerUser(user).subscribe(
       res => {
         this.close.emit();
-        this.openSnackBar("Вашият профил беше създаден успешно!", "Вход")
+        this.translate.get("USER.REGISTERED").subscribe(res => {
+          this.openSnackBar(res, "Login")
+        })
       },
       err => {
         console.log(err);

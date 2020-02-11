@@ -1,19 +1,17 @@
 import { Injectable } from "@angular/core";
 import { TranslateService, LangChangeEvent } from "@ngx-translate/core";
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: "root"
 })
 export class LanguageService {
   public languages = ["en", "bg"];
-  public defaultLang = "en";
+  public defaultLang = "bg";
   public currentLang = this.defaultLang;
+  public languageChanged = new BehaviorSubject(this.currentLang)
 
-  constructor(public translate: TranslateService) {
-    this.translate.onLangChange.subscribe((event: LangChangeEvent) => {
-      console.log(event)
-    });
-  }
+  constructor(public translate: TranslateService) {}
 
   public init() {
     this.translate.setDefaultLang(this.defaultLang);
@@ -30,6 +28,7 @@ export class LanguageService {
     this.translate.setDefaultLang(language);
     this.translate.use(language);
     this.currentLang = language;
+    this.languageChanged.next(language)
   }
 
   public translateString(string) {

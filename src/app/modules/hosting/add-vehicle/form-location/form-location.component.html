@@ -2,25 +2,25 @@
     <form [formGroup]="locationForm">
         <div class="row mt-5">
             <div class="col-6">
-                <h5>Област:</h5>
+                <h5>{{'HOME.FILTERS.AREA'|translate}}:</h5>
                 <mat-form-field class="w-75">
-                    <input type="text" placeholder="Изберете област" aria-label="Number" matInput formControlName="region" [matAutocomplete]="auto1">
+                    <input type="text" placeholder="{{'HOSTING.CHOOSE_AREA'|translate}}" aria-label="Number" matInput formControlName="region" [matAutocomplete]="auto1">
                     <mat-autocomplete autoActiveFirstOption #auto1="matAutocomplete" [displayWith]="displayFn">
                         <mat-option *ngFor="let region of filteredRegions | async" [value]="region">
-                        {{ region.name }}
+                        {{ region.name|translate }}
                         </mat-option>
                     </mat-autocomplete>
-                    <mat-error>Моля изберете област</mat-error>
+                    <mat-error>{{'HOSTING.CHOOSE_AREA_ERROR'|translate}}</mat-error>
                 </mat-form-field>
             </div>
 
             <div class="col-6">
-                <h5>Град:</h5>
+                <h5>{{'HOME.FILTERS.CITY'|translate}}:</h5>
                 <mat-form-field class="w-75">
-                    <input type="text" placeholder="Изберете град" matInput formControlName="city" [matAutocomplete]="auto2">
+                    <input type="text" placeholder="{{'HOSTING.CHOOSE_CITY'|translate}}" matInput formControlName="city" [matAutocomplete]="auto2">
                     <mat-autocomplete autoActiveFirstOption #auto2="matAutocomplete" [displayWith]="displayFn">
                         <mat-option *ngFor="let city of filteredCities | async" [value]="city">
-                        {{ city.name }}
+                        {{ city.name|translate }}
                         </mat-option>
                     </mat-autocomplete>
                 </mat-form-field>
@@ -29,22 +29,22 @@
 
         <div class="row mt-5">
             <div class="col-6">
-                <h5>Адрес:</h5>
+                <h5>{{'HOSTING.ADDRESS'|translate}}:</h5>
                 <mat-form-field class="w-75">
-                    <input matInput placeholder="Въведете адрес" formControlName="address" required>
-                    <mat-error>Моля въведете адрес</mat-error>
+                    <input matInput placeholder="{{'HOSTING.INPUT_ADDRESS'|translate}}" formControlName="address" required>
+                    <mat-error>{{'HOSTING.INPUT_ADDRESS_ERROR'|translate}}</mat-error>
                 </mat-form-field>
             </div>
             <div class="col-6">
-                <h5>Пощенски код:</h5>
+                <h5>{{'HOSTING.ZIP_CODE'|translate}}:</h5>
                 <mat-form-field class="w-75">
-                    <input matInput placeholder="Въведете п.к." formControlName="zipCode" required>
-                    <mat-error>Моля въведете п.к.</mat-error>
+                    <input matInput placeholder="{{'HOSTING.INPUT_ZIP'|translate}}" formControlName="zipCode" required>
+                    <mat-error>{{'HOSTING.INPUT_ZIP_ERROR'|translate}}</mat-error>
                 </mat-form-field>
             </div>
         </div>
     </form>    
 
-    <button mat-button matStepperPrevious>Назад</button>
-    <button mat-button matStepperNext>Напред</button>
+    <button mat-button matStepperPrevious>{{'COMMON.BACK'|translate}}</button>
+    <button mat-button matStepperNext>{{'COMMON.FORWARD'|translate}}</button>
 </div>

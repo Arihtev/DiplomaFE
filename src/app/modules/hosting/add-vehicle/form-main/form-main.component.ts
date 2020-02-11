@@ -28,14 +28,14 @@ export class FormMainComponent implements OnInit {
     }
     this.mainForm = new FormGroup({
       year: new FormControl('', Validators.required),
-      make: new FormControl({value:'', disabled: false}, Validators.required),
-      model: new FormControl({value:'', disabled: false}, Validators.required),
-      transmission: new FormControl('Ръчна', Validators.required),
-      engine: new FormControl('Бензинов', Validators.required),
-      type: new FormControl('car', Validators.required),
-      horsepower: new FormControl('240', Validators.required),
-      consumption: new FormControl('8', Validators.required),
-      seats: new FormControl('5', Validators.required)
+      make: new FormControl({value:'', disabled: true}, Validators.required),
+      model: new FormControl({value:'', disabled: true}, Validators.required),
+      transmission: new FormControl('', Validators.required),
+      engine: new FormControl('', Validators.required),
+      type: new FormControl('', Validators.required),
+      horsepower: new FormControl('', Validators.required),
+      consumption: new FormControl('', Validators.required),
+      seats: new FormControl('', Validators.required)
     })
   }
 

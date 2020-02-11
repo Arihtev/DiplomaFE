@@ -2,23 +2,23 @@
     <form [formGroup]="amenitiesForm">
         <div class="row">
             <mat-selection-list class="col-12 col-md-4 text-left" formControlName="safetyExtras">
-                <h4 class="text-center">Безопасност</h4>
-                <mat-list-option class="mt-2" color="primary" *ngFor="let safetyExtra of safety" [value]="safetyExtra.id">{{ safetyExtra.name }}</mat-list-option>
+                <h4 class="text-center">{{ 'CARS.DETAILS.SAFETY'|translate }}</h4>
+                <mat-list-option class="mt-2" color="primary" *ngFor="let safetyExtra of safety" [value]="safetyExtra.id">{{ safetyExtra.name|translate }}</mat-list-option>
             </mat-selection-list>
             
             <mat-selection-list class="col-12 col-md-4 text-left" formControlName="comfortExtras">
-                <h4 class="text-center">Комфорт</h4>
-                <mat-list-option class="mt-2" color="primary" *ngFor="let comfortExtra of comfort" [value]="comfortExtra.id">{{ comfortExtra.name }}</mat-list-option>
+                <h4 class="text-center">{{ 'CARS.DETAILS.COMFORT'|translate }}</h4>
+                <mat-list-option class="mt-2" color="primary" *ngFor="let comfortExtra of comfort" [value]="comfortExtra.id">{{ comfortExtra.name|translate }}</mat-list-option>
             </mat-selection-list>
             
             <mat-selection-list class="col-12 col-md-4 text-left" formControlName="otherExtras">
-                <h4 class="text-center">Други</h4>
-                <mat-list-option class="mt-2" color="primary" *ngFor="let otherExtra of others" [value]="otherExtra.id">{{ otherExtra.name }}</mat-list-option>
+                <h4 class="text-center">{{ 'CARS.DETAILS.OTHER'|translate }}</h4>
+                <mat-list-option class="mt-2" color="primary" *ngFor="let otherExtra of others" [value]="otherExtra.id">{{ otherExtra.name|translate }}</mat-list-option>
             </mat-selection-list>
         </div>
     </form>
 
-    <button mat-button matStepperPrevious>Назад</button>
-    <button mat-button matStepperNext>Напред</button>
+    <button mat-button matStepperPrevious>{{ 'COMMON.BACK'|translate }}</button>
+    <button mat-button matStepperNext>{{ 'COMMON.FORWARD'|translate }}</button>
 </div>
 <!-- <button mat-button (click)="submit()">Submit</button> -->

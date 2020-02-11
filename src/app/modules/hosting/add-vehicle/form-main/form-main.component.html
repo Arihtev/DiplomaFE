@@ -2,9 +2,9 @@
     <form [formGroup]="mainForm">
         <div class="row mt-5 justify-content-center">
             <div class="col-6 col-md-4">
-                <h5>Година:</h5>
+                <h5>{{'HOSTING.YEAR'|translate}}:</h5>
                 <mat-form-field class="w-75">
-                    <mat-label>Изберете година:</mat-label>
+                    <mat-label>{{'HOSTING.CHOOSE_YEAR'|translate}}:</mat-label>
                     <mat-select formControlName="year">
                         <mat-option *ngFor="let year of years" [value]="year">{{ year }}</mat-option>
                     </mat-select>
@@ -12,9 +12,9 @@
             </div>
         
             <div class="col-6 col-md-4">
-                <h5>Марка:</h5>
+                <h5>{{'HOSTING.MAKE'|translate}}:</h5>
                 <mat-form-field class="w-75">
-                    <mat-label>Изберете марка:</mat-label>
+                    <mat-label>{{'HOSTING.CHOOSE_MAKE'|translate}}:</mat-label>
                     <mat-select formControlName="make">
                         <mat-option *ngFor="let make of makes" [value]="make">{{ make.make_display }}</mat-option>
                     </mat-select>
@@ -22,9 +22,9 @@
             </div>
             
             <div class="col-6 col-md-4">
-                <h5>Модел:</h5>
+                <h5>{{'HOSTING.MODEL'|translate}}:</h5>
                 <mat-form-field class="w-75">
-                    <mat-label>Изберете модел:</mat-label>
+                    <mat-label>{{'HOSTING.CHOOSE_MODEL'|translate}}:</mat-label>
                     <mat-select formControlName="model">
                         <mat-option *ngFor="let model of models" [value]="model">{{ model.model_name }}</mat-option>
                     </mat-select>
@@ -34,35 +34,35 @@
 
         <div class="row mt-5">
             <div class="col-12 col-md-4 text-center">
-                <h5>Скоростна кутия:</h5>
+                <h5>{{'HOSTING.TRANSMISSION'|translate}}:</h5>
                 <mat-radio-group class="w-75" color="primary" formControlName="transmission">
-                    <mat-radio-button class="m-2" value="Ръчна">Ръчна</mat-radio-button>
-                    <mat-radio-button class="m-2" value="Автоматична">Автоматична</mat-radio-button>
+                    <mat-radio-button class="m-2" value="Ръчна">{{'HOSTING.MANUAL'|translate}}</mat-radio-button>
+                    <mat-radio-button class="m-2" value="Автоматична">{{'HOSTING.AUTOMATIC'|translate}}</mat-radio-button>
                 </mat-radio-group>                          
             </div>
 
             <div class="col-6 col-md-4 text-center">
-                <h5>Тип двигател:</h5>
+                <h5>{{'HOSTING.ENGINE_TYPE'|translate}}:</h5>
                 <mat-form-field class="w-75">
-                    <mat-label>Изберете тип двигател</mat-label>
+                    <mat-label>{{'HOSTING.CHOOSE_ENGINE'|translate}}</mat-label>
                     <mat-select formControlName="engine">
-                        <mat-option value="Бензинов">Бензинов</mat-option>
-                        <mat-option value="Дизелов">Дизелов</mat-option>
-                        <mat-option value="Електрически">Електрически</mat-option>
-                        <mat-option value="Хибриден">Хибриден</mat-option>
+                        <mat-option value="Бензинов">{{'HOSTING.PETROL'|translate}}</mat-option>
+                        <mat-option value="Дизелов">{{'HOSTING.DIESEL'|translate}}</mat-option>
+                        <mat-option value="Електрически">{{'HOSTING.ELECTRIC'|translate}}</mat-option>
+                        <mat-option value="Хибриден">{{'HOSTING.HYBRID'|translate}}</mat-option>
                     </mat-select>
                 </mat-form-field>
             </div>
 
             <div class="col-6 col-md-4 text-center">
-                <h5>Категория:</h5>
+                <h5>{{'HOSTING.CATEGORY'|translate}}:</h5>
                 <mat-form-field class="w-75">
-                    <mat-label>Изберете категория:</mat-label>
+                    <mat-label>{{'HOSTING.CHOOSE_CATEGORY'|translate}}:</mat-label>
                     <mat-select formControlName="type">
-                        <mat-option value="car">Лек автомобил</mat-option>
-                        <mat-option value="suv">Джип</mat-option>
-                        <mat-option value="minivan">Миниван</mat-option>
-                        <mat-option value="truck">Пикап</mat-option>
+                        <mat-option value="car">{{'HOSTING.CAR'|translate}}</mat-option>
+                        <mat-option value="suv">{{'HOSTING.SUV'|translate}}</mat-option>
+                        <mat-option value="minivan">{{'HOSTING.MINIVAN'|translate}}</mat-option>
+                        <mat-option value="truck">{{'HOSTING.TRUCK'|translate}}</mat-option>
                     </mat-select>
                 </mat-form-field>
             </div>
@@ -70,28 +70,28 @@
 
         <div class="row mt-5 justify-content-center">
             <div class="col-6 col-md-4 text-center">
-                <h5>Мощност:</h5>
+                <h5>{{'HOSTING.POWER'|translate}}:</h5>
                 <mat-form-field class="w-75">
-                    <input matInput digitOnly autocomplete="off" formControlName="horsepower" placeholder="Въведете мощност">
+                    <input matInput digitOnly autocomplete="off" formControlName="horsepower" placeholder="{{'HOSTING.INPUT_POWER'|translate}}">
                 </mat-form-field>                          
             </div>
 
             <div class="col-6 col-md-4 text-center">
-                <h5>Разход:</h5>
+                <h5>{{'HOSTING.CONSUMPTION'|translate}}:</h5>
                 <mat-form-field class="w-75">
-                    <input matInput digitOnly decimal="true" maxDecimalDigits="1" autocomplete="off" formControlName="consumption" placeholder="Въведете разход">
+                    <input matInput digitOnly decimal="true" maxDecimalDigits="1" autocomplete="off" formControlName="consumption" placeholder="{{'HOSTING.INPUT_CONSUMPTION'|translate}}">
                 </mat-form-field>
             </div>
 
             <div class="col-6 col-md-4 text-center">
-                <h5>Брой места:</h5>
+                <h5>{{'HOSTING.SEATS_COUNT'|translate}}:</h5>
                 <mat-form-field class="w-75">
-                    <input matInput digitOnly autocomplete="off" formControlName="seats" placeholder="Въведете брой">
+                    <input matInput digitOnly autocomplete="off" formControlName="seats" placeholder="{{'HOSTING.INPUT_SEATS'|translate}}">
                 </mat-form-field>
             </div>
         </div>
             
         <!-- <button (click)="printCars()">INFO</button> -->
     </form>
-    <button mat-button matStepperNext>Напред</button>
+    <button mat-button matStepperNext>{{'COMMON.FORWARD'|translate}}</button>
 </div>

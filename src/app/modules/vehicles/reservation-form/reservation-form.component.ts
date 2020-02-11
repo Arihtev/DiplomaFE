@@ -7,6 +7,7 @@ import { AuthService } from "src/app/core/services/authentication/auth.service";
 import { SiteCardbService } from "src/app/core/services/site-cardb/site-cardb.service";
 import { MatSnackBar, MatDialog } from "@angular/material";
 import { ReservationDialogComponent } from "./reservation-dialog/reservation-dialog.component";
+import { LanguageService } from 'src/app/core/services/language/language.service';
 
 @Component({
   selector: "app-reservation-form",
@@ -28,10 +29,10 @@ export class ReservationFormComponent implements OnInit {
   daysReserved
   selectedMoments;
   formData = {
-    card_owner_name: "GEORGI ARIHTEV",
-    card_number: "1234123412341234",
-    expiration_date: "02/21",
-    cvv: "123",
+    card_owner_name: "",
+    card_number: "",
+    expiration_date: "",
+    cvv: "",
     confirmation: false
   };
 
@@ -41,7 +42,8 @@ export class ReservationFormComponent implements OnInit {
     private authService: AuthService,
     private dbService: SiteCardbService,
     private _snackBar: MatSnackBar,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    public languageService: LanguageService
   ) {
     this.authService.currentUser.subscribe(user => {
       this.currentUser = user;

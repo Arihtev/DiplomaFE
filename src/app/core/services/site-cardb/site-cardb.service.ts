@@ -73,4 +73,42 @@ export class SiteCardbService {
       photo
     })
   }
+
+  updateCar(id, region, city, address, zip_code, extras, pets, smoking, includedKm, pricePerExtraKm, price, weeklyDiscount, monthlyDiscount) {
+    return this.service.post(`${this.CAR_DB_URL}/cars/update/${id}`, {
+    region: region,
+    city: city,
+    address: address,
+    zip_code: zip_code,
+    extras: extras,
+    pets: pets, 
+    smoking: smoking, 
+    included_km: includedKm, 
+    price_per_extra_km: pricePerExtraKm,
+    price: price, 
+    weekly_discount: weeklyDiscount, 
+    monthly_discount: monthlyDiscount
+    })
+  }
+  updateMainCar(id, region, city, address, zip_code, pets, smoking, includedKm, pricePerExtraKm, price, weeklyDiscount, monthlyDiscount) {
+    return this.service.patch(`${this.CAR_DB_URL}/cars/update/${id}`, {
+    region: region,
+    city: city,
+    address: address,
+    zip_code: zip_code,
+    pets: pets, 
+    smoking: smoking, 
+    included_km: includedKm, 
+    price_per_extra_km: pricePerExtraKm,
+    price: price, 
+    weekly_discount: weeklyDiscount, 
+    monthly_discount: monthlyDiscount
+    })
+  }
+
+  updateCarExtras(id, extras){
+    return this.service.patch(`${this.CAR_DB_URL}/cars/update/${id}`, {
+      extras
+    })
+  }
 }

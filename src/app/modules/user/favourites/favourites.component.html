@@ -1,7 +1,7 @@
 <div class="wrapper"></div>
 <div class="container">
   <h1 class="mt-2">
-    Любими
+    {{ 'USER.FAVOURITES'|translate }}
   </h1>
   <div *ngIf="cars.length" class="row mb-3">
     <div *ngFor="let car of cars" class="col-12 col-lg-6 text-center mt-4">
@@ -18,7 +18,7 @@
   class="text-center all-cars"
   (click)="redirectToAll()"
 >
-  <h3>Списъкът ви с любими е празен!</h3>
-  <h3>Разгледайте нашите предложения тук</h3>
+  <h3>{{ 'USER.FAV_EMPTY'|translate }}</h3>
+  <h3>{{ 'USER.CHECK_OUR_OFFERS'|translate }}</h3>
   <div class="img"></div>
 </div>

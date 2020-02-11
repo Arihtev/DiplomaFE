@@ -1,13 +1,26 @@
 <div *ngIf="car">
-    <mat-tab-group>
-        <mat-tab label="Основна информация">
-            <app-edit-main [car]="car"></app-edit-main>
-        </mat-tab>
-        <mat-tab label="Снимки и описание"> 
+  <mat-tab-group>
+    <mat-tab label="{{ 'HOSTING.MAIN' | translate }}">
+      <app-edit-main [car]="car"></app-edit-main>
+    </mat-tab>
+    <!-- <mat-tab label="Снимки и описание"> 
             <app-edit-secondary [car]="car"></app-edit-secondary> 
-        </mat-tab>
-        <mat-tab label="Удобства"> 
-            <app-edit-extras [car]="car"></app-edit-extras>
-        </mat-tab>
-    </mat-tab-group>
+        </mat-tab> -->
+    <mat-tab label="{{ 'HOSTING.AMENITIES' | translate }}">
+      <app-edit-extras [car]="car"></app-edit-extras>
+    </mat-tab>
+  </mat-tab-group>
+  <!-- <div class="w-100 text-center">
+    <button
+      type="button"
+      class="create-btn m-3"
+      mdbBtn
+      size="lg"
+      gradient="blue"
+      mdbWavesEffect
+      (click)="submitForm()"
+    >
+      {{ "USER.SAVE" | translate }}
+    </button>
+  </div> -->
 </div>

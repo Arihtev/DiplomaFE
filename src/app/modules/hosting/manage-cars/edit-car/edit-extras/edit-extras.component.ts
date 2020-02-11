@@ -3,6 +3,9 @@ import { Component, OnInit, Input } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { IAmenities } from 'src/app/shared/models/car database/amenities';
 import { CarDatabaseService } from 'src/app/core/services/car-database/car-database.service';
+import { SiteCardbService } from 'src/app/core/services/site-cardb/site-cardb.service';
+import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-edit-extras',
@@ -19,7 +22,7 @@ export class EditExtrasComponent implements OnInit {
   comfort: IAmenities[] = [];
   others: IAmenities[] = [];
 
-  constructor(private _formBuilder: FormBuilder, private service: CarDatabaseService) {}
+  constructor(private _formBuilder: FormBuilder, private service: CarDatabaseService, public carDbService: SiteCardbService, public router: Router, public _snackBar: MatSnackBar) {}
 
   ngOnInit() {
     this.service.getAmenities().subscribe((res: IAmenities[]) =>{
@@ -66,5 +69,25 @@ export class EditExtrasComponent implements OnInit {
 
   printInfo(){
     console.log(this.car)
+  }
+
+  submitForm(){
+      let safety = this.amenitiesForm.value.safetyExtras;
+    let comfort = this.amenitiesForm.value.comfortExtras;
+    let others = this.amenitiesForm.value.otherExtras;
+    let extras = safety.concat(comfort, others);
+    this.carDbService.updateCarExtras(this.car.id, extras)
+      .subscribe(res => {
+        this.openSnackBar("Вашият автомобил беше запазен успешно!", "Затвори");
+        this.router.navigate(["/host/manage-cars"]);
+      });
+  }
+  openSnackBar(message: string, action: string) {
+    let snackBarRef = this._snackBar.open(message, action, {
+      duration: 6000,
+      panelClass: ["registration-snackbar"],
+      verticalPosition: "top"
+    });
+    // snackBarRef.onAction().subscribe(() => this.openLoginModal());
   }
 }

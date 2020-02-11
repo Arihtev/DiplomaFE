@@ -27,10 +27,10 @@ export class FormLocationComponent implements OnInit {
 
   constructor(){
     this.locationForm = new FormGroup({
-      region: new FormControl(this.regions[0], Validators.required),
-      city: new FormControl(this.cities[0], Validators.required),
-      address: new FormControl('adress1', Validators.required),
-      zipCode: new FormControl('553', Validators.required)
+      region: new FormControl('', Validators.required),
+      city: new FormControl('', Validators.required),
+      address: new FormControl('', Validators.required),
+      zipCode: new FormControl('', Validators.required)
     })
   }
 

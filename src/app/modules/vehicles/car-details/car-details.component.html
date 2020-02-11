@@ -26,11 +26,11 @@
             </div>
             <div class="col-6 col-md-4">
               <i class="fas fa-gas-pump"></i>
-              <span class="car-second-info"> {{ car.engine_type }}</span>
+              <span class="car-second-info"> {{ car.engine_type|translate }}</span>
             </div>
             <div class="col-6 col-md-4">
               <img src="assets/images/gearbox.svg" class="car-icon" alt="" />
-              <span class="car-second-info"> {{ car.transmission }}</span>
+              <span class="car-second-info"> {{ car.transmission|translate }}</span>
             </div>
             <!-- </div>
           <div class="row mt-1 text-left"> -->
@@ -41,7 +41,7 @@
             <div class="col-6 col-md-4">
               <i class="fas fa-car"></i>
               <span class="car-second-info">
-                {{ car.category | convertCategory }}</span
+                {{ (car.category | convertCategory)|translate }}</span
               >
             </div>
             <div class="col-6 col-md-4">
@@ -82,7 +82,7 @@
       <span *ngFor="let extra of car.extras">
         <span *ngIf="extra.category_id == 1" class="extra-label">
           &#10003;<!-- &bull; -->  
-          {{ extra.name }} <br />
+          {{ extra.name|translate }} <br />
         </span>
       </span>
     </div>
@@ -99,7 +99,7 @@
       <span *ngFor="let extra of car.extras">
         <span *ngIf="extra.category_id == 2" class="extra-label">
           &#10003;<!-- &bull; -->
-          {{ extra.name }} <br />
+          {{ extra.name|translate }} <br />
         </span>
       </span>
     </div>
@@ -117,7 +117,7 @@
       <span *ngFor="let extra of car.extras">
         <span *ngIf="extra.category_id == 3" class="extra-label">
           &#10003;<!-- &bull; -->
-          {{ extra.name }} <br />
+          {{ extra.name|translate }} <br />
         </span>
       </span>
     </div>

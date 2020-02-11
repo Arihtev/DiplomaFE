@@ -25,7 +25,11 @@ export interface ICar{
     monthly_discount: number,
     price: number,
     rating?: number,
-    times_rented?: number
+    times_rented?: number,
+    smoking: boolean,
+    pets: boolean,
+    price_per_extra_km: number,
+    included_km: number
 }
 
 export interface IPicture{

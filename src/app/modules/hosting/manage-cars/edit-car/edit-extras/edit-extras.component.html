@@ -1,22 +1,33 @@
 <div class="container text-center">
     <form [formGroup]="amenitiesForm">
         <div class="row">
-            <mat-selection-list class="col-4 text-left" formControlName="safetyExtras">
-                <h3 class="text-center">Безопасност</h3>
-                <mat-list-option class="mt-2" color="primary" *ngFor="let safetyExtra of safety" [value]="safetyExtra.id">{{ safetyExtra.name }}</mat-list-option>
+            <mat-selection-list class="col-12 col-md-4 text-left" formControlName="safetyExtras">
+                <h4 class="text-center">{{ 'CARS.DETAILS.SAFETY'|translate }}</h4>
+                <mat-list-option class="mt-2" color="primary" *ngFor="let safetyExtra of safety" [value]="safetyExtra.id">{{ safetyExtra.name|translate }}</mat-list-option>
             </mat-selection-list>
             
-            <mat-selection-list class="col-4 text-left" formControlName="comfortExtras">
-                <h3 class="text-center">Комфорт</h3>
-                <mat-list-option class="mt-2" color="primary" *ngFor="let comfortExtra of comfort" [value]="comfortExtra.id">{{ comfortExtra.name }}</mat-list-option>
+            <mat-selection-list class="col-12 col-md-4 text-left" formControlName="comfortExtras">
+                <h4 class="text-center">{{ 'CARS.DETAILS.COMFORT'|translate }}</h4>
+                <mat-list-option class="mt-2" color="primary" *ngFor="let comfortExtra of comfort" [value]="comfortExtra.id">{{ comfortExtra.name|translate }}</mat-list-option>
             </mat-selection-list>
             
-            <mat-selection-list class="col-4 text-left" formControlName="otherExtras">
-                <h3 class="text-center">Други</h3>
-                <mat-list-option class="mt-2" color="primary" *ngFor="let otherExtra of others" [value]="otherExtra.id">{{ otherExtra.name }}</mat-list-option>
+            <mat-selection-list class="col-12 col-md-4 text-left" formControlName="otherExtras">
+                <h4 class="text-center">{{ 'CARS.DETAILS.OTHER'|translate }}</h4>
+                <mat-list-option class="mt-2" color="primary" *ngFor="let otherExtra of others" [value]="otherExtra.id">{{ otherExtra.name|translate }}</mat-list-option>
             </mat-selection-list>
         </div>
     </form>
 </div>
-
-<button (click)="print()">print</button>
+<div class="w-100 text-center">
+    <button
+      type="button"
+      class="create-btn m-3"
+      mdbBtn
+      size="lg"
+      gradient="blue"
+      mdbWavesEffect
+      (click)="submitForm()"
+    >
+      {{ "USER.SAVE" | translate }}
+    </button>
+  </div>

@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { IReview } from 'src/app/shared/models/site-db/cars';
+import { LanguageService } from 'src/app/core/services/language/language.service';
 
 @Component({
   selector: 'app-car-review',
@@ -10,7 +11,7 @@ export class CarReviewComponent implements OnInit {
 
   @Input() review: IReview;
 
-  constructor() { }
+  constructor(public languageService: LanguageService) { }
 
   ngOnInit() {
   }

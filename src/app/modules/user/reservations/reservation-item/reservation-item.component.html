@@ -31,15 +31,15 @@
       <div class="col-12 p-1">
         <div class="date-box text-center p-1">
           <span class="font-weight-bold h4">{{
-            reservation.start_date | amLocale: locale | amDateFormat: "D"
+            reservation.start_date | amLocale: (languageService.languageChanged | async) | amDateFormat: "D"
           }}</span>
           <br class="p-0 m-0" />
-          {{ reservation.start_date | amLocale: "bg" | amDateFormat: "MMM" }}
+          {{ reservation.start_date | amLocale: (languageService.languageChanged | async) | amDateFormat: "MMM" }}
         </div>
         <div class="date-info">
           {{
             reservation.start_date
-              | amLocale: "bg"
+              | amLocale: (languageService.languageChanged | async)
               | amDateFormat: "dddd"
               | titlecase
           }}
@@ -51,15 +51,15 @@
       <div class="col-12 p-1">
         <div class="date-box text-center p-1">
           <span class="font-weight-bold h4">{{
-            reservation.end_date | amLocale: "bg" | amDateFormat: "D"
+            reservation.end_date | amLocale: (languageService.languageChanged | async) | amDateFormat: "D"
           }}</span>
           <br class="p-0 m-0" />
-          {{ reservation.end_date | amLocale: "bg" | amDateFormat: "MMM" }}
+          {{ reservation.end_date | amLocale: (languageService.languageChanged | async) | amDateFormat: "MMM" }}
         </div>
         <div class="date-info">
           {{
             reservation.end_date
-              | amLocale: "bg"
+              | amLocale: (languageService.languageChanged | async)
               | amDateFormat: "dddd"
               | titlecase
           }}
@@ -104,7 +104,7 @@
           <span class="font-italic">
             {{'USER.FREE_CANCEL'|translate}}
             {{
-              refundable.date | amLocale: "bg" | amDateFormat: "D MMM, YYYY"
+              refundable.date | amLocale: (languageService.languageChanged | async) | amDateFormat: "D MMM, YYYY"
             }}</span
           >
         </div>

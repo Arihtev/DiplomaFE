@@ -1,48 +1,268 @@
 <div class="container text-center">
-    <form [formGroup]="locationForm">
-        <div class="row mt-2">
-            <div class="col-6">
-                <h4>Област:</h4>
-                <mat-form-field>
-                    <input type="text" placeholder="Изберете област" aria-label="Number" matInput formControlName="region" [matAutocomplete]="auto1">
-                    <mat-autocomplete autoActiveFirstOption #auto1="matAutocomplete" [displayWith]="displayFn">
-                        <mat-option *ngFor="let region of filteredRegions | async" [value]="region">
-                        {{ region.name }}
-                        </mat-option>
-                    </mat-autocomplete>
-                    <mat-error>Моля изберете област</mat-error>
-                </mat-form-field>
-            </div>
+  <form [formGroup]="locationForm">
+    <div class="row mt-5">
+      <div class="col-6">
+        <h5>{{ "HOME.FILTERS.AREA" | translate }}:</h5>
+        <mat-form-field class="w-75">
+          <input
+            type="text"
+            placeholder="{{ 'HOSTING.CHOOSE_AREA' | translate }}"
+            aria-label="Number"
+            matInput
+            formControlName="region"
+            [matAutocomplete]="auto1"
+          />
+          <mat-autocomplete
+            autoActiveFirstOption
+            #auto1="matAutocomplete"
+            [displayWith]="displayFn"
+          >
+            <mat-option
+              *ngFor="let region of filteredRegions | async"
+              [value]="region"
+            >
+              {{ region.name | translate }}
+            </mat-option>
+          </mat-autocomplete>
+          <mat-error>{{ "HOSTING.CHOOSE_AREA_ERROR" | translate }}</mat-error>
+        </mat-form-field>
+      </div>
 
-            <div class="col-6">
-                <h4>Град:</h4>
-                <mat-form-field>
-                    <input type="text" placeholder="Изберете град" matInput formControlName="city" [matAutocomplete]="auto2">
-                    <mat-autocomplete autoActiveFirstOption #auto2="matAutocomplete" [displayWith]="displayFn">
-                        <mat-option *ngFor="let city of filteredCities | async" [value]="city">
-                        {{ city.name }}
-                        </mat-option>
-                    </mat-autocomplete>
-                </mat-form-field>
-            </div>
+      <div class="col-6">
+        <h5>{{ "HOME.FILTERS.CITY" | translate }}:</h5>
+        <mat-form-field class="w-75">
+          <input
+            type="text"
+            placeholder="{{ 'HOSTING.CHOOSE_CITY' | translate }}"
+            matInput
+            formControlName="city"
+            [matAutocomplete]="auto2"
+          />
+          <mat-autocomplete
+            autoActiveFirstOption
+            #auto2="matAutocomplete"
+            [displayWith]="displayFn"
+          >
+            <mat-option
+              *ngFor="let city of filteredCities | async"
+              [value]="city"
+            >
+              {{ city.name | translate }}
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="row mt-5">
+      <div class="col-6">
+        <h5>{{ "HOSTING.ADDRESS" | translate }}:</h5>
+        <mat-form-field class="w-75">
+          <input
+            matInput
+            placeholder="{{ 'HOSTING.INPUT_ADDRESS' | translate }}"
+            formControlName="address"
+            required
+          />
+          <mat-error>{{ "HOSTING.INPUT_ADDRESS_ERROR" | translate }}</mat-error>
+        </mat-form-field>
+      </div>
+      <div class="col-6">
+        <h5>{{ "HOSTING.ZIP_CODE" | translate }}:</h5>
+        <mat-form-field class="w-75">
+          <input
+            matInput
+            placeholder="{{ 'HOSTING.INPUT_ZIP' | translate }}"
+            formControlName="zipCode"
+            required
+          />
+          <mat-error>{{ "HOSTING.INPUT_ZIP_ERROR" | translate }}</mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+  </form>
+  <div class="row mt-3" [formGroup]="rulesForm">
+    <div class="col-12 col-md-6 conditions">
+      <h4>{{ "HOSTING.RENTING_RULES" | translate }}</h4>
+      <div class="row">
+        <div class="col-12 mt-4 row">
+          <h6 class="col-8 text-left">{{ "HOSTING.PETS" | translate }}</h6>
+          <mat-radio-group
+            color="primary"
+            class="col-4 text-right"
+            formControlName="pets"
+          >
+            <mat-radio-button class="ml-2" value="true">{{
+              "COMMON.YES" | translate
+            }}</mat-radio-button>
+            <mat-radio-button class="ml-2" value="false">{{
+              "COMMON.NO" | translate
+            }}</mat-radio-button>
+          </mat-radio-group>
         </div>
 
-        <div class="row mt-2">
-            <div class="col-6">
-                <h4>Адрес:</h4>
-                <mat-form-field class="col-12">
-                    <input matInput placeholder="Въведете адрес" formControlName="address" required>
-                    <mat-error>Моля въведете адрес</mat-error>
-                </mat-form-field>
-            </div>
-            <div class="col-6">
-                <h4>Пощенски код:</h4>
-                <mat-form-field>
-                    <input matInput placeholder="Въведете п.к." formControlName="zipCode" required>
-                    <mat-error>Моля въведете п.к.</mat-error>
-                </mat-form-field>
-            </div>
+        <div class="col-12 mt-4 row">
+          <h6 class="col-8 text-left">{{ "HOSTING.SMOKING" | translate }}</h6>
+          <mat-radio-group
+            color="primary"
+            class="col-4 text-right"
+            formControlName="smoking"
+          >
+            <mat-radio-button class="ml-2" value="true">{{
+              "COMMON.YES" | translate
+            }}</mat-radio-button>
+            <mat-radio-button class="ml-2" value="false">{{
+              "COMMON.NO" | translate
+            }}</mat-radio-button>
+          </mat-radio-group>
         </div>
-    </form>
+
+        <hr class="col-11 mt-4" />
+
+        <div class="col-12 mt-4 row">
+          <div class="col-10 text-left">
+            <h6>
+              {{ "HOSTING.INCLUDED_KM" | translate }}
+              <mat-icon
+                class="far fa-question-circle h6"
+                matTooltip="{{ 'HOSTING.INCLUDED_KM_TOOLTIP' | translate }}"
+                matTooltipPosition="above"
+              ></mat-icon>
+            </h6>
+          </div>
+          <input
+            mdbInput
+            digitOnly
+            maxDigits="5"
+            class="form-control col-2"
+            placeholder="{{ 'COMMON.KM' | translate }}"
+            formControlName="includedKm"
+          />
+        </div>
+        <div class="col-12 mt-4 row">
+          <div class="col-10 text-left">
+            <h6>
+              {{ "HOSTING.PRICE_AFTER_LIMIT" | translate }}
+              <mat-icon
+                class="far fa-question-circle h6"
+                matTooltip="{{
+                  'HOSTING.PRICE_AFTER_LIMIT_TOOLTIP' | translate
+                }}"
+                matTooltipPosition="above"
+              ></mat-icon>
+            </h6>
+          </div>
+          <input
+            mdbInput
+            digitOnly
+            decimal="true"
+            maxDecimalDigits="2"
+            class="form-control col-2"
+            placeholder="лв/км"
+            formControlName="pricePerExtraKm"
+          />
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12 col-md-6 price">
+      <h4>{{ "COMMON.PRICE" | translate }}</h4>
+      <div class="row mb-3">
+        <div class="col-12 mt-4 row">
+          <div class="col-10 text-left">
+            <h6>
+              {{ "HOSTING.PRICE_PER_DAY" | translate }}:
+              <!-- <mat-icon
+                    class="far fa-question-circle h6"
+                    matTooltip="My tooltip"
+                    matTooltipPosition="above"
+                  ></mat-icon> -->
+            </h6>
+          </div>
+          <input
+            mdbInput
+            digitOnly
+            decimal="true"
+            maxDecimalDigits="2"
+            class="form-control col-2"
+            placeholder="{{ 'COMMON.LV' | translate }}"
+            formControlName="price"
+          />
+        </div>
+
+        <hr class="col-11 mt-4" />
+
+        <div class="col-12 mt-4 row">
+          <div class="col-10 text-left">
+            <h6>
+              {{ "HOSTING.WEEKLY_DISCOUNT" | translate }}:
+              <mat-icon
+                class="far fa-question-circle h6"
+                matTooltip="{{ 'HOSTING.WEEKLY_DISCOUNT' | translate }}"
+                matTooltipPosition="above"
+              ></mat-icon>
+            </h6>
+          </div>
+          <input
+            mdbInput
+            digitOnly
+            maxDigits="2"
+            class="form-control col-2"
+            placeholder="%"
+            formControlName="weeklyDiscount"
+          />
+        </div>
+
+        <div class="col-12 mt-4 row">
+          <div class="col-10 text-left">
+            <h6>
+              {{ "HOSTING.MONTHLY_DISCOUNT" | translate }}:
+              <mat-icon
+                class="far fa-question-circle h6"
+                matTooltip="{{
+                  'HOSTING.MONTHLY_DISCOUNT_TOOLTIP' | translate
+                }}"
+                matTooltipPosition="above"
+              ></mat-icon>
+            </h6>
+          </div>
+          <input
+            mdbInput
+            digitOnly
+            maxDigits="2"
+            class="form-control col-2"
+            placeholder="%"
+            formControlName="monthlyDiscount"
+          />
+        </div>
+      </div>
+
+      <!-- <button
+        [disabled]="rulesForm.invalid || !rulesForm.controls['agreed'].value"
+        type="button"
+        class="create-btn"
+        mdbBtn
+        size="lg"
+        gradient="blue"
+        mdbWavesEffect
+        (click)="submitForm()"
+      >
+        {{ "HOSTING.ADD" | translate }}
+      </button> -->
+    </div>
+  </div>
 </div>
-<button (click)="print()">print</button>
+<div class="w-100 text-center">
+  <button
+    type="button"
+    class="create-btn m-3"
+    mdbBtn
+    size="lg"
+    gradient="blue"
+    mdbWavesEffect
+    (click)="submitForm()"
+  >
+    {{ "USER.SAVE" | translate }}
+  </button>
+</div>
+<!-- <button (click)="print()">print</button> -->

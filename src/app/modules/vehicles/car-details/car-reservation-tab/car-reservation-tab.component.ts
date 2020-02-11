@@ -125,10 +125,12 @@ export class CarReservationTabComponent implements OnInit {
     return !this.disabledDays.find(date => moment(date).format('YYYY-MM-DD') == moment(day).format('YYYY-MM-DD'))
   }
 
-  private processDates(dates) {
+  public processDates(dates) {
+    console.log(dates)
     if (dates){
       if (dates[0]!=null && dates[1]==null){
         this.max = this.calculateMaxDate(dates[0])
+        console.log(this.max)
       }
       else if(dates[0]!=null && dates[1]!=null){
         this.max = null

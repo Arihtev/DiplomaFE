@@ -1,13 +1,13 @@
 <div class="gradient"></div>
 <div class="container mb-3">
-  <h2 class="mt-2">Резервации за {{ car?.make }} {{ car?.model }}</h2>
+  <h2 class="mt-2"> {{ 'CARS.RESERVATION.RESERVATIONS_FOR'|translate }} {{ car?.make }} {{ car?.model }}</h2>
   <h3 *ngIf="upcomingReservations.length; else noUpcoming" class="mt-5">
-    Предстоящи
+    {{ 'USER.UPCOMING'|translate }}
   </h3>
 
   <ng-template #noUpcoming>
     <h1 class="text-center mt-5">
-      Няма насрочени резервации за този автомобил
+      {{ 'CARS.RESERVATION.NO_UPCOMING_FOR_CAR'|translate }}
     </h1>
   </ng-template>
 
@@ -23,7 +23,7 @@
   </div>
 
   <h3 *ngIf="passedReservations.length" class="mt-5">
-    Стари
+    {{ 'USER.OLD'|translate }}
   </h3>
 
   <div
@@ -34,7 +34,7 @@
   </div>
 
   <h3 *ngIf="canceledReservations.length" class="mt-5">
-    Анулирани
+    {{ 'USER.CANCELED'|translate}}
   </h3>
 
   <div
@@ -53,7 +53,7 @@
     class="mt-5"
   >
     <h1 class="text-center">
-      Този автомобил очаква първият си наемател!
+      {{ 'CARS.RESERVATION.WAITING_FIRST'|translate }}
     </h1>
   </div>
 </div>

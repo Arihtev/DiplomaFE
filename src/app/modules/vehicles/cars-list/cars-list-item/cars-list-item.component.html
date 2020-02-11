@@ -23,7 +23,7 @@
                 <app-show-rating [rate]="car.rating"></app-show-rating>
             </div>
             <div class="col-6 text-left car-city">
-                <i class="fas fa-map-marker-alt text-primary" style="font-size: 1rem"></i> {{ car.city }}
+                <i class="fas fa-map-marker-alt text-primary" style="font-size: 1rem"></i> {{ car.region|translate }}
             </div>
             <div class="col-6 text-right times-rented">
                 {{ car.times_rented }} {{'CARS.DETAILS.RENTERS'|translate}}
@@ -42,7 +42,7 @@
                 <i class="fas fa-burn"> </i> <span class="car-second-info"> {{ car.consumption }}{{'CARS.DETAILS.CONSUMPTION'|translate}}</span>
             </div>
             <div class="col-6 pr-0"> 
-                <i class="fas fa-gas-pump custom-green"></i> <span class="car-second-info"> {{ car.engine_type }}</span>
+                <i class="fas fa-gas-pump custom-green"></i> <span class="car-second-info"> {{ car.engine_type|translate }}</span>
             </div>
             <!-- <div class="col-4 pr-0">
                 <img src="assets/images/gearbox.svg" class="car-icon" alt=""> <span class="car-second-info"> {{ car.transmission }}</span>

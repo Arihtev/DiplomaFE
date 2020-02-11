@@ -119,7 +119,8 @@
           [owlDateTimeTrigger]="birthPicker"
           [owlDateTime]="birthPicker"
         />
-        <mat-error>{{ 'HOME.AUTH.REGISTER.BIRTH_DATE_ERROR_EMPTY'|translate }}</mat-error>
+        <mat-error *ngIf="registerForm.hasError('notAdult', 'dateOfBirth')">{{ 'HOME.AUTH.REGISTER.BIRTH_DATE_ERROR_ADULT'|translate }}</mat-error>
+        <mat-error *ngIf="registerForm.hasError('required', 'dateOfBirth')">{{ 'HOME.AUTH.REGISTER.BIRTH_DATE_ERROR_EMPTY'|translate }}</mat-error>
       </mat-form-field>
       <owl-date-time
         #birthPicker

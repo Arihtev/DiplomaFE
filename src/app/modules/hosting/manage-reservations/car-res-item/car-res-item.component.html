@@ -9,12 +9,12 @@
       />
     </div>
     <div class="col-12 col-md-6">
-      <p class="mt-3 mb-1">Наемател:</p>
+      <p class="mt-3 mb-1">{{ 'CARS.RESERVATION.RENTER'|translate }}:</p>
       <h5>
         {{ reservation.renter_id.username }}
       </h5>
       <h6>
-        <i class="fas fa-mobile-alt"></i> 0899123456
+        <i class="fas fa-mobile-alt"></i> {{ reservation.renter_id.phone }}
       </h6>
     </div>
   </div>
@@ -23,50 +23,50 @@
       <div class="col-12 p-1">
         <div class="date-box text-center p-1">
           <span class="font-weight-bold h4">{{
-            reservation.start_date | amLocale: "bg" | amDateFormat: "D"
+            reservation.start_date | amLocale: (languageService.languageChanged | async) | amDateFormat: "D"
           }}</span>
           <br class="p-0 m-0" />
-          {{ reservation.start_date | amLocale: "bg" | amDateFormat: "MMM" }}
+          {{ reservation.start_date | amLocale: (languageService.languageChanged | async) | amDateFormat: "MMM" }}
         </div>
         <div class="date-info">
           {{
             reservation.start_date
-              | amLocale: "bg"
+              | amLocale: (languageService.languageChanged | async)
               | amDateFormat: "dddd"
               | titlecase
           }}
-          - получаване
+          - {{'CARS.RESERVATION.PICKUP'|translate}}
           <br class="p-0 m-0" />
-          след 06:00 часа
+          {{'CARS.RESERVATION.PICKUP_HOUR'|translate}}
         </div>
       </div>
       <div class="col-12 p-1">
         <div class="date-box text-center p-1">
           <span class="font-weight-bold h4">{{
-            reservation.end_date | amLocale: "bg" | amDateFormat: "D"
+            reservation.end_date | amLocale: (languageService.languageChanged | async) | amDateFormat: "D"
           }}</span>
           <br class="p-0 m-0" />
-          {{ reservation.end_date | amLocale: "bg" | amDateFormat: "MMM" }}
+          {{ reservation.end_date | amLocale: (languageService.languageChanged | async) | amDateFormat: "MMM" }}
         </div>
         <div class="date-info">
           {{
             reservation.end_date
-              | amLocale: "bg"
+              | amLocale: (languageService.languageChanged | async)
               | amDateFormat: "dddd"
               | titlecase
           }}
-          - връщане
+          - {{ 'CARS.RESERVATION.RETURN'|translate }}
           <br class="p-0 m-0" />
-          до 22:00 часа
+          {{ 'CARS.RESERVATION.RETURN_HOUR'|translate }}
         </div>
       </div>
     </div>
     <div class="col-12 col-md-6 col-lg-4 text-center price">
-      <p class="m-1">Платено:</p>
-      <h5>{{ reservation.total_price }}лв</h5>
+      <p class="m-1">{{ 'USER.PAID'|translate }}:</p>
+      <h5>{{ reservation.total_price }}{{ 'COMMON.LV'|translate }}</h5>
       <hr class="m-1" />
-      <p class="m-1">Продължителност:</p>
-      <h5>{{ reservation.days_reserved }} {{ reservation.days_reserved == 1 ? 'ден' : 'дни' }}</h5>
+      <p class="m-1">{{ 'CARS.RESERVATION.DURATION'|translate }}:</p>
+      <h5>{{ reservation.days_reserved }} {{ reservation.days_reserved == 1 ? ('COMMON.DAY'|translate) : ('COMMON.DAYS'|translate) }}</h5>
     </div>
   </div>
 </div>
