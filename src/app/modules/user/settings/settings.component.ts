@@ -8,6 +8,8 @@ import {
 import { IUser } from "src/app/shared/models/authentication/user";
 import { ImageUploaderOptions } from "ngx-image-uploader";
 import { SiteCardbService } from 'src/app/core/services/site-cardb/site-cardb.service';
+import { MatDialog } from '@angular/material';
+import { ChangePasswordComponent } from './change-password/change-password.component';
 
 @Component({
   selector: "app-settings",
@@ -29,7 +31,7 @@ export class SettingsComponent implements OnInit {
     thumbnailHeight: 300
   };
 
-  constructor(private formBuilder: FormBuilder, private auth: AuthService, private dbService: SiteCardbService) {
+  constructor(private formBuilder: FormBuilder, private auth: AuthService, private dbService: SiteCardbService, public dialog: MatDialog,) {
     this.registerForm = this.formBuilder.group(
       {
         phone: [""],
@@ -67,10 +69,29 @@ export class SettingsComponent implements OnInit {
   }
 
   updateProfile(event) {
-    console.log("updating")
+    // console.log("updating")
     this.dbService.updateProfile(this.user.id, event._imageThumbnail).subscribe(res => {
-      console.log(res);
+      // console.log(res);
       this.auth.saveUser()
     })
+  }
+
+  changePassword() {
+    this.openDialog(ChangePasswordComponent,{
+      width: "450px",
+      // data: {
+      //   reservation: this.reservation,
+      // },
+      autoFocus: false,
+    });
+  }
+
+  openDialog(component, options): void {
+    const dialogRef = this.dialog.open(component,options);
+    dialogRef.afterClosed().subscribe((result: boolean) => {
+      if (result){
+        // this.refreshReservations.emit()
+      }
+    });
   }
 }

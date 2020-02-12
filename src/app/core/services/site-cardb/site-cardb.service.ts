@@ -70,7 +70,15 @@ export class SiteCardbService {
 
   updateProfile(id, photo){
     return this.customService.patch(`${this.CAR_DB_URL}/users/user/${id}`, {
+      id,
       photo
+    })
+  }
+
+  changePassword(id, password){
+    return this.customService.patch(`${this.CAR_DB_URL}/users/user/${id}`, {
+      id,
+      password
     })
   }
 

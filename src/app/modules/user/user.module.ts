@@ -17,6 +17,7 @@ import { CreateReviewComponent } from "./reservations/create-review/create-revie
 import { MatInputModule, MatIconModule } from '@angular/material';
 import { SettingsComponent } from './settings/settings.component';
 import { ImageUploaderModule } from 'ngx-image-uploader';
+import { ChangePasswordComponent } from './settings/change-password/change-password.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { ImageUploaderModule } from 'ngx-image-uploader';
     ReservationItemComponent,
     CancelResComponent,
     CreateReviewComponent,
-    SettingsComponent
+    SettingsComponent,
+    ChangePasswordComponent
   ],
   imports: [
     CommonModule,
@@ -42,6 +44,6 @@ import { ImageUploaderModule } from 'ngx-image-uploader';
     MatIconModule,
     ImageUploaderModule
   ],
-  entryComponents: [CancelResComponent, CreateReviewComponent]
+  entryComponents: [CancelResComponent, CreateReviewComponent, ChangePasswordComponent]
 })
 export class UserModule {}

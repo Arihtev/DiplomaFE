@@ -91,6 +91,17 @@
 
     <div class="col-12 text-center mt-3">
       <button
+      class="search-btn"
+      type="button"
+      mdbBtn
+      gradient="blue"
+      size="lg"
+      mdbWavesEffect
+      (click)="changePassword()"
+    >
+      {{'USER.PASSWORD_CHANGE'|translate}}
+    </button>
+      <button
         class="search-btn"
         type="button"
         mdbBtn

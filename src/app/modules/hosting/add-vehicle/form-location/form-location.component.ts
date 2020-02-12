@@ -43,7 +43,7 @@ export class FormLocationComponent implements OnInit {
 
     this.locationForm.controls['region'].valueChanges.subscribe(res => {
       if (typeof res==='string'){
-        console.log("string")
+        // console.log("string")
         this.regions.forEach(region => {
           if (region.name.toLowerCase() === res){
             this.loadCities(res)
@@ -54,7 +54,7 @@ export class FormLocationComponent implements OnInit {
         });
       }
       else{
-        console.log("object")
+        // console.log("object")
         this.loadCities(res.name)
       }
       this.filteredCities = this.locationForm.controls['city'].valueChanges.pipe(
@@ -80,10 +80,10 @@ export class FormLocationComponent implements OnInit {
           }
         });
         if (isCity){
-          console.log(foundCity)
+          // console.log(foundCity)
         }
         else{
-          console.log("false")
+          // console.log("false")
         }
       }
     })

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SiteCardbService } from 'src/app/core/services/site-cardb/site-cardb.service';
 import { ICreateReservation, IReservation } from 'src/app/shared/models/site-db/cars';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-reservations',
@@ -14,7 +15,7 @@ export class ReservationsComponent implements OnInit {
   canceledReservations: IReservation[] = [];
   loading = false;
 
-  constructor(private dbService: SiteCardbService) { }
+  constructor(private dbService: SiteCardbService, private router: Router) { }
 
   ngOnInit() {
     this.updateReservations();
@@ -48,5 +49,9 @@ export class ReservationsComponent implements OnInit {
     this.upcomingReservations = [];
     this.passedReservations = [];
     this.canceledReservations = [];
+  }
+
+  redirectToAll(){
+    this.router.navigate(['/cars'])
   }
 }

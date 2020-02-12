@@ -21,7 +21,7 @@
       </mat-form-field>
     </form>
     <div class="text-center">
-      <mat-error *ngIf="errors">{{ 'HOME.AUTH.LOGIN.LOGIN_ERROR' }}</mat-error>
+      <mat-error *ngIf="errors">{{ 'HOME.AUTH.LOGIN.LOGIN_ERROR'|translate }}</mat-error>
       <button class="search-btn" type="button" mdbBtn gradient="blue" size="lg" mdbWavesEffect (click)="loginUser()"
         [disabled]="loginForm.invalid">{{ 'HOME.AUTH.LOGIN.LOGIN' | translate }}</button>
       <!-- <p class="message">Нямате профил? <a (click)="goToRegister()">Регистрирайте се тук</a></p> -->

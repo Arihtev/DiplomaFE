@@ -146,7 +146,8 @@
     "SUCCESS": "You have successfully reserved",
     "ADDED": "Added to favourites!",
     "REMOVED": "Removed from favourites",
-    "REGISTERED": "Your profile was created successfully!"
+    "REGISTERED": "Your profile was created successfully!",
+    "PASSWORD_CHANGE": "Change password"
   },
   "HOSTING": {
     "PREVIEW": "Preview",

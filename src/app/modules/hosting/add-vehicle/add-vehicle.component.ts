@@ -9,6 +9,7 @@ import { ImageUploadComponent } from "./form-description/image-upload/image-uplo
 import { FormRulesComponent } from "./form-rules/form-rules.component";
 import { MatSnackBar } from '@angular/material';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/core/services/authentication/auth.service';
 
 @Component({
   selector: "app-add-place",
@@ -62,7 +63,8 @@ export class AddVehicleComponent implements OnInit {
   constructor(
     private service: CarDatabaseService,
     private _snackBar: MatSnackBar,
-    private router: Router
+    private router: Router,
+    private auth: AuthService
   ) {}
 
   ngOnInit() {}
@@ -133,7 +135,8 @@ export class AddVehicleComponent implements OnInit {
       )
       .subscribe(res => {
         this.openSnackBar("Вашият автомобил беше създаден успешно!", "Затвори");
-        this.router.navigate(['/host/manage-cars'])
+        this.router.navigate(['/host/manage-cars']);
+        this.auth.saveUser()
       });
   }
 
