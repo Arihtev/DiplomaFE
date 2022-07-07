@@ -40,7 +40,7 @@
     "jquery": "^3.4.1",
     "jwt-decode": "^2.2.0",
     "mdbootstrap": "^4.8.8",
-    "moment": "^2.24.0",
+    "moment": "^2.29.4",
     "ng-pick-datetime": "^7.0.0",
     "ng-pick-datetime-highlight": "^5.0.0-beta.12",
     "ng-pick-datetime-moment": "^1.0.8",
